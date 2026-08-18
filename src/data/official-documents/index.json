@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "statuts",
+    "title": "Statuts de l'EMEC",
+    "year": "Juillet 2021",
+    "pages": 13,
+    "articleCount": 59,
+    "file": "/documents/statuts-emec-juillet-2021.pdf",
+    "description": "Le texte qui presente le cadre general de l'EMEC : creation, denomination, objet, organisation, organes et dispositions fondamentales.",
+    "highlights": [
+      "Creation et reconnaissance",
+      "Objet de l'Eglise",
+      "Organisation ecclesiale",
+      "Organes de gouvernance"
+    ]
+  },
+  {
+    "slug": "reglement-interieur",
+    "title": "Reglement Interieur",
+    "year": "Juillet 2021",
+    "pages": 30,
+    "articleCount": 173,
+    "file": "/documents/reglement-interieur-emec-juillet-2021.pdf",
+    "description": "Le document qui precise la vision missionnaire, la profession de foi, la qualite des membres, les ministeres, les groupes et la vie interne.",
+    "highlights": [
+      "Vision missionnaire",
+      "Profession de foi",
+      "Groupes d'action chretiens",
+      "Vie ecclesiale"
+    ]
+  },
+  {
+    "slug": "regime-financier",
+    "title": "Regime Financier",
+    "year": "Revise en 2023",
+    "pages": 35,
+    "articleCount": 134,
+    "file": "/documents/regime-financier-emec-revise-2023.pdf",
+    "description": "Le cadre de gestion des ressources, budgets, charges, controles et procedures disciplinaires budgetaires de l'EMEC.",
+    "highlights": [
+      "Ressources et charges",
+      "Budgets des organes",
+      "Execution et controle",
+      "Discipline budgetaire"
+    ]
+  }
+]

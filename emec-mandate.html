@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Notre Mandat — EMEC | Église Messianique Évangélique du Cameroun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8CC80;
+  --gold-dark:#8B6914;
+  --black:#0A0A0A;
+  --cream:#FAF7F0;
+  --sand:#F0EBE0;
+  --text-dark:#1A1410;
+  --text-mid:#4A3F30;
+  --text-muted:#8A7A65;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text-dark);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:72px;transition:background .4s,box-shadow .4s;}
+nav.scrolled{background:rgba(10,10,10,.96);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.4);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.82);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:2px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* ── HERO FULL ── */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://egliseemec.org/images/home-2.jpg') center/cover no-repeat;filter:brightness(.22);}
+.hero-overlay{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 60% 30%, rgba(201,168,76,.07) 0%, transparent 70%),
+  linear-gradient(to top, rgba(10,8,4,1) 0%, rgba(10,8,4,.5) 45%, rgba(10,8,4,.15) 100%);}
+
+/* vertical scripture strip */
+.scripture-strip{position:absolute;right:6vw;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;text-orientation:mixed;font-family:'Libre Baskerville',serif;font-style:italic;font-size:12px;color:rgba(201,168,76,.35);letter-spacing:2px;line-height:1;white-space:nowrap;opacity:0;animation:fadeIn 1.2s 1s forwards;}
+
+.hero-content{position:relative;z-index:2;padding:0 10vw 80px;max-width:900px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;opacity:0;animation:fadeUp .7s .2s forwards;}
+.breadcrumb a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb span{font-size:11px;color:rgba(255,255,255,.18);}
+.breadcrumb .cur{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:fadeUp .8s .35s forwards;}
+.hero-kicker::before{content:'';width:32px;height:1px;background:var(--gold);}
+.hero-kicker span{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);}
+
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(44px,6.5vw,88px);font-weight:900;line-height:1.03;color:#fff;opacity:0;animation:fadeUp 1s .5s forwards;}
+.hero h1 em{font-style:italic;color:var(--gold-light);}
+
+.hero-scripture{margin-top:32px;display:flex;align-items:flex-start;gap:20px;max-width:620px;opacity:0;animation:fadeUp .9s .75s forwards;}
+.hero-scripture-bar{width:3px;min-height:60px;background:var(--gold);flex-shrink:0;margin-top:4px;}
+.hero-scripture-text{font-family:'Libre Baskerville',serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(255,255,255,.65);}
+.hero-scripture-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:8px;font-style:normal;font-family:'DM Sans',sans-serif;}
+
+.hero-scroll{position:absolute;bottom:36px;left:10vw;display:flex;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s 1.3s forwards;}
+.hero-scroll span{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.scroll-line{width:40px;height:1px;background:rgba(255,255,255,.2);}
+
+/* ── INTRO STATEMENT ── */
+.intro{background:var(--black);padding:80px 10vw;}
+.intro-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center;}
+.intro-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);line-height:2;}
+.intro-label strong{display:block;font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
+.intro-label strong em{font-style:italic;color:var(--gold-light);}
+.intro-text p{font-size:18px;line-height:1.85;color:rgba(255,255,255,.65);font-weight:300;margin-bottom:20px;}
+.intro-text p strong{color:#fff;font-weight:500;}
+
+/* ── PILIERS ── */
+.piliers{padding:100px 10vw;background:var(--cream);}
+.piliers-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;}
+.piliers-header-right p{font-size:16px;line-height:1.85;color:var(--text-mid);}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-eyebrow::after{content:'';flex:1;max-width:32px;height:1px;background:var(--gold);opacity:.5;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,50px);font-weight:700;line-height:1.15;color:var(--text-dark);}
+.section-title em{font-style:italic;color:var(--gold-dark);}
+
+/* Pilier cards — alternating layout */
+.pilier{display:grid;grid-template-columns:80px 1fr;gap:0;margin-bottom:2px;background:#fff;border:0.5px solid rgba(201,168,76,.15);overflow:hidden;transition:border-color .3s;}
+.pilier:hover{border-color:rgba(201,168,76,.5);}
+.pilier-num{background:var(--black);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(201,168,76,.3);writing-mode:vertical-rl;padding:40px 0;letter-spacing:2px;}
+.pilier:hover .pilier-num{color:var(--gold);}
+.pilier-body{padding:44px 48px;}
+.pilier-icon{font-size:32px;margin-bottom:20px;}
+.pilier-body h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text-dark);margin-bottom:16px;line-height:1.2;}
+.pilier-body p{font-size:16px;line-height:1.85;color:var(--text-mid);}
+.pilier-tag{display:inline-block;margin-top:20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:2px;}
+
+/* ── GREAT COMMISSION VERSE BREAK ── */
+.verse-break{background:var(--black);padding:80px 10vw;text-align:center;position:relative;overflow:hidden;}
+.verse-break::before{content:'❝';position:absolute;top:-20px;left:10vw;font-size:180px;color:rgba(201,168,76,.04);font-family:'Libre Baskerville',serif;line-height:1;}
+.verse-break blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.8vw,34px);line-height:1.5;color:#fff;max-width:820px;margin:0 auto;position:relative;z-index:1;}
+.verse-break blockquote em{color:var(--gold-light);}
+.verse-break cite{display:block;margin-top:28px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;font-family:'DM Sans',sans-serif;}
+.verse-break-line{width:48px;height:1px;background:var(--gold);margin:0 auto 40px;opacity:.5;}
+
+/* ── ENGAGEMENT VISUEL ── */
+.engagement{padding:100px 10vw;background:var(--sand);}
+.engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,168,76,.1);margin-top:56px;}
+.engagement-item{background:var(--sand);padding:48px 36px;position:relative;overflow:hidden;}
+.engagement-item::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:transparent;transition:background .3s;}
+.engagement-item:hover::before{background:var(--gold);}
+.eng-number{font-family:'Playfair Display',serif;font-size:80px;font-weight:900;color:rgba(201,168,76,.1);line-height:1;margin-bottom:-20px;}
+.eng-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text-dark);margin-bottom:12px;}
+.eng-desc{font-size:14px;line-height:1.75;color:var(--text-muted);}
+
+/* ── CTA FINAL ── */
+.final-cta{background:var(--black);padding:100px 10vw;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.final-cta-text h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,50px);font-weight:700;color:#fff;line-height:1.18;}
+.final-cta-text h2 em{font-style:italic;color:var(--gold-light);}
+.final-cta-text p{font-size:16px;line-height:1.8;color:rgba(255,255,255,.55);margin-top:20px;}
+.cta-cards{display:flex;flex-direction:column;gap:16px;}
+.cta-card{display:flex;align-items:center;gap:20px;padding:24px 28px;border:1px solid rgba(201,168,76,.2);border-radius:2px;text-decoration:none;transition:border-color .25s,background .25s;}
+.cta-card:hover{border-color:rgba(201,168,76,.6);background:rgba(201,168,76,.05);}
+.cta-card-icon{width:44px;height:44px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:20px;border-radius:2px;flex-shrink:0;}
+.cta-card h4{font-size:14px;font-weight:500;color:#fff;margin-bottom:3px;}
+.cta-card p{font-size:12px;color:rgba(255,255,255,.4);}
+.cta-card .arrow{margin-left:auto;color:rgba(201,168,76,.4);font-size:18px;transition:color .2s,transform .2s;}
+.cta-card:hover .arrow{color:var(--gold);transform:translateX(4px);}
+
+/* ── FOOTER ── */
+footer{background:#050503;padding:72px 10vw 40px;border-top:1px solid rgba(201,168,76,.15);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px;}
+.footer-brand .logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:#fff;text-decoration:none;}
+.footer-brand .logo span{color:var(--gold);}
+.footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.4);margin:16px 0 24px;max-width:260px;}
+.social-links{display:flex;gap:12px;}
+.social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;border-radius:2px;text-decoration:none;font-size:14px;color:rgba(255,255,255,.5);transition:border-color .2s,color .2s;}
+.social-link:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:10px;}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-contact p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;}
+.footer-contact strong{color:rgba(255,255,255,.7);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .intro-inner,.piliers-header,.final-cta{grid-template-columns:1fr;}
+  .engagement-grid{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+  .scripture-strip{display:none;}
+}
+@media(max-width:600px){
+  .pilier{grid-template-columns:1fr;}
+  .pilier-num{writing-mode:horizontal-tb;padding:20px 28px;font-size:20px;}
+  footer{padding:60px 6vw 32px;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <a href="https://egliseemec.org" class="nav-logo">EM<span>EC</span></a>
+  <ul class="nav-links">
+    <li><a href="https://egliseemec.org">Accueil</a></li>
+    <li><a href="https://egliseemec.org/about-us">À Propos</a></li>
+    <li><a href="https://egliseemec.org/mandate" style="color:var(--gold);">Notre Mandat</a></li>
+    <li><a href="https://egliseemec.org/events">Événements</a></li>
+    <li><a href="https://egliseemec.org/media-center">Médias</a></li>
+    <li><a href="https://egliseemec.org/contact-us">Contact</a></li>
+  </ul>
+  <a href="https://egliseemec.org/get-connected" class="nav-cta">Je veux suivre Christ</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="scripture-strip">Matthieu 28:19–20 — Allez, faites de toutes les nations des disciples…</div>
+
+  <div class="hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'ariane">
+      <a href="https://egliseemec.org">Accueil</a>
+      <span>›</span>
+      <span class="cur">Notre Mandat</span>
+    </nav>
+
+    <div class="hero-kicker"><span>Le Grand Mandat</span></div>
+
+    <h1>Notre appel.<br>Notre <em>raison<br>d'exister.</em></h1>
+
+    <div class="hero-scripture">
+      <div class="hero-scripture-bar"></div>
+      <div>
+        <p class="hero-scripture-text">« Allez, faites de toutes les nations des disciples, les baptisant au nom du Père, du Fils et du Saint-Esprit, et enseignez-leur à observer tout ce que je vous ai prescrit. »</p>
+        <p class="hero-scripture-ref">Matthieu 28 : 19–20</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Découvrir</span>
+  </div>
+</section>
+
+<!-- ══ INTRO STATEMENT ══ -->
+<div class="intro">
+  <div class="intro-inner reveal">
+    <div class="intro-label">
+      Notre<br/>
+      <strong>Grand<br/><em>Mandat</em></strong>
+    </div>
+    <div class="intro-text">
+      <p>À l'EMEC, nous sommes profondément enracinés dans le Grand Mandat que Jésus-Christ a confié à ses disciples. <strong>C'est notre raison d'être</strong> — la force motrice derrière toutes nos actions, le fondement de notre ministère et la boussole de chacune de nos décisions.</p>
+      <p>Nous nous engageons à proclamer l'Évangile sans compromis, à former des disciples matures et à manifester l'amour de Dieu de manière concrète dans nos communautés — au Cameroun et jusqu'aux extrémités de la terre.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ VERSE BREAK ══ -->
+<div class="verse-break">
+  <div class="verse-break-line"></div>
+  <blockquote>
+    « Notre mandat est d'annoncer l'Évangile, faire des disciples de toutes les nations, les baptiser, les enseigner — et manifester l'amour de Dieu par la compassion, la justice et la paix, <em>afin de glorifier Christ.</em> »
+  </blockquote>
+  <cite>La vision de l'EMEC</cite>
+</div>
+
+<!-- ══ PILIERS ══ -->
+<section class="piliers" id="piliers">
+  <div class="piliers-header reveal">
+    <div>
+      <p class="section-eyebrow">Les Piliers</p>
+      <h2 class="section-title">Quatre engagements.<br><em>Une seule mission.</em></h2>
+    </div>
+    <div class="piliers-header-right">
+      <p>Notre mandat se décline en quatre aspects essentiels, chacun étant une facette indissociable de notre appel divin. Ensemble, ils forment le cœur de tout ce que nous faisons à l'EMEC.</p>
+    </div>
+  </div>
+
+  <!-- Pilier 1 -->
+  <div class="pilier reveal">
+    <div class="pilier-num">01</div>
+    <div class="pilier-body">
+      <div class="pilier-icon">📣</div>
+      <h3>La Proclamation de l'Évangile</h3>
+      <p>Nous croyons que la Bonne Nouvelle de Jésus-Christ est le message le plus puissant et le plus transformateur pour l'humanité. Notre mandat principal est de proclamer cet Évangile sans compromis, en invitant chacun à une relation personnelle avec Dieu. Nous utilisons divers moyens — des cultes d'adoration aux grandes campagnes d'évangélisation — pour partager la vérité et l'amour de Christ.</p>
+      <span class="pilier-tag">Matthieu 28:19 — Allez, faites des disciples</span>
+    </div>
+  </div>
+
+  <!-- Pilier 2 -->
+  <div class="pilier reveal">
+    <div class="pilier-num">02</div>
+    <div class="pilier-body">
+      <div class="pilier-icon">🌱</div>
+      <h3>La Formation de Disciples</h3>
+      <p>Au-delà de la conversion, notre mandat inclut la formation de disciples matures et engagés. Nous offrons des enseignements bibliques solides, des programmes de mentorat et des groupes de maison pour aider chaque croyant à grandir dans sa foi, à comprendre la Parole de Dieu et à développer une relation profonde avec le Saint-Esprit. Notre objectif : équiper chaque disciple pour qu'il puisse à son tour impacter son entourage.</p>
+      <span class="pilier-tag">Matthieu 28:20 — Enseignez-leur à observer</span>
+    </div>
+  </div>
+
+  <!-- Pilier 3 -->
+  <div class="pilier reveal">
+    <div class="pilier-num">03</div>
+    <div class="pilier-body">
+      <div class="pilier-icon">🤝</div>
+      <h3>Le Service Communautaire et la Compassion</h3>
+      <p>Jésus nous a montré l'exemple du service et de la compassion. L'EMEC s'engage activement à manifester l'amour de Dieu par des actions concrètes dans nos communautés — aide aux démunis, programmes de soutien social, visites aux malades et aux détenus, promotion de la justice sociale. Nous croyons fermement que la foi sans les œuvres est morte.</p>
+      <span class="pilier-tag">Jacques 2:17 — La foi sans les œuvres est morte</span>
+    </div>
+  </div>
+
+  <!-- Pilier 4 -->
+  <div class="pilier reveal">
+    <div class="pilier-num">04</div>
+    <div class="pilier-body">
+      <div class="pilier-icon">🙏</div>
+      <h3>L'Adoration et la Louange</h3>
+      <p>L'adoration est au cœur de notre vie d'église. Nous cherchons à offrir à Dieu un culte sincère et passionné, reconnaissant sa grandeur et sa bonté. Nos moments de louange et d'adoration sont des occasions de nous connecter profondément avec le Créateur, de recevoir sa présence transformante et de rayonner sa gloire vers l'extérieur.</p>
+      <span class="pilier-tag">Jean 4:23 — En esprit et en vérité</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ENGAGEMENT CHIFFRÉ ══ -->
+<section class="engagement">
+  <div class="reveal">
+    <p class="section-eyebrow">Notre Engagement Concret</p>
+    <h2 class="section-title">Des paroles aux <em>actes.</em></h2>
+  </div>
+  <div class="engagement-grid">
+    <div class="engagement-item reveal">
+      <div class="eng-number">01</div>
+      <h3 class="eng-title">Évangélisation Active</h3>
+      <p class="eng-desc">Des campagnes régulières dans les villes du Cameroun, des cultes d'évangélisation et des sorties de terrain pour rejoindre ceux qui ne viendraient pas d'eux-mêmes.</p>
+    </div>
+    <div class="engagement-item reveal">
+      <div class="eng-number">02</div>
+      <h3 class="eng-title">Implantation d'Églises</h3>
+      <p class="eng-desc">Planter des communautés de foi dans chaque ville atteinte — des lieux vivants où les nouveaux disciples peuvent s'enraciner, grandir et servir.</p>
+    </div>
+    <div class="engagement-item reveal">
+      <div class="eng-number">03</div>
+      <h3 class="eng-title">Formation et Équipement</h3>
+      <p class="eng-desc">L'École de Sion, les séminaires de leadership, les enseignements hebdomadaires — pour former une armée de disciples équipés et mûrs spirituellement.</p>
+    </div>
+    <div class="engagement-item reveal">
+      <div class="eng-number">04</div>
+      <h3 class="eng-title">Action Sociale</h3>
+      <p class="eng-desc">Soutien aux familles vulnérables, initiatives éducatives et actions humanitaires — l'amour de Christ rendu visible et tangible dans nos communautés.</p>
+    </div>
+    <div class="engagement-item reveal">
+      <div class="eng-number">05</div>
+      <h3 class="eng-title">Ministère des Prières</h3>
+      <p class="eng-desc">Chaque vendredi, des veillées et réunions de prière intercèdent pour les nations, les familles, les malades et les autorités — la prière comme moteur de tout.</p>
+    </div>
+    <div class="engagement-item reveal">
+      <div class="eng-number">06</div>
+      <h3 class="eng-title">Mission Transfrontalière</h3>
+      <p class="eng-desc">Le mandat de l'EMEC dépasse le Cameroun. Nous rêvons d'une influence apostolique qui touchera les nations voisines et le monde entier.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="final-cta">
+  <div class="final-cta-text reveal">
+    <h2>Ce mandat<br/>nous appartient<br/><em>tous.</em></h2>
+    <p>Vous n'êtes pas un simple spectateur. Le Grand Mandat est un appel adressé à chaque membre du Corps de Christ. Rejoignez-nous, participez, donnez, priez — ensemble nous changerons le monde.</p>
+  </div>
+  <div class="cta-cards reveal">
+    <a href="https://egliseemec.org/get-connected" class="cta-card">
+      <div class="cta-card-icon">✝</div>
+      <div>
+        <h4>Je veux suivre Christ</h4>
+        <p>Faire le premier pas dans la foi</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://egliseemec.org/events" class="cta-card">
+      <div class="cta-card-icon">📅</div>
+      <div>
+        <h4>Participer à nos événements</h4>
+        <p>Campagnes, conférences, cultes spéciaux</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://egliseemec.org/donate" class="cta-card">
+      <div class="cta-card-icon">🤲</div>
+      <div>
+        <h4>Soutenir la mission</h4>
+        <p>Votre générosité amplifie l'impact</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://egliseemec.org/our-projects" class="cta-card">
+      <div class="cta-card-icon">🌍</div>
+      <div>
+        <h4>Découvrir nos projets</h4>
+        <p>Voir le mandat à l'œuvre</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="https://egliseemec.org" class="logo">EM<span>EC</span></a>
+      <p>Église Messianique Évangélique du Cameroun — Un lieu de transformation, de restauration et de lumière.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/emec.eglise" class="social-link">f</a>
+        <a href="https://www.youtube.com/channel/UC_your_youtube_channel_id" class="social-link">▶</a>
+        <a href="https://www.tiktok.com/@emec.eglise" class="social-link">♪</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Cette page</h4>
+      <ul>
+        <li><a href="#piliers">Les 4 piliers</a></li>
+        <li><a href="#piliers">Proclamation</a></li>
+        <li><a href="#piliers">Formation</a></li>
+        <li><a href="#piliers">Service</a></li>
+        <li><a href="#piliers">Adoration</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>L'Église</h4>
+      <ul>
+        <li><a href="https://egliseemec.org/about-us">À propos</a></li>
+        <li><a href="https://egliseemec.org/our-team">Notre équipe</a></li>
+        <li><a href="https://egliseemec.org/church">Nos églises</a></li>
+        <li><a href="https://egliseemec.org/events">Événements</a></li>
+        <li><a href="https://egliseemec.org/our-projects">Nos projets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p><strong>Adresse</strong><br/>Entrée OPEP, Minboman<br/>Yaoundé, Cameroun</p>
+      <br/>
+      <p><strong>Téléphone</strong><br/>(+237) 699 76 54 35</p>
+      <br/>
+      <p><strong>Horaires</strong><br/>Lun — Sam : 8h00 — 18h00</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 EMEC — Église Messianique Évangélique du Cameroun. Tous droits réservés.</p>
+    <p>À la gloire de Dieu seul.</p>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold:0.1});
+reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

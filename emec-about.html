@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>À Propos — EMEC | Église Messianique Évangélique du Cameroun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8CC80;
+  --gold-dark:#8B6914;
+  --black:#0A0A0A;
+  --off-white:#F5F0E8;
+  --cream:#FAF7F0;
+  --sand:#F0EBE0;
+  --text-dark:#1A1410;
+  --text-mid:#4A3F30;
+  --text-muted:#8A7A65;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text-dark);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:72px;transition:background .4s,box-shadow .4s;}
+nav.scrolled{background:rgba(10,10,10,.96);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.4);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.82);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:2px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{position:relative;height:60vh;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://egliseemec.org/images/home-2.jpg') center/cover no-repeat;filter:brightness(.3);}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(to top, rgba(10,8,4,1) 0%, rgba(10,8,4,.2) 60%);}
+.hero-content{position:relative;z-index:2;padding:0 10vw 72px;width:100%;}
+/* breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;opacity:0;animation:fadeUp .7s .2s forwards;}
+.breadcrumb a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb span{font-size:11px;color:rgba(255,255,255,.2);}
+.breadcrumb .current{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,68px);font-weight:900;line-height:1.08;color:#fff;opacity:0;animation:fadeUp .9s .4s forwards;}
+.hero h1 em{font-style:italic;color:var(--gold-light);}
+.hero-sub{margin-top:16px;font-size:clamp(14px,1.5vw,17px);color:rgba(255,255,255,.6);font-weight:300;max-width:540px;opacity:0;animation:fadeUp .9s .6s forwards;}
+
+/* ── STICKY SUBNAV ── */
+.subnav{position:sticky;top:72px;z-index:150;background:var(--black);border-bottom:1px solid rgba(201,168,76,.2);}
+.subnav-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 10vw;}
+.subnav-inner::-webkit-scrollbar{display:none;}
+.subnav-btn{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:18px 28px;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .25s,border-color .25s;white-space:nowrap;}
+.subnav-btn .sn-num{font-family:'Playfair Display',serif;font-size:15px;color:rgba(201,168,76,.3);transition:color .25s;}
+.subnav-btn:hover{color:rgba(255,255,255,.8);}
+.subnav-btn.active{color:#fff;border-bottom-color:var(--gold);}
+.subnav-btn.active .sn-num{color:var(--gold);}
+
+/* ── COMMON SECTION UTILS ── */
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-eyebrow::after{content:'';flex:1;max-width:32px;height:1px;background:var(--gold);opacity:.5;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.18;color:var(--text-dark);}
+.section-title em{font-style:italic;color:var(--gold-dark);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── SECTION 1 : HISTOIRE & VALEURS ── */
+#histoire{padding:100px 10vw;background:var(--cream);}
+.histoire-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px;}
+.histoire-text p{font-size:16px;line-height:1.85;color:var(--text-mid);margin-bottom:20px;}
+.verse-block{margin:36px 0;padding:28px 32px;border-left:3px solid var(--gold);background:rgba(201,168,76,.05);}
+.verse-block blockquote{font-family:'Libre Baskerville',serif;font-style:italic;font-size:17px;line-height:1.7;color:var(--text-dark);}
+.verse-block cite{display:block;margin-top:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-style:normal;}
+
+.valeurs-stack{display:flex;flex-direction:column;gap:0;}
+.valeur-item{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid rgba(201,168,76,.15);align-items:flex-start;}
+.valeur-item:last-child{border-bottom:none;}
+.valeur-num{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold);opacity:.7;min-width:24px;margin-top:4px;}
+.valeur-body h4{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text-dark);}
+.valeur-body p{font-size:14px;line-height:1.65;color:var(--text-muted);}
+
+.vision-mission{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.vm-card{background:var(--black);padding:36px 32px;border-radius:2px;}
+.vm-card h3{font-family:'Playfair Display',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.vm-card p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.7);}
+
+/* ── SECTION 2 : ÉQUIPE ── */
+#equipe{padding:100px 10vw;background:var(--sand);}
+.equipe-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:72px;}
+.equipe-header p{font-size:16px;line-height:1.8;color:var(--text-mid);}
+
+/* Founders */
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:64px;}
+.founder-card{background:var(--black);overflow:hidden;border-radius:2px;position:relative;}
+.founder-card img{width:100%;height:380px;object-fit:cover;object-position:top;filter:grayscale(15%);display:block;transition:transform .6s;}
+.founder-card:hover img{transform:scale(1.03);}
+.founder-info{padding:28px 32px;}
+.founder-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.founder-name{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700;}
+.founder-role{font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;}
+.founder-quote{font-family:'Libre Baskerville',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,.55);line-height:1.65;margin-top:16px;padding-top:16px;border-top:1px solid rgba(201,168,76,.15);}
+
+/* Conseil */
+.conseil-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:28px;}
+.conseil-desc{font-size:15px;line-height:1.75;color:var(--text-mid);max-width:680px;margin-bottom:40px;}
+.conseil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px;}
+.conseil-card{background:#fff;border:1px solid rgba(201,168,76,.15);padding:28px 24px;border-radius:2px;transition:border-color .25s,transform .25s;}
+.conseil-card:hover{border-color:rgba(201,168,76,.45);transform:translateY(-3px);}
+.conseil-avatar{width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold-dark);margin-bottom:16px;}
+.conseil-card h4{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:4px;}
+.conseil-card p{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);}
+
+/* Ministères */
+.ministeres-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:28px;}
+.ministeres-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ministere-card{background:var(--black);padding:32px 28px;border-radius:2px;position:relative;overflow:hidden;border-bottom:3px solid var(--gold);}
+.ministere-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:rgba(201,168,76,.05);transition:height .3s;}
+.ministere-card:hover::after{height:100%;}
+.min-icon{font-size:28px;margin-bottom:16px;display:block;}
+.ministere-card h4{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:10px;}
+.ministere-card p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.5);}
+
+/* ── SECTION 3 : IMPLANTATIONS ── */
+#eglises{padding:100px 10vw;background:var(--cream);}
+.eglises-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:72px;}
+.eglises-header p{font-size:16px;line-height:1.8;color:var(--text-mid);}
+
+.eglises-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px;}
+.eglise-card{background:#fff;border:0.5px solid rgba(201,168,76,.2);overflow:hidden;border-radius:2px;transition:box-shadow .3s,transform .3s;}
+.eglise-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);transform:translateY(-4px);}
+.eglise-img{height:200px;background:var(--black) url('https://egliseemec.org/images/home-2.jpg') center/cover;position:relative;overflow:hidden;}
+.eglise-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,4,.7),transparent);}
+.eglise-city{position:absolute;bottom:16px;left:20px;z-index:2;font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:700;}
+.eglise-body{padding:24px 24px 28px;}
+.eglise-badge{display:inline-block;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:rgba(201,168,76,.12);color:var(--gold-dark);padding:4px 10px;border-radius:2px;margin-bottom:12px;}
+.eglise-body h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--text-dark);margin-bottom:8px;}
+.eglise-body p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+.eglise-address{display:flex;align-items:center;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(201,168,76,.12);}
+.eglise-address span{font-size:12px;color:var(--text-muted);}
+
+/* Implantation CTA */
+.implantation-cta{background:var(--black);padding:56px 64px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:40px;}
+.implantation-cta h3{font-family:'Playfair Display',serif;font-size:28px;color:#fff;font-weight:700;line-height:1.3;max-width:440px;}
+.implantation-cta h3 em{font-style:italic;color:var(--gold-light);}
+.implantation-cta p{font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;}
+.btn-gold{background:var(--gold);color:var(--black);font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:16px 36px;text-decoration:none;border-radius:2px;white-space:nowrap;transition:background .2s;}
+.btn-gold:hover{background:var(--gold-light);}
+
+/* ── TRANSITION BRIDGES ── */
+.bridge{background:var(--black);padding:56px 10vw;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.bridge-text{max-width:500px;}
+.bridge-text p.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.bridge-text h3{font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.3;}
+.bridge-text h3 em{font-style:italic;color:var(--gold-light);}
+.bridge-arrow{font-family:'Playfair Display',serif;font-size:48px;color:rgba(201,168,76,.25);}
+.btn-outline-gold{border:1px solid rgba(201,168,76,.5);color:var(--gold);font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;border-radius:2px;white-space:nowrap;transition:border-color .2s,background .2s;}
+.btn-outline-gold:hover{border-color:var(--gold);background:rgba(201,168,76,.08);}
+
+/* ── FOOTER ── */
+footer{background:#050503;padding:72px 10vw 40px;border-top:1px solid rgba(201,168,76,.15);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px;}
+.footer-brand .logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:#fff;text-decoration:none;}
+.footer-brand .logo span{color:var(--gold);}
+.footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.4);margin:16px 0 24px;max-width:260px;}
+.social-links{display:flex;gap:12px;}
+.social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;border-radius:2px;text-decoration:none;font-size:14px;color:rgba(255,255,255,.5);transition:border-color .2s,color .2s;}
+.social-link:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:10px;}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-contact p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;}
+.footer-contact strong{color:rgba(255,255,255,.7);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .histoire-grid,.equipe-header,.eglises-header,.founders,.vision-mission{grid-template-columns:1fr;}
+  .conseil-grid,.ministeres-grid,.eglises-grid{grid-template-columns:1fr 1fr;}
+  .implantation-cta{flex-direction:column;text-align:center;}
+  nav .nav-links{display:none;}
+  .bridge{flex-direction:column;text-align:center;}
+}
+@media(max-width:600px){
+  section,#histoire,#equipe,#eglises{padding:72px 6vw;}
+  .conseil-grid,.ministeres-grid,.eglises-grid{grid-template-columns:1fr;}
+  .subnav-btn{padding:16px 18px;}
+  .implantation-cta{padding:40px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <a href="https://egliseemec.org" class="nav-logo">EM<span>EC</span></a>
+  <ul class="nav-links">
+    <li><a href="https://egliseemec.org">Accueil</a></li>
+    <li><a href="#histoire">Notre Histoire</a></li>
+    <li><a href="#equipe">Notre Équipe</a></li>
+    <li><a href="#eglises">Nos Églises</a></li>
+    <li><a href="https://egliseemec.org/events">Événements</a></li>
+    <li><a href="https://egliseemec.org/contact-us">Contact</a></li>
+  </ul>
+  <a href="https://egliseemec.org/get-connected" class="nav-cta">Je veux suivre Christ</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'ariane">
+      <a href="https://egliseemec.org">Accueil</a>
+      <span>›</span>
+      <span class="current">À Propos</span>
+    </nav>
+    <h1>Qui sommes-nous ?<br><em>Notre histoire,<br>nos visages, notre famille.</em></h1>
+    <p class="hero-sub">Une communauté fondée sur la foi, unie par l'amour, envoyée pour transformer le Cameroun et le monde.</p>
+  </div>
+</section>
+
+<!-- ══ STICKY SUBNAV ══ -->
+<div class="subnav" id="subnav">
+  <div class="subnav-inner">
+    <button class="subnav-btn active" onclick="scrollTo('#histoire')">
+      <span class="sn-num">01</span> Notre Histoire &amp; Valeurs
+    </button>
+    <button class="subnav-btn" onclick="scrollTo('#equipe')">
+      <span class="sn-num">02</span> Notre Équipe
+    </button>
+    <button class="subnav-btn" onclick="scrollTo('#eglises')">
+      <span class="sn-num">03</span> Nos Implantations
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SECTION 1 — HISTOIRE & VALEURS            -->
+<!-- ══════════════════════════════════════════ -->
+<section id="histoire">
+  <div class="reveal">
+    <p class="section-eyebrow">01 — Notre Histoire</p>
+    <h2 class="section-title">L'EMEC : une histoire de <em>foi,</em><br>de croissance et d'impact</h2>
+  </div>
+
+  <div class="histoire-grid">
+    <div class="histoire-text reveal">
+      <p>L'Église Messianique Évangélique du Cameroun (EMEC) a été fondée sur des principes solides de foi et de dévotion. Depuis ses humbles débuts, elle s'est développée pour devenir une communauté dynamique, dédiée à la propagation de l'Évangile et au service de ses membres et de la société.</p>
+      <p>Sous la vision apostolique de l'Apôtre Samuel Dalle, l'EMEC est aujourd'hui un phare d'espoir et de transformation, touchant d'innombrables vies à travers le Cameroun et au-delà — par l'enseignement profond de la Parole, le service concret aux plus démunis et une présence forte dans les cités.</p>
+      <div class="verse-block">
+        <blockquote>« Mais vous, vous êtes une race choisie, un sacerdoce royal, une nation sainte, un peuple acquis, afin que vous annonciez les vertus de celui qui vous a appelés des ténèbres à son admirable lumière. »</blockquote>
+        <cite>1 Pierre 2:9</cite>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text-dark);margin-bottom:24px;">Nos Valeurs Fondamentales</p>
+      <div class="valeurs-stack">
+        <div class="valeur-item">
+          <span class="valeur-num">01</span>
+          <div class="valeur-body"><h4>La Foi en Jésus-Christ</h4><p>Notre foi en Jésus-Christ comme Seigneur et Sauveur est le fondement de tout ce que nous faisons.</p></div>
+        </div>
+        <div class="valeur-item">
+          <span class="valeur-num">02</span>
+          <div class="valeur-body"><h4>La Parole de Dieu</h4><p>La Bible est notre guide infaillible, la source de toute vérité et l'autorité finale pour notre foi et notre vie.</p></div>
+        </div>
+        <div class="valeur-item">
+          <span class="valeur-num">03</span>
+          <div class="valeur-body"><h4>L'Amour Fraternel</h4><p>Nous vivons dans l'amour, l'unité et le respect mutuel, reflétant l'amour de Christ pour son Église.</p></div>
+        </div>
+        <div class="valeur-item">
+          <span class="valeur-num">04</span>
+          <div class="valeur-body"><h4>Le Service et la Compassion</h4><p>Nous répondons aux besoins spirituels et physiques de notre communauté avec compassion.</p></div>
+        </div>
+        <div class="valeur-item">
+          <span class="valeur-num">05</span>
+          <div class="valeur-body"><h4>L'Évangélisation et la Mission</h4><p>Nous partageons l'Évangile et faisons des disciples de toutes les nations.</p></div>
+        </div>
+        <div class="valeur-item">
+          <span class="valeur-num">06</span>
+          <div class="valeur-body"><h4>La Sainteté et l'Intégrité</h4><p>Nous aspirons à honorer Dieu dans toutes nos actions et nos pensées.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vision-mission reveal">
+    <div class="vm-card">
+      <h3>Notre Vision</h3>
+      <p>Devenir une église dynamique et influente, transformant des vies et des communautés par la puissance de l'Évangile, et rayonnant l'amour de Christ dans le monde entier.</p>
+    </div>
+    <div class="vm-card">
+      <h3>Notre Mission</h3>
+      <p>Proclamer la bonne nouvelle de Jésus-Christ, faire des disciples de toutes les nations, les baptiser et les enseigner — tout en manifestant l'amour de Dieu par des œuvres de compassion, de justice et de paix.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE 1 → 2 -->
+<div class="bridge reveal">
+  <div class="bridge-text">
+    <p class="eyebrow">Ensuite</p>
+    <h3>Découvrez les hommes et femmes qui <em>portent cette vision</em> au quotidien.</h3>
+  </div>
+  <div class="bridge-arrow">→</div>
+  <a href="#equipe" class="btn-outline-gold">Rencontrer l'équipe</a>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SECTION 2 — NOTRE ÉQUIPE                  -->
+<!-- ══════════════════════════════════════════ -->
+<section id="equipe">
+  <div class="reveal">
+    <p class="section-eyebrow">02 — Notre Équipe</p>
+    <h2 class="section-title">Les visages dévoués<br>de <em>l'EMEC</em></h2>
+  </div>
+
+  <div class="equipe-header">
+    <div><!-- titre déjà au dessus --></div>
+    <p class="reveal">Notre équipe pastorale et nos leaders sont des hommes et femmes de foi, engagés à servir Dieu et la communauté avec passion et intégrité. Chacun apporte une richesse de dons et d'expériences pour guider, enseigner et inspirer.</p>
+  </div>
+
+  <!-- Fondateurs -->
+  <p style="font-family:'Playfair Display',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;" class="reveal">Les Fondateurs</p>
+  <div class="founders reveal">
+    <div class="founder-card">
+      <img src="https://egliseemec.org/images/home-2.jpg" alt="Apôtre Samuel Dalle"/>
+      <div class="founder-info">
+        <p class="founder-tag">Berger Principal &amp; Fondateur</p>
+        <h3 class="founder-name">Apôtre Samuel Dalle</h3>
+        <p class="founder-role">Fondateur de la communauté EMEC</p>
+        <p class="founder-quote">« Ma vision est de voir chaque membre de l'EMEC devenir un disciple mature de Christ, équipé pour impacter positivement son environnement. »</p>
+      </div>
+    </div>
+    <div class="founder-card">
+      <img src="https://egliseemec.org/images/home-2.jpg" alt="Pasteur Grâce Dalle"/>
+      <div class="founder-info">
+        <p class="founder-tag">Co-Fondatrice</p>
+        <h3 class="founder-name">Pasteur Grâce Dalle</h3>
+        <p class="founder-role">Pilier spirituel de l'EMEC</p>
+        <p class="founder-quote">« Ensemble, nous bâtissons un lieu où chaque vie trouve sa restauration et sa destinée en Dieu. »</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conseil Exécutif -->
+  <p class="conseil-title reveal">Conseil Exécutif</p>
+  <p class="conseil-desc reveal">Le Conseil Exécutif est composé de leaders dévoués qui travaillent en étroite collaboration avec les fondateurs pour assurer la bonne marche de l'église, la mise en œuvre de la vision et le soutien aux différents ministères.</p>
+  <div class="conseil-grid reveal">
+    <div class="conseil-card">
+      <div class="conseil-avatar">SG</div>
+      <h4>Secrétaire Général</h4>
+      <p>Administration &amp; Gouvernance</p>
+    </div>
+    <div class="conseil-card">
+      <div class="conseil-avatar">TR</div>
+      <h4>Trésorier</h4>
+      <p>Finances &amp; Ressources</p>
+    </div>
+    <div class="conseil-card">
+      <div class="conseil-avatar">CO</div>
+      <h4>Coordinateur de Ministères</h4>
+      <p>Coordination &amp; Stratégie</p>
+    </div>
+  </div>
+
+  <!-- Ministères / Organes -->
+  <p class="ministeres-title reveal">Les Organes de l'EMEC</p>
+  <div class="ministeres-grid reveal">
+    <div class="ministere-card">
+      <span class="min-icon">🌸</span>
+      <h4>Groupe des Femmes</h4>
+      <p>Un espace de croissance spirituelle, de soutien mutuel et d'engagement communautaire pour toutes les femmes de l'EMEC.</p>
+    </div>
+    <div class="ministere-card">
+      <span class="min-icon">📖</span>
+      <h4>ECODIM</h4>
+      <p>L'école du dimanche de l'EMEC — un enseignement biblique vivant et adapté aux enfants de tous âges.</p>
+    </div>
+    <div class="ministere-card">
+      <span class="min-icon">⚡</span>
+      <h4>Jeunes Pour Christ</h4>
+      <p>Le ministère des jeunes — dédié à l'épanouissement spirituel et social d'une génération engagée pour Christ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE 2 → 3 -->
+<div class="bridge reveal">
+  <div class="bridge-text">
+    <p class="eyebrow">Et maintenant</p>
+    <h3>Trouvez <em>une église EMEC</em> près de chez vous et rejoignez votre famille locale.</h3>
+  </div>
+  <div class="bridge-arrow">→</div>
+  <a href="#eglises" class="btn-outline-gold">Voir les implantations</a>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SECTION 3 — NOS IMPLANTATIONS             -->
+<!-- ══════════════════════════════════════════ -->
+<section id="eglises">
+  <div class="reveal">
+    <p class="section-eyebrow">03 — Nos Implantations</p>
+    <h2 class="section-title">Une famille en pleine<br><em>croissance</em> à travers le Cameroun</h2>
+  </div>
+
+  <div class="eglises-header">
+    <div><!-- titre --></div>
+    <p class="reveal">L'EMEC est une famille en pleine croissance, avec des implantations dans plusieurs villes. Chaque église locale est un centre vibrant de culte, d'enseignement et de fraternité — un endroit où vous pouvez vous sentir chez vous.</p>
+  </div>
+
+  <div class="eglises-grid">
+    <div class="eglise-card reveal">
+      <div class="eglise-img">
+        <span class="eglise-city">Yaoundé</span>
+      </div>
+      <div class="eglise-body">
+        <span class="eglise-badge">Siège National</span>
+        <h4>EMEC Yaoundé — Siège</h4>
+        <p>L'église mère, cœur battant de toute la vision EMEC. Cultes, formations et administration centrale.</p>
+        <div class="eglise-address"><span>📍 Entrée OPEP, Minboman, Yaoundé</span></div>
+      </div>
+    </div>
+    <div class="eglise-card reveal">
+      <div class="eglise-img">
+        <span class="eglise-city">Douala</span>
+      </div>
+      <div class="eglise-body">
+        <span class="eglise-badge">Église Locale</span>
+        <h4>EMEC Douala</h4>
+        <p>Une communauté dynamique au cœur de la capitale économique — portes ouvertes à tous.</p>
+        <div class="eglise-address"><span>📍 Douala, Cameroun</span></div>
+      </div>
+    </div>
+    <div class="eglise-card reveal">
+      <div class="eglise-img">
+        <span class="eglise-city">Bertoua</span>
+      </div>
+      <div class="eglise-body">
+        <span class="eglise-badge">Église Locale</span>
+        <h4>EMEC Bertoua</h4>
+        <p>En pleine expansion dans l'Est Cameroun — rejoignez la campagne d'évangélisation en cours.</p>
+        <div class="eglise-address"><span>📍 Bertoua, Est Cameroun</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="implantation-cta reveal">
+    <div>
+      <h3>Votre ville n'est pas encore couverte ?<br><em>Devenez un pionnier.</em></h3>
+      <p>Contactez-nous pour implanter une cellule ou une église EMEC dans votre quartier ou ville.</p>
+    </div>
+    <a href="https://egliseemec.org/contact-us" class="btn-gold">Nous contacter</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="https://egliseemec.org" class="logo">EM<span>EC</span></a>
+      <p>Église Messianique Évangélique du Cameroun — Un lieu de transformation, de restauration et de lumière.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/emec.eglise" class="social-link">f</a>
+        <a href="https://www.youtube.com/channel/UC_your_youtube_channel_id" class="social-link">▶</a>
+        <a href="https://www.tiktok.com/@emec.eglise" class="social-link">♪</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Cette page</h4>
+      <ul>
+        <li><a href="#histoire">Notre Histoire</a></li>
+        <li><a href="#histoire">Nos Valeurs</a></li>
+        <li><a href="#equipe">Les Fondateurs</a></li>
+        <li><a href="#equipe">Nos Ministères</a></li>
+        <li><a href="#eglises">Nos Implantations</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Le Site</h4>
+      <ul>
+        <li><a href="https://egliseemec.org/mandate">Notre Mandat</a></li>
+        <li><a href="https://egliseemec.org/events">Événements</a></li>
+        <li><a href="https://egliseemec.org/media-center">Centre des Médias</a></li>
+        <li><a href="https://egliseemec.org/our-projects">Nos Projets</a></li>
+        <li><a href="https://egliseemec.org/donate">Faire un don</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p><strong>Adresse</strong><br/>Entrée OPEP, Minboman<br/>Yaoundé, Cameroun</p>
+      <br/>
+      <p><strong>Téléphone</strong><br/>(+237) 699 76 54 35</p>
+      <br/>
+      <p><strong>Horaires bureau</strong><br/>Lun — Sam : 8h00 — 18h00</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 EMEC — Église Messianique Évangélique du Cameroun. Tous droits réservés.</p>
+    <p>À la gloire de Dieu seul.</p>
+  </div>
+</footer>
+
+<script>
+/* Nav scroll */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* Smooth scroll helper */
+function scrollTo(id){
+  const el = document.querySelector(id);
+  if(!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 130;
+  window.scrollTo({top, behavior:'smooth'});
+}
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, {threshold:0.1});
+reveals.forEach(r => observer.observe(r));
+
+/* Active subnav on scroll */
+const sections = ['histoire','equipe','eglises'];
+const btns = document.querySelectorAll('.subnav-btn');
+const onScroll = () => {
+  let current = 'histoire';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 160) current = id;
+  });
+  btns.forEach((btn,i) => {
+    btn.classList.toggle('active', sections[i] === current);
+  });
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+</script>
+</body>
+</html>
