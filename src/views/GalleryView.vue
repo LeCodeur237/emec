@@ -121,7 +121,7 @@ export default defineComponent({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.36));
+  background: linear-gradient(90deg, rgba(7, 26, 51, 0.88), rgba(7, 26, 51, 0.36));
 }
 
 .gallery-hero-content {
@@ -206,7 +206,7 @@ export default defineComponent({
   left: 14px;
   bottom: 14px;
   padding: 8px 10px;
-  background: rgba(10, 10, 10, 0.78);
+  background: rgba(7, 26, 51, 0.78);
   color: var(--gold-light);
   font-size: 10px;
   font-weight: 800;
@@ -227,7 +227,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(10, 10, 10, 0.82);
+  background: rgba(7, 26, 51, 0.82);
   cursor: pointer;
 }
 

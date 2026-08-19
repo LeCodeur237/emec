@@ -233,7 +233,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.52)),
+    linear-gradient(90deg, rgba(7, 26, 51, 0.92), rgba(7, 26, 51, 0.52)),
     url('/images/home-10.jpg') center / cover;
   filter: brightness(0.78);
 }
@@ -448,7 +448,7 @@ export default defineComponent({
 .reader-search input {
   width: 100%;
   min-height: 48px;
-  border: 1px solid rgba(10, 10, 10, 0.14);
+  border: 1px solid rgba(7, 26, 51, 0.14);
   border-radius: 4px;
   background: #fff;
   color: var(--text-dark);
@@ -468,7 +468,7 @@ export default defineComponent({
 
 .document-tabs button {
   width: 100%;
-  border: 1px solid rgba(10, 10, 10, 0.12);
+  border: 1px solid rgba(7, 26, 51, 0.12);
   border-radius: 4px;
   background: transparent;
   padding: 12px 14px;
@@ -500,13 +500,13 @@ export default defineComponent({
 
 .btn-outline.dark {
   color: var(--black);
-  border-color: rgba(10, 10, 10, 0.26);
+  border-color: rgba(7, 26, 51, 0.26);
 }
 
 .reader-summary {
   display: grid;
   gap: 6px;
-  border-top: 1px solid rgba(10, 10, 10, 0.1);
+  border-top: 1px solid rgba(7, 26, 51, 0.1);
   padding-top: 18px;
 }
 

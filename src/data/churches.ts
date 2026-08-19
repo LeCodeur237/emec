@@ -28,7 +28,7 @@ export interface ChurchItem {
   sector: string;
   district: string;
   circumscription: string;
-  regional: string;
+  missionField: string;
   region: string;
   status: string;
   description: string;
@@ -73,25 +73,25 @@ function makeAdministrativeLeaders(): AdministrativeLeader[] {
   return [
     {
       name: "À renseigner",
-      role: "Responsable Régional",
+      role: "Responsable du Champ Missionnaire",
       image: defaultLeaderImage,
       period: "2024 - Aujourd'hui",
     },
     {
       name: "À renseigner",
-      role: "Responsable Circonscription",
+      role: "Responsable de la Circonscription Ecclésiastique",
       image: defaultLeaderImage,
       period: "2024 - Aujourd'hui",
     },
     {
       name: "À renseigner",
-      role: "Responsable Secteur",
+      role: "Responsable du Secteur Ecclésiastique",
       image: defaultLeaderImage,
       period: "2024 - Aujourd'hui",
     },
     {
       name: "À renseigner",
-      role: "Responsable District",
+      role: "Responsable du District Ecclésiastique",
       image: defaultLeaderImage,
       period: "2024 - Aujourd'hui",
     },
@@ -119,9 +119,9 @@ function makeChurch(
     sector,
     district,
     circumscription,
-    regional: "Régional Centre",
+    missionField: "Champ Missionnaire du Cameroun",
     region: address,
-    status: "Assemblée locale",
+    status: "Assemblée Locale",
     description:
       "Une assemblée EMEC consacrée à l'adoration, à l'enseignement biblique, à la communion fraternelle et à l'accompagnement spirituel des familles.",
     pastorVision:

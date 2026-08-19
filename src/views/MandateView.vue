@@ -219,7 +219,7 @@ export default defineComponent({
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 8, 4, 0.96) 0%, rgba(10, 8, 4, 0.34) 58%, rgba(10, 8, 4, 0.16) 100%);
+  background: linear-gradient(to top, rgba(7, 26, 51, 0.96) 0%, rgba(7, 26, 51, 0.34) 58%, rgba(7, 26, 51, 0.16) 100%);
 }
 
 .hero-content {
@@ -300,7 +300,7 @@ export default defineComponent({
 .intro-card p {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(7, 26, 51, 0.78);
   line-height: 1.9;
 }
 
@@ -383,7 +383,7 @@ export default defineComponent({
   min-height: 40px;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 10, 10, 0.82);
+  background: rgba(7, 26, 51, 0.82);
   color: var(--gold);
   font-family: 'Playfair Display', serif;
   font-size: 18px;
@@ -404,7 +404,7 @@ export default defineComponent({
 }
 
 .pillar-card p {
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   line-height: 1.8;
 }
 
@@ -503,7 +503,7 @@ export default defineComponent({
 .official-link {
   display: inline-flex;
   justify-content: center;
-  border: 1px solid rgba(10, 10, 10, 0.24);
+  border: 1px solid rgba(7, 26, 51, 0.24);
   border-radius: 4px;
   padding: 14px 18px;
   color: var(--black);
@@ -536,7 +536,7 @@ export default defineComponent({
 }
 
 .final-cta p {
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   line-height: 1.85;
 }
 

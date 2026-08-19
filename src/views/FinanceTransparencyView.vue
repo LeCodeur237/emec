@@ -128,13 +128,18 @@ export default defineComponent({
         },
         {
           scope: 'Coordination',
-          title: 'Budgets des Districts et Secteurs',
+          title: 'Budgets des Districts et Secteurs Ecclésiastiques',
           description: 'Ils soutiennent la coordination des subdivisions ecclésiales intermédiaires.',
         },
         {
           scope: 'Circonscription',
           title: 'Budget de la Circonscription Ecclésiastique',
-          description: 'Il accompagne la gestion des activites au niveau de la circonscription.',
+          description: 'Il accompagne la gestion des activités au niveau de la circonscription.',
+        },
+        {
+          scope: 'Mission',
+          title: 'Budget du Champ Missionnaire',
+          description: "Il accompagne l'activité évangélique conduite dans les zones ou pays concernés.",
         },
         {
           scope: 'National',
@@ -198,7 +203,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.46)),
+    linear-gradient(90deg, rgba(7, 26, 51, 0.9), rgba(7, 26, 51, 0.46)),
     url('/images/dons-003.png') center / cover;
   filter: brightness(0.82);
 }

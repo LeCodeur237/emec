@@ -56,7 +56,7 @@
         </div>
 
         <div class="category-box">
-          <p>Secteurs</p>
+          <p>Secteurs Ecclésiastiques</p>
           <button
             v-for="sector in sectors"
             :key="sector"
@@ -69,7 +69,7 @@
         </div>
 
         <div class="category-box">
-          <p>Districts</p>
+          <p>Districts Ecclésiastiques</p>
           <button
             v-for="district in districts"
             :key="district"
@@ -82,7 +82,7 @@
         </div>
 
         <div class="category-box">
-          <p>Circonscriptions</p>
+          <p>Circonscriptions Ecclésiastiques</p>
           <button
             v-for="circumscription in circumscriptions"
             :key="circumscription"
@@ -95,15 +95,15 @@
         </div>
 
         <div class="category-box">
-          <p>Régional</p>
+          <p>Champs Missionnaires</p>
           <button
-            v-for="regional in regionals"
-            :key="regional"
+            v-for="missionField in missionFields"
+            :key="missionField"
             type="button"
-            :class="{ active: selectedRegional === regional }"
-            @click="selectedRegional = regional"
+            :class="{ active: selectedMissionField === missionField }"
+            @click="selectedMissionField = missionField"
           >
-            {{ regional }}
+            {{ missionField }}
           </button>
         </div>
 
@@ -166,8 +166,8 @@
             <h2>Chaque assemblée s'inscrit dans une structure officielle.</h2>
             <p>
               Les textes de l'EMEC situent l'assemblée locale dans une organisation qui comprend
-              le District Ecclésiastique, le Secteur Ecclésiastique, la Circonscription Ecclésiastique
-              et le Champ Missionnaire.
+              l'Assemblée Locale, le District Ecclésiastique, le Secteur Ecclésiastique,
+              la Circonscription Ecclésiastique et le Champ Missionnaire.
             </p>
           </div>
           <router-link :to="{ path: '/documents', query: { doc: 'statuts', search: 'Article 14' } }">Consulter les textes</router-link>
@@ -189,7 +189,7 @@
                 <span>{{ church.sector }}</span>
                 <span>{{ church.district }}</span>
                 <span>{{ church.circumscription }}</span>
-                <span>{{ church.regional }}</span>
+                <span>{{ church.missionField }}</span>
               </div>
               <router-link :to="`/churches/${church.slug}`">Voir plus</router-link>
             </div>
@@ -250,7 +250,7 @@ export default defineComponent({
       selectedSector: "Tous",
       selectedDistrict: "Tous",
       selectedCircumscription: "Toutes",
-      selectedRegional: "Tous",
+      selectedMissionField: "Tous",
       currentPage: 1,
       pageSize: 8,
       churches,
@@ -272,8 +272,8 @@ export default defineComponent({
     circumscriptions(): string[] {
       return ["Toutes", ...Array.from(new Set(this.churches.map((church) => church.circumscription))).sort()];
     },
-    regionals(): string[] {
-      return ["Tous", ...Array.from(new Set(this.churches.map((church) => church.regional))).sort()];
+    missionFields(): string[] {
+      return ["Tous", ...Array.from(new Set(this.churches.map((church) => church.missionField))).sort()];
     },
     hasActiveFilters(): boolean {
       return Boolean(
@@ -283,7 +283,7 @@ export default defineComponent({
           this.selectedSector !== "Tous" ||
           this.selectedDistrict !== "Tous" ||
           this.selectedCircumscription !== "Toutes" ||
-          this.selectedRegional !== "Tous",
+          this.selectedMissionField !== "Tous",
       );
     },
     cityCount(): number {
@@ -303,14 +303,14 @@ export default defineComponent({
         const matchesCircumscription =
           this.selectedCircumscription === "Toutes" ||
           church.circumscription === this.selectedCircumscription;
-        const matchesRegional =
-          this.selectedRegional === "Tous" || church.regional === this.selectedRegional;
+        const matchesMissionField =
+          this.selectedMissionField === "Tous" || church.missionField === this.selectedMissionField;
         const matchesSearch =
           !query ||
-          `${church.name} ${church.baptismName} ${church.city} ${church.neighborhood} ${church.locality} ${church.region} ${church.address} ${church.contact} ${church.sector} ${church.district} ${church.circumscription} ${church.regional}`
+          `${church.name} ${church.baptismName} ${church.city} ${church.neighborhood} ${church.locality} ${church.region} ${church.address} ${church.contact} ${church.sector} ${church.district} ${church.circumscription} ${church.missionField}`
             .toLowerCase()
             .includes(query);
-        return matchesCity && matchesLocality && matchesSector && matchesDistrict && matchesCircumscription && matchesRegional && matchesSearch;
+        return matchesCity && matchesLocality && matchesSector && matchesDistrict && matchesCircumscription && matchesMissionField && matchesSearch;
       });
     },
     totalPages(): number {
@@ -344,7 +344,7 @@ export default defineComponent({
     selectedCircumscription() {
       this.resetPagination();
     },
-    selectedRegional() {
+    selectedMissionField() {
       this.resetPagination();
     },
   },
@@ -362,7 +362,7 @@ export default defineComponent({
       this.selectedSector = "Tous";
       this.selectedDistrict = "Tous";
       this.selectedCircumscription = "Toutes";
-      this.selectedRegional = "Tous";
+      this.selectedMissionField = "Tous";
       this.resetPagination();
     },
   },
@@ -412,9 +412,9 @@ export default defineComponent({
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 8, 4, 0.96) 0%,
-    rgba(10, 8, 4, 0.34) 58%,
-    rgba(10, 8, 4, 0.16) 100%
+    rgba(7, 26, 51, 0.96) 0%,
+    rgba(7, 26, 51, 0.34) 58%,
+    rgba(7, 26, 51, 0.16) 100%
   );
 }
 
@@ -544,7 +544,7 @@ export default defineComponent({
 
 .filters-reset {
   min-height: 44px;
-  border: 1px solid rgba(10, 10, 10, 0.22);
+  border: 1px solid rgba(7, 26, 51, 0.22);
   border-radius: 4px;
   background: var(--black);
   color: #fff;
@@ -657,7 +657,7 @@ export default defineComponent({
 .churches-official a {
   display: inline-flex;
   justify-content: center;
-  border: 1px solid rgba(10, 10, 10, 0.24);
+  border: 1px solid rgba(7, 26, 51, 0.24);
   border-radius: 4px;
   padding: 14px 18px;
   color: var(--black);

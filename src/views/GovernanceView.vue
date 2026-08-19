@@ -213,7 +213,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.46)),
+    linear-gradient(90deg, rgba(7, 26, 51, 0.9), rgba(7, 26, 51, 0.46)),
     url('/images/home-10.jpg') center / cover;
   filter: brightness(0.82);
 }
@@ -477,7 +477,7 @@ export default defineComponent({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 46%, rgba(10, 10, 10, 0.5));
+  background: linear-gradient(180deg, transparent 46%, rgba(7, 26, 51, 0.5));
 }
 
 .governance-group-image img {

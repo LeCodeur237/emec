@@ -361,9 +361,9 @@ export default defineComponent({
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 8, 4, 0.96) 0%,
-    rgba(10, 8, 4, 0.34) 58%,
-    rgba(10, 8, 4, 0.16) 100%
+    rgba(7, 26, 51, 0.96) 0%,
+    rgba(7, 26, 51, 0.34) 58%,
+    rgba(7, 26, 51, 0.16) 100%
   );
 }
 
@@ -493,7 +493,7 @@ export default defineComponent({
 
 .filters-reset {
   min-height: 44px;
-  border: 1px solid rgba(10, 10, 10, 0.22);
+  border: 1px solid rgba(7, 26, 51, 0.22);
   border-radius: 4px;
   background: var(--black);
   color: #fff;
@@ -552,7 +552,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   padding: 0 16px;
-  border: 1px solid rgba(10, 10, 10, 0.22);
+  border: 1px solid rgba(7, 26, 51, 0.22);
   color: var(--black);
   font-size: 11px;
   font-weight: 800;

@@ -467,7 +467,7 @@ export default defineComponent({
 .hero-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10, 8, 4, 0.85) 0%, rgba(10, 8, 4, 0.4) 50%, rgba(10, 8, 4, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(7, 26, 51, 0.85) 0%, rgba(7, 26, 51, 0.4) 50%, rgba(7, 26, 51, 0.7) 100%);
 }
 
 .hero-content {
@@ -563,7 +563,7 @@ export default defineComponent({
   text-transform: uppercase;
   color: var(--black);
   white-space: nowrap;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(7, 26, 51, 0.12);
   padding: 4px 10px;
   border-radius: 2px;
   flex-shrink: 0;
@@ -589,7 +589,7 @@ export default defineComponent({
 }
 
 .ticker-divider {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(7, 26, 51, 0.45);
   white-space: nowrap;
 }
 
@@ -650,7 +650,7 @@ export default defineComponent({
 .about-text p {
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   margin-bottom: 18px;
 }
 
@@ -664,7 +664,7 @@ export default defineComponent({
 .about-verse blockquote {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(7, 26, 51, 0.78);
   font-size: 17px;
   line-height: 1.7;
 }
@@ -726,7 +726,7 @@ export default defineComponent({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.82)),
+  background: linear-gradient(rgba(7, 26, 51, 0.72), rgba(7, 26, 51, 0.82)),
     url('/images/home-3.jpg') center/cover no-repeat;
   opacity: 0.58;
   pointer-events: none;
@@ -827,7 +827,7 @@ export default defineComponent({
 .mandate-text p {
   font-size: 16px;
   line-height: 1.85; 
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   margin-bottom: 24px;
 }
 
@@ -859,7 +859,7 @@ export default defineComponent({
 
 .mandate-card-image {
   aspect-ratio: 4 / 3;
-  background: rgba(10, 10, 10, 0.08);
+  background: rgba(7, 26, 51, 0.08);
   overflow: hidden;
 }
 
@@ -957,7 +957,7 @@ export default defineComponent({
   right: 24px;
   bottom: 24px;
   left: 24px;
-  background: rgba(10, 10, 10, 0.84);
+  background: rgba(7, 26, 51, 0.84);
   color: #fff;
   padding: 18px 20px;
   backdrop-filter: blur(10px);
@@ -1010,7 +1010,7 @@ export default defineComponent({
 .pastor-text p {
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   margin-bottom: 18px;
 }
 
@@ -1027,7 +1027,7 @@ export default defineComponent({
   font-size: 18px;
   font-style: italic;
   line-height: 1.65;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(7, 26, 51, 0.78);
 }
 
 .pastor-legacy {
@@ -1057,7 +1057,7 @@ export default defineComponent({
 }
 
 .groups {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(7, 26, 51, 0.4) 0%, rgba(7, 26, 51, 0.6) 100%);
   padding: 80px 5vw;
 }
 
@@ -1180,7 +1180,7 @@ export default defineComponent({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 48%, rgba(10, 10, 10, 0.48) 100%);
+  background: linear-gradient(180deg, transparent 48%, rgba(7, 26, 51, 0.48) 100%);
   pointer-events: none;
 }
 
@@ -1320,7 +1320,7 @@ export default defineComponent({
   margin-top: 22px;
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   max-width: 560px;
 }
 
@@ -1435,7 +1435,7 @@ export default defineComponent({
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   line-height: 1.15;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(7, 26, 51, 0.78);
 }
 
 .giving-details {
@@ -1485,7 +1485,7 @@ export default defineComponent({
 .gallery-copy p:not(.section-eyebrow) {
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   max-width: 620px;
 }
 
@@ -1508,7 +1508,7 @@ export default defineComponent({
   border-radius: 26px;
   overflow: hidden;
   background: var(--cream);
-  box-shadow: 0 28px 70px rgba(10, 10, 10, 0.18);
+  box-shadow: 0 28px 70px rgba(7, 26, 51, 0.18);
   animation: gallery-float 7s ease-in-out infinite;
 }
 

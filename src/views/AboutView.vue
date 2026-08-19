@@ -325,7 +325,7 @@ export default defineComponent({
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 8, 4, 1) 0%, rgba(10, 8, 4, 0.32) 58%, rgba(10, 8, 4, 0.14) 100%);
+  background: linear-gradient(to top, rgba(7, 26, 51, 1) 0%, rgba(7, 26, 51, 0.32) 58%, rgba(7, 26, 51, 0.14) 100%);
 }
 
 .hero-content {
@@ -506,7 +506,7 @@ export default defineComponent({
   padding: 32px;
   border: 1px solid rgba(201, 168, 76, 0.14);
   border-radius: 6px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 14px 40px rgba(7, 26, 51, 0.05);
 }
 
 .histoire-card h3,
@@ -666,7 +666,7 @@ export default defineComponent({
 
 .official-link {
   display: inline-flex;
-  border: 1px solid rgba(10, 10, 10, 0.24);
+  border: 1px solid rgba(7, 26, 51, 0.24);
   border-radius: 4px;
   padding: 14px 18px;
   color: var(--black);
@@ -821,7 +821,7 @@ export default defineComponent({
 .founder-quote {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.72);
+  color: rgba(7, 26, 51, 0.72);
   margin: 24px 0;
   padding: 24px 0 24px 22px;
   border-left: 3px solid var(--gold);
@@ -942,7 +942,7 @@ export default defineComponent({
   display: inline-flex;
   width: fit-content;
   margin-top: 22px;
-  border: 1px solid rgba(10, 10, 10, 0.24);
+  border: 1px solid rgba(7, 26, 51, 0.24);
   border-radius: 4px;
   padding: 14px 18px;
   color: var(--black);
@@ -1057,7 +1057,7 @@ export default defineComponent({
   border: 1px solid rgba(201, 168, 76, 0.28);
   border-radius: 8px;
   padding: 42px;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 30px 90px rgba(7, 26, 51, 0.28);
 }
 
 .history-modal-close {
@@ -1083,7 +1083,7 @@ export default defineComponent({
 }
 
 .history-modal-content p {
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(7, 26, 51, 0.65);
   line-height: 1.9;
   margin-bottom: 18px;
 }

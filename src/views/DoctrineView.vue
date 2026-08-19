@@ -163,7 +163,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.48)),
+    linear-gradient(90deg, rgba(7, 26, 51, 0.92), rgba(7, 26, 51, 0.48)),
     url('/images/mandate-parole.png') center / cover;
   filter: brightness(0.82);
 }

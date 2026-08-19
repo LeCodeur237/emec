@@ -237,7 +237,7 @@ export default defineComponent({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 10, 10, 0.86), rgba(10, 10, 10, 0.34));
+  background: linear-gradient(90deg, rgba(7, 26, 51, 0.86), rgba(7, 26, 51, 0.34));
 }
 
 .group-hero-content {
@@ -350,7 +350,7 @@ export default defineComponent({
 
 .btn-outline.dark {
   color: var(--black);
-  border-color: rgba(10, 10, 10, 0.28);
+  border-color: rgba(7, 26, 51, 0.28);
 }
 
 .group-detail-side {
@@ -422,7 +422,7 @@ export default defineComponent({
   display: inline-flex;
   margin-top: 22px;
   padding: 12px 18px;
-  border: 1px solid rgba(10, 10, 10, 0.2);
+  border: 1px solid rgba(7, 26, 51, 0.2);
   background: transparent;
   color: var(--black);
   cursor: pointer;
@@ -498,7 +498,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(10, 10, 10, 0.72);
+  background: rgba(7, 26, 51, 0.72);
   cursor: pointer;
 }
 
@@ -648,7 +648,7 @@ export default defineComponent({
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 2px 12px rgba(7, 26, 51, 0.45);
 }
 
 @keyframes group-gallery-marquee {

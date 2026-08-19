@@ -152,7 +152,7 @@ export default defineComponent({
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 8, 4, 0.96) 0%, rgba(10, 8, 4, 0.34) 58%, rgba(10, 8, 4, 0.16) 100%);
+  background: linear-gradient(to top, rgba(7, 26, 51, 0.96) 0%, rgba(7, 26, 51, 0.34) 58%, rgba(7, 26, 51, 0.16) 100%);
 }
 
 .hero-content {

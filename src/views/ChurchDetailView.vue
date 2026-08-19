@@ -27,7 +27,7 @@
 
     <section class="church-detail-layout" v-if="church">
       <div class="church-detail-main">
-        <p class="section-eyebrow">Assemblée locale</p>
+        <p class="section-eyebrow">Assemblée Locale</p>
         <h2>Informations de l'assemblée</h2>
         <p>
           Retrouvez les informations essentielles de cette assemblée : localisation,
@@ -52,20 +52,20 @@
             <strong>{{ church.locality }}</strong>
           </article>
           <article>
-            <span>Secteur</span>
+            <span>Secteur Ecclésiastique</span>
             <strong>{{ church.sector }}</strong>
           </article>
           <article>
-            <span>District</span>
+            <span>District Ecclésiastique</span>
             <strong>{{ church.district }}</strong>
           </article>
           <article>
-            <span>Circonscription</span>
+            <span>Circonscription Ecclésiastique</span>
             <strong>{{ church.circumscription }}</strong>
           </article>
           <article>
-            <span>Régional</span>
-            <strong>{{ church.regional }}</strong>
+            <span>Champ Missionnaire</span>
+            <strong>{{ church.missionField }}</strong>
           </article>
           <article>
             <span>Adresse</span>
@@ -238,7 +238,7 @@ export default defineComponent({
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.28));
+  background: linear-gradient(90deg, rgba(7, 26, 51, 0.88), rgba(7, 26, 51, 0.28));
 }
 
 .church-detail-content {
@@ -303,7 +303,7 @@ export default defineComponent({
   gap: 12px;
   min-width: 0;
   border: 1px solid rgba(201, 168, 76, 0.28);
-  background: rgba(10, 10, 10, 0.42);
+  background: rgba(7, 26, 51, 0.42);
   padding: 12px;
 }
 
@@ -491,7 +491,7 @@ export default defineComponent({
 
 .leaders-heading button {
   min-height: 42px;
-  border: 1px solid rgba(10, 10, 10, 0.22);
+  border: 1px solid rgba(7, 26, 51, 0.22);
   background: rgba(255, 255, 255, 0.62);
   color: var(--black);
   cursor: pointer;
@@ -591,7 +591,7 @@ export default defineComponent({
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(10, 10, 10, 0.72);
+  background: rgba(7, 26, 51, 0.72);
   cursor: pointer;
 }
 
