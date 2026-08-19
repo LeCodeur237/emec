@@ -124,7 +124,7 @@ export const groups: GroupItem[] = [
     audience: 'Volontaires et partenaires sociaux',
     image: '/images/groupe-sociale.png',
     alt: 'Groupe des œuvres sociales de l\'EMEC',
-    externalUrl: 'https://www.oeuvres-sociales.egliseemec.org',
+    externalUrl: 'https://www.dosc.egliseemec.org',
   },
 ];
 
