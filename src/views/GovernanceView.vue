@@ -86,11 +86,34 @@
       <div class="section-heading">
         <p class="section-eyebrow">Groupes d'action chrétiens</p>
         <h2>Des cadres de service pour chaque génération.</h2>
+        <p>
+          Les groupes d'action chrétiens assurent un accompagnement spécifique des enfants, des jeunes,
+          des femmes, des hommes et de l'intercession dans la vie de l'Église.
+        </p>
       </div>
       <div class="groups-grid">
-        <article v-for="group in actionGroups" :key="group">
-          <span>{{ group }}</span>
-        </article>
+        <template v-for="group in actionGroups" :key="group.slug">
+          <article v-if="group.isPrivate" class="governance-group-card governance-group-static">
+            <div class="governance-group-image">
+              <img :src="group.image" :alt="group.alt" loading="lazy" />
+            </div>
+            <div class="governance-group-body">
+              <span>Groupe d'action</span>
+              <h3>{{ group.name }}</h3>
+              <p>{{ group.description }}</p>
+            </div>
+          </article>
+          <router-link v-else class="governance-group-card" :to="`/groupes/${group.slug}`">
+            <div class="governance-group-image">
+              <img :src="group.image" :alt="group.alt" loading="lazy" />
+            </div>
+            <div class="governance-group-body">
+              <span>Groupe d'action</span>
+              <h3>{{ group.name }}</h3>
+              <p>{{ group.description }}</p>
+            </div>
+          </router-link>
+        </template>
       </div>
     </section>
   </main>
@@ -98,6 +121,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { groups } from '../data/groups';
 
 export default defineComponent({
   name: 'GovernanceView',
@@ -164,13 +188,7 @@ export default defineComponent({
           description: "Un cadre d'activité évangélique dans certaines zones ou pays où l'œuvre missionnaire se déploie.",
         },
       ],
-      actionGroups: [
-        "L'École du Dimanche",
-        'La Jeunesse pour Christ',
-        'Groupe National des Femmes Chrétiennes Actives',
-        "Groupe National d'Hommes Chrétiens Actifs",
-        'Les Conquérants en Marche',
-      ],
+      actionGroups: groups.filter((group) => group.slug !== 'oeuvres-sociales'),
     };
   },
 });
@@ -241,7 +259,8 @@ export default defineComponent({
 .structure-copy h2,
 .organ-card h3,
 .structure-list h3,
-.levels-track h3 {
+.levels-track h3,
+.governance-group-card h3 {
   font-family: 'Playfair Display', serif;
 }
 
@@ -278,7 +297,9 @@ export default defineComponent({
 .structure-copy p,
 .organ-card p,
 .structure-list p,
-.levels-track p {
+.levels-track p,
+.section-heading p:not(.section-eyebrow),
+.governance-group-card p {
   color: var(--text-mid);
   line-height: 1.82;
 }
@@ -294,6 +315,11 @@ export default defineComponent({
   margin-bottom: 42px;
 }
 
+.section-heading p:not(.section-eyebrow) {
+  max-width: 720px;
+  margin-top: 16px;
+}
+
 .organs-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -302,8 +328,7 @@ export default defineComponent({
 
 .organ-card,
 .structure-list article,
-.levels-track article,
-.groups-grid article {
+.levels-track article {
   border: 1px solid rgba(201, 168, 76, 0.22);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.72);
@@ -313,7 +338,7 @@ export default defineComponent({
 .organ-card span,
 .structure-list span,
 .levels-track strong,
-.groups-grid span {
+.governance-group-card span {
   display: block;
   margin-bottom: 14px;
   color: var(--gold-dark);
@@ -325,7 +350,8 @@ export default defineComponent({
 
 .organ-card h3,
 .structure-list h3,
-.levels-track h3 {
+.levels-track h3,
+.governance-group-card h3 {
   font-size: 25px;
   line-height: 1.15;
   color: var(--text-dark);
@@ -399,26 +425,89 @@ export default defineComponent({
 }
 
 .groups-section {
-  background: #fff;
+  background: var(--black);
+  color: #fff;
 }
 
 .groups-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
-.groups-grid article {
+.groups-section .section-heading h2 {
+  color: #fff;
+}
+
+.groups-section .section-heading p:not(.section-eyebrow) {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.governance-group-card {
   display: flex;
-  align-items: center;
-  min-height: 112px;
-  background: var(--cream);
+  flex-direction: column;
+  min-height: 100%;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  border-radius: 6px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-.groups-grid span {
-  margin-bottom: 0;
-  color: var(--text-dark);
-  line-height: 1.5;
+.governance-group-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 168, 76, 0.5);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(255, 255, 255, 0.035));
+}
+
+.governance-group-static:hover {
+  transform: none;
+}
+
+.governance-group-image {
+  position: relative;
+  aspect-ratio: 1.35 / 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.governance-group-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 46%, rgba(10, 10, 10, 0.5));
+}
+
+.governance-group-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.governance-group-card:hover .governance-group-image img {
+  transform: scale(1.04);
+}
+
+.governance-group-body {
+  padding: 22px;
+}
+
+.governance-group-card span {
+  color: var(--gold-light);
+}
+
+.governance-group-card h3 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.governance-group-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 @media (max-width: 1180px) {
