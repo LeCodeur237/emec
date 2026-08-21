@@ -34,6 +34,33 @@
           rattachement ecclésial, horaires de rassemblement et vision pastorale.
         </p>
 
+        <div class="ecclesial-path" aria-label="Rattachement ecclésial officiel">
+          <article>
+            <span>01</span>
+            <strong>Assemblée Locale</strong>
+            <p>{{ church.name }}</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>District Ecclésiastique</strong>
+            <p>{{ church.district }}</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>Secteur Ecclésiastique</strong>
+            <p>{{ church.sector }}</p>
+          </article>
+          <article>
+            <span>04</span>
+            <strong>Circonscription Ecclésiastique</strong>
+            <p>{{ church.circumscription }}</p>
+          </article>
+          <article>
+            <span>05</span>
+            <strong>Champ Missionnaire</strong>
+            <p>{{ church.missionField }}</p>
+          </article>
+        </div>
         <div class="info-grid">
           <article>
             <span>Nom de baptême</span>
@@ -369,6 +396,42 @@ export default defineComponent({
   margin-bottom: 34px;
 }
 
+.ecclesial-path {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.ecclesial-path article {
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 18px;
+}
+
+.ecclesial-path span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gold-dark);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+}
+
+.ecclesial-path strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.ecclesial-path p {
+  margin: 0;
+  color: var(--text-mid);
+  font-size: 13px;
+  line-height: 1.55;
+}
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -693,7 +756,8 @@ export default defineComponent({
 
 @media (max-width: 900px) {
   .church-detail-layout,
-  .info-grid {
+  .info-grid,
+  .ecclesial-path {
     grid-template-columns: 1fr;
   }
 

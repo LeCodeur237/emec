@@ -9,11 +9,19 @@ export interface GroupItem {
   audience: string;
   image: string;
   alt: string;
+  motto?: string;
+  officialReference?: string;
+  highlights?: GroupHighlight[];
   galleryImages?: string[];
   leaders?: GroupLeader[];
   externalUrl?: string;
   photosUrl?: string;
   isPrivate?: boolean;
+}
+
+export interface GroupHighlight {
+  title: string;
+  description: string;
 }
 
 export interface GroupLeader {
@@ -23,7 +31,7 @@ export interface GroupLeader {
   period: string;
 }
 
-function makeGroupGallery(folder: string, count = 6) {
+function makeGroupGallery(folder: string, count = 0) {
   return Array.from({ length: count }, (_, index) => {
     const number = String(index + 1).padStart(3, '0');
     return `/images/${folder}/image-${number}.png`;
@@ -45,43 +53,67 @@ export const groups: GroupItem[] = [
   {
     slug: 'hommes',
     name: 'Groupe National d\'Hommes Chrétiens Actifs',
-    description: 'Un groupe d\'action et de réflexion dédié à l\'encadrement spirituel, familial et social des hommes chrétiens.',
-    details: 'Le Groupe National d\'Hommes Chrétiens Actifs accompagne les hommes sur les plans spirituel, familial et social. Il encourage une foi responsable, une vie familiale équilibrée, un engagement actif dans l\'Église et un appui concret à l\'œuvre de Dieu, conformément à l\'esprit du Règlement Intérieur de l\'EMEC.',
+    description: 'Un cadre d\'encadrement spirituel, familial et social pour les hommes chrétiens de l\'EMEC.',
+    details: 'Le Groupe National d\'Hommes Chrétiens Actifs accompagne les hommes dans leur marche avec Dieu, leur responsabilité familiale, leur vie fraternelle et leur engagement dans l\'œuvre. Il aide les hommes à devenir des croyants stables, utiles à leur foyer, disponibles pour servir l\'Église et capables de soutenir les projets spirituels, matériels et sociaux.',
     focus: 'Encadrer les hommes sur les plans spirituel, familial et social',
-    vision: 'Voir des hommes affermis dans leur foi, responsables dans leur maison et disponibles pour soutenir l\'œuvre de Dieu avec maturité.',
-    action: 'Rencontres d\'édification, réflexion, accompagnement fraternel, mobilisation dans les activités de l\'Église et appui matériel ou financier à l\'œuvre de Dieu.',
+    vision: 'Voir des hommes affermis dans la foi, responsables dans leur maison, solidaires entre eux et engagés dans le développement de l\'œuvre de Dieu.',
+    action: 'Rencontres d\'édification, accompagnement fraternel, réflexion, mobilisation dans les activités de l\'Église, soutien aux projets et actions de solidarité.',
     audience: 'Hommes, pères, jeunes adultes',
     image: '/images/groupe-hommes.png',
     alt: 'Groupe d\'hommes de l\'EMEC',
+    motto: 'Solidarité · Fraternité · Développement',
+    officialReference: 'Règlement Intérieur EMEC · Articles 100-101',
+    highlights: [
+      { title: 'Encadrement', description: 'Fortifier les hommes dans la foi, la vie familiale, la responsabilité sociale et le service chrétien.' },
+      { title: 'Renforcement', description: 'Accompagner les bureaux et les responsables pour une meilleure organisation des activités.' },
+      { title: 'Développement', description: 'Soutenir les projets, microprojets et initiatives utiles au rayonnement de l\'œuvre.' },
+      { title: 'Solidarité', description: 'Porter des actions d\'entraide et d\'assistance auprès des membres et des besoins prioritaires.' },
+    ],
     galleryImages: makeGroupGallery('hommes'),
     leaders: makeGroupLeaders('/images/groupe-hommes.png'),
   },
   {
     slug: 'femmes',
     name: 'Groupe National des Femmes Chrétiennes Actives',
-    description: 'Un groupe d\'action et de réflexion pour l\'encadrement spirituel, familial et social des femmes chrétiennes.',
-    details: 'Le Groupe National des Femmes Chrétiennes Actives accompagne les femmes dans leur vie spirituelle, familiale et sociale. Il favorise la formation, l\'entraide, la réflexion, le service et la contribution active des femmes à l\'œuvre de Dieu.',
-    focus: 'Encadrer les femmes chrétiennes et soutenir leur engagement dans l\'œuvre',
-    vision: 'Voir des femmes affermies dans la foi, utiles à leur famille, engagées dans l\'Église et capables de porter des actions concrètes au service de Dieu.',
-    action: 'Temps de prière, formation, accompagnement, entraide, actions communautaires et appui matériel ou financier à l\'œuvre de Dieu.',
+    description: 'Un groupe d\'action pour l\'encadrement spirituel, familial, social et économique des femmes chrétiennes.',
+    details: 'Le Groupe National des Femmes Chrétiennes Actives rassemble les femmes de l\'EMEC autour de l\'Évangile, de la formation, du service, de l\'entraide et du développement. Il encourage chaque femme à grandir dans la foi, à être un modèle dans son foyer, à participer aux bonnes œuvres et à contribuer activement au relèvement des familles et de l\'Église.',
+    focus: 'Former, encadrer et mobiliser les femmes chrétiennes actives',
+    vision: 'Voir des femmes sauvées, affermies, utiles à leur famille, engagées dans l\'Église et capables de porter des actions concrètes au service de Dieu.',
+    action: 'Évangélisation, retraites spirituelles, formation, accompagnement familial, bonnes œuvres, activités génératrices de revenus et actions de solidarité.',
     audience: 'Femmes, mères, jeunes femmes',
     image: '/images/groupe-femmes.png',
     alt: 'Groupe de femmes de l\'EMEC',
+    motto: 'Salut · Soumission · Service',
+    officialReference: 'Règlement Intérieur du GNFCA',
+    highlights: [
+      { title: 'Évangélisation', description: 'Répandre l\'Évangile et encourager les femmes à vivre une foi active et visible.' },
+      { title: 'Famille', description: 'Conduire les femmes à être des repères de paix, de sagesse et de témoignage dans leur foyer.' },
+      { title: 'Développement', description: 'Contribuer à la lutte contre la pauvreté par la formation, l\'entraide et les activités génératrices de revenus.' },
+      { title: 'Bonnes œuvres', description: 'Promouvoir le service, la compassion, la solidarité et le soutien à l\'œuvre de Dieu.' },
+    ],
     galleryImages: makeGroupGallery('femmes'),
     leaders: makeGroupLeaders('/images/groupe-femmes.png'),
   },
   {
     slug: 'jeunesse-pour-christ',
     name: 'La Jeunesse pour Christ',
-    description: 'Le cadre d\'encadrement et d\'accompagnement des jeunes chrétiens pour le service évangélique et spirituel dans l\'Église.',
-    details: 'La Jeunesse pour Christ est un groupe d\'action chargé d\'encadrer et d\'accompagner les jeunes chrétiens en vue du service évangélique et spirituel dans l\'Église. Elle aide les jeunes à grandir dans la Parole, à servir Christ avec sérieux et à participer à la mission de l\'EMEC dans leurs subdivisions ecclésiales.',
-    focus: 'Encadrer les jeunes pour le service évangélique et spirituel',
-    vision: 'Former une jeunesse consacrée à Christ, enracinée dans la foi et disponible pour servir l\'Église avec zèle, discipline et témoignage.',
-    action: 'Rencontres d\'édification, rassemblements de jeunes, formation, évangélisation, accompagnement spirituel et mobilisation dans les activités de l\'Église.',
+    description: 'Le cadre d\'encadrement des jeunes chrétiens pour le service évangélique, spirituel et social.',
+    details: 'La Jeunesse pour Christ est le groupe d\'action chargé d\'encadrer et d\'accompagner les jeunes chrétiens de l\'EMEC en vue du service évangélique et spirituel dans l\'Église, ainsi que du bénéfice de la société. Elle travaille à faire de chaque jeune un chrétien vivant, actif, productif, utile à lui-même, à sa famille et à l\'avancement de l\'œuvre du Seigneur.',
+    focus: 'Encadrer les jeunes pour le service évangélique, spirituel et social',
+    vision: 'Former une jeunesse sauvée, consacrée, active, productive, enracinée dans la foi et disponible pour servir Christ avec zèle et discipline.',
+    action: 'Camps, séminaires, conférences, prières, études bibliques, évangélisation, sorties, concerts, activités sportives, actions de contact et initiatives productives conformes à l\'éthique chrétienne.',
     audience: 'Jeunes et étudiants',
     image: '/images/groupe-jpc.png',
     alt: 'Jeunesse pour Christ à l\'EMEC',
-    galleryImages: makeGroupGallery('jeunesse'),
+    motto: 'Sauvé pour servir',
+    officialReference: 'Règlement Intérieur Jeunesse Pour Christ',
+    highlights: [
+      { title: 'Encadrement', description: 'Camps, séminaires, conférences, prières, visites, études bibliques et temps de partage.' },
+      { title: 'Animation', description: 'Chant, musique, théâtre, poésie, arts, concerts, concours, excursions et activités sportives.' },
+      { title: 'Contact', description: 'Campagnes d\'évangélisation, porte-à-porte, distribution de littérature, bonnes œuvres et actions de salubrité.' },
+      { title: 'Production', description: 'Initiatives rentables et éthiques : littérature, commerce, construction, agriculture, élevage et projets utiles.' },
+    ],
+    galleryImages: makeGroupGallery('jeunesse', 9),
     leaders: makeGroupLeaders('/images/groupe-jpc.png'),
     externalUrl: 'https://jpcemec.com/about',
     photosUrl: 'https://www.facebook.com/jpcnationaleemec',
@@ -89,14 +121,22 @@ export const groups: GroupItem[] = [
   {
     slug: 'ecodim',
     name: 'L\'École du Dimanche',
-    description: 'Le groupe chargé de l\'encadrement, du suivi et de l\'imprégnation des enfants à la foi en vue du salut.',
-    details: 'L\'École du Dimanche, en abrégé ECODIM, accompagne les enfants dans la découverte de la foi, l\'apprentissage de la Parole et la croissance spirituelle. Elle offre un cadre adapté pour leur encadrement, leur suivi et leur imprégnation biblique en vue du salut de leurs âmes.',
-    focus: 'Encadrer les enfants et les imprégner à la foi chrétienne',
-    vision: 'Voir les enfants connaître Christ, grandir dans la Parole et recevoir dès leur jeune âge des repères solides pour marcher avec Dieu.',
-    action: 'Enseignements bibliques adaptés, suivi des enfants, activités d\'éveil spirituel, accompagnement et participation à la vie de l\'Église.',
-    audience: 'Enfants et encadreurs',
+    description: 'Le groupe chargé de conduire les enfants à Christ, de les instruire dans la Parole et de développer leurs talents.',
+    details: 'L\'École du Dimanche, en abrégé ECODIM, est le cadre d\'encadrement des enfants de l\'EMEC. Elle accompagne les enfants de 3 à 15 ans dans la découverte de Jésus-Christ, l\'instruction biblique, la prière, les chants, la discipline chrétienne, la solidarité et le développement de leurs talents spirituels, sociaux et pratiques.',
+    focus: 'Conduire les enfants à Christ et les instruire dans la voie du salut',
+    vision: 'Voir les enfants connaître Jésus-Christ, grandir dans la Parole, éviter les dérives de la jeunesse et devenir utiles à l\'Église, à leur famille et à la société.',
+    action: 'Cultes d\'enfants, enseignements bibliques, chants, prières, camps, festivals, causeries éducatives, visites, théâtre, concours, chorégraphies, activités manuelles et formation des moniteurs.',
+    audience: 'Enfants de 3 à 15 ans, parents et moniteurs',
     image: '/images/groupe-ecodim.png',
     alt: 'ECODIM de l\'EMEC',
+    motto: 'Conduire les enfants à Jésus-Christ',
+    officialReference: 'Règlement Intérieur de l\'ECODIM',
+    highlights: [
+      { title: 'Tranches d\'âge', description: 'L\'encadrement couvre les enfants de 3 à 15 ans, avec des classes adaptées à leur maturité.' },
+      { title: 'Formation biblique', description: 'Enseignements, chants, prières, témoignages et apprentissage progressif de la vie chrétienne.' },
+      { title: 'Éveil des talents', description: 'Chorégraphie, théâtre, concours, activités manuelles et expression des dons des enfants.' },
+      { title: 'Lien avec les familles', description: 'Visites, écoute, conseils, causeries éducatives et accompagnement avec les parents.' },
+    ],
     galleryImages: makeGroupGallery('ecodim'),
     leaders: makeGroupLeaders('/images/groupe-ecodim.png'),
   },
@@ -111,19 +151,31 @@ export const groups: GroupItem[] = [
     audience: 'Intercesseurs et croyants engagés',
     image: '/images/groupe-intercession.png',
     alt: 'Les Conquérants en Marche de l\'EMEC',
+    motto: 'Service discret d\'intercession',
+    officialReference: 'Groupe d\'action interne',
+    highlights: [
+      { title: 'Discrétion', description: 'Le groupe reste visible comme ministère de prière, mais ses détails internes ne sont pas publiés.' },
+      { title: 'Soutien spirituel', description: 'Il accompagne les programmes, les familles, les serviteurs et les besoins de l\'œuvre dans la prière.' },
+    ],
     isPrivate: true,
   },
   {
     slug: 'oeuvres-sociales',
-    name: 'Groupe des Œuvres Sociales',
-    description: 'Engagés à manifester l\'amour de Christ par des actions concrètes de compassion et de justice sociale.',
-    details: 'Ce groupe exprime la compassion de Christ par des actions concrètes : entraide, accompagnement, assistance et mobilisation en faveur des personnes vulnérables. Il rend visible l\'amour de Dieu dans la société en répondant aux besoins réels des familles, des personnes isolées et des communautés fragilisées. Son service rappelle que l\'Évangile se prêche aussi par des actes de bonté, de justice et de solidarité.',
+    name: 'Direction des Œuvres Sociales et de la Compassion',
+    description: 'Le cadre de compassion de l\'EMEC pour servir les vulnérables et manifester l\'amour de Christ par des actes concrets.',
+    details: 'La Direction des Œuvres Sociales et de la Compassion exprime la compassion de Christ par des actions concrètes : entraide, accompagnement, assistance et mobilisation en faveur des personnes vulnérables. Elle rend visible l\'amour de Dieu dans la société en répondant aux besoins réels des familles, des personnes isolées et des communautés fragilisées.',
     focus: 'Servir les familles, soutenir les vulnérables et agir avec compassion',
     vision: 'Rendre visible l\'amour de Christ par une présence concrète auprès des personnes fragilisées, des familles et des communautés dans le besoin.',
     action: 'Collectes, assistance, visites, accompagnement, actions de solidarité et mobilisation de volontaires pour répondre aux besoins prioritaires.',
     audience: 'Volontaires et partenaires sociaux',
     image: '/images/groupe-sociale.png',
-    alt: 'Groupe des œuvres sociales de l\'EMEC',
+    alt: 'Œuvres sociales de l\'EMEC',
+    motto: 'Compassion · Service · Solidarité',
+    officialReference: 'Orientation sociale de l\'EMEC',
+    highlights: [
+      { title: 'Compassion', description: 'Agir auprès des familles, personnes isolées, malades, vulnérables et communautés fragilisées.' },
+      { title: 'Mobilisation', description: 'Encourager les volontaires, partenaires et ressources utiles aux actions sociales.' },
+    ],
     externalUrl: 'https://www.dosc.egliseemec.org',
   },
 ];

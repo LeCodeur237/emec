@@ -6,8 +6,8 @@
         <p class="section-eyebrow">Textes officiels</p>
         <h1>Les fondements administratifs de l'EMEC</h1>
         <p>
-          Retrouvez les Statuts, le Règlement Intérieur et le Régime Financier de l'Église
-          Messianique Évangélique du Cameroun, avec une lecture directe par article.
+          Retrouvez les textes officiels de l'Église Messianique Évangélique du Cameroun,
+          les documents déjà consultables par article et les références complémentaires à publier après validation.
         </p>
       </div>
     </section>
@@ -17,9 +17,40 @@
         <p class="section-eyebrow">Base documentaire</p>
         <h2>Consulter les documents de référence</h2>
         <p>
-          Les textes officiels sont maintenant disponibles en lecture en ligne. Vous pouvez parcourir
-          les articles, rechercher un mot-clé et télécharger les PDF sources.
+          Les textes principaux sont disponibles en lecture en ligne. Les documents complémentaires analysés sont présentés
+          sous forme de résumés publics afin de ne pas exposer de fichier interne sans validation préalable.
         </p>
+      </div>
+
+
+      <section class="complementary-documents">
+        <div class="documents-section-heading">
+          <p class="section-eyebrow">Documents complémentaires</p>
+          <h2>Références analysées à intégrer progressivement</h2>
+          <p>
+            Ces documents enrichissent le contenu du site. Leur publication complète doit être validée avant
+            téléchargement public ; pour le moment, seuls les résumés utiles aux visiteurs sont affichés.
+          </p>
+        </div>
+        <div class="complementary-grid">
+          <article v-for="document in complementaryDocuments" :key="document.title" class="complementary-card">
+            <div class="complementary-card-head">
+              <span>{{ document.type }}</span>
+              <strong>{{ document.status }}</strong>
+            </div>
+            <h3>{{ document.title }}</h3>
+            <p>{{ document.description }}</p>
+            <ul>
+              <li v-for="item in document.highlights" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <div class="documents-section-heading reader-documents-heading">
+        <p class="section-eyebrow">Lecture en ligne</p>
+        <h2>Documents déjà structurés par article</h2>
+        <p>Ces textes sont disponibles avec recherche, lecture article par article et téléchargement des PDF sources.</p>
       </div>
 
       <div class="documents-grid">
@@ -133,6 +164,52 @@ import {
   type OfficialDocumentBlock,
 } from '../data/officialDocuments';
 
+interface ComplementaryDocumentMeta {
+  title: string;
+  type: string;
+  status: string;
+  description: string;
+  highlights: string[];
+}
+
+const complementaryDocuments: ComplementaryDocumentMeta[] = [
+  {
+    title: 'Document stratégique révisé Août 2024',
+    type: 'Vision 2043',
+    status: 'Résumé public',
+    description: "Document de référence pour la vision 2023-2043 : rayonnement spirituel, développement social et matériel, ressources humaines et gouvernance.",
+    highlights: ['Vision 2043', 'Axes stratégiques', 'Phases 2023-2043', 'Suivi-évaluation'],
+  },
+  {
+    title: 'Règlement Intérieur de la Jeunesse Pour Christ',
+    type: 'Groupe d\'action',
+    status: 'Publication à valider',
+    description: "Texte d'encadrement de la JPC : mission, devise, activités, organisation et accompagnement des jeunes chrétiens.",
+    highlights: ['Sauvé pour servir', 'Encadrement des jeunes', 'Activités de contact', 'Production éthique'],
+  },
+  {
+    title: 'Règlement Intérieur de l’ECODIM',
+    type: 'Groupe d\'action',
+    status: 'Publication à valider',
+    description: "Document relatif à l'encadrement des enfants de 3 à 15 ans, à l'instruction biblique et au développement des talents.",
+    highlights: ['Enfants de 3 à 15 ans', 'Instruction biblique', 'Camps et festivals', 'Moniteurs'],
+  },
+  {
+    title: 'Règlement Intérieur du GNFCA',
+    type: 'Groupe d\'action',
+    status: 'Publication à valider',
+    description: "Texte d'organisation des Femmes Chrétiennes Actives : évangélisation, famille, bonnes œuvres, formation et développement.",
+    highlights: ['Salut · Soumission · Service', 'Bonnes œuvres', 'AGR', 'Famille'],
+  },
+  {
+    title: 'Règlement Intérieur du Groupe d’Hommes',
+    type: 'Groupe d\'action',
+    status: 'Publication à valider',
+    description: "Document utile pour enrichir la présentation des hommes chrétiens actifs, avec prudence car il concerne un cadre local spécifique.",
+    highlights: ['Encadrement des hommes', 'Solidarité', 'Fraternité', 'Développement'],
+  },
+];
+
 export default defineComponent({
   name: 'OfficialDocumentsView',
   setup() {
@@ -206,6 +283,7 @@ export default defineComponent({
 
     return {
       documents: officialDocumentsIndex,
+      complementaryDocuments,
       activeMeta,
       activeDocument,
       filteredBlocks,
@@ -297,6 +375,108 @@ export default defineComponent({
   font-size: 16px;
   line-height: 1.85;
   color: var(--text-mid);
+}
+
+.documents-section-heading {
+  max-width: 820px;
+  margin-bottom: 30px;
+}
+
+.documents-section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.12;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+.documents-section-heading p:not(.section-eyebrow) {
+  color: var(--text-mid);
+  line-height: 1.82;
+}
+
+.complementary-documents {
+  margin: 0 0 58px;
+  padding: clamp(28px, 4vw, 46px);
+  border: 1px solid rgba(7, 26, 51, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.46);
+  box-sizing: border-box;
+}
+
+.complementary-documents .documents-section-heading {
+  margin-bottom: 28px;
+}
+
+.complementary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.complementary-card {
+  min-width: 0;
+  border: 1px solid rgba(7, 26, 51, 0.08);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: clamp(20px, 2vw, 26px);
+  box-sizing: border-box;
+}
+
+.complementary-card-head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.complementary-card-head span,
+.complementary-card-head strong {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.complementary-card-head span {
+  color: var(--gold-dark);
+}
+
+.complementary-card-head strong {
+  color: var(--text-muted);
+}
+
+.complementary-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  line-height: 1.16;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  overflow-wrap: anywhere;
+}
+
+.complementary-card p {
+  color: var(--text-mid);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.complementary-card ul {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.complementary-card li {
+  color: var(--text-mid);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.reader-documents-heading {
+  margin-top: 12px;
 }
 
 .documents-grid {
@@ -605,6 +785,10 @@ export default defineComponent({
 }
 
 @media (max-width: 1100px) {
+  .complementary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .documents-grid {
     grid-template-columns: 1fr;
   }
@@ -617,8 +801,20 @@ export default defineComponent({
     position: static;
   }
 }
-
 @media (max-width: 620px) {
+  .complementary-documents {
+    padding: 22px 16px;
+    margin-bottom: 44px;
+  }
+
+  .complementary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .complementary-card {
+    padding: 20px;
+  }
+
   .documents-hero {
     min-height: 500px;
     padding: 130px 6vw 64px;
@@ -639,5 +835,19 @@ export default defineComponent({
     align-items: flex-start;
     flex-direction: column;
   }
+}
+
+/* Harmonisation visuelle des cartes */
+.complementary-card,
+.document-card {
+  min-width: 0;
+  min-height: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.complementary-card:hover,
+.document-card:hover {
+  transform: translateY(-3px);
 }
 </style>

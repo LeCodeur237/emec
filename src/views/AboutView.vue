@@ -21,7 +21,7 @@
           <h2 class="section-title">Une histoire portée par la Parole, la mission et le service.</h2>
           <p>Depuis sa création, l'EMEC avance avec une conviction claire : l'Église existe pour annoncer Christ, édifier les croyants et servir les communautés. Son histoire s'est construite dans la prière, l'enseignement biblique, l'évangélisation et l'engagement des serviteurs de Dieu.</p>
           <p>Cette vision a donné naissance à une famille spirituelle organisée, attentive à la formation des disciples, à l'implantation des assemblées et à l'accompagnement des personnes. Chaque génération y reçoit un appel à grandir, servir et porter l'espérance de l'Évangile.</p>
-          <button class="history-link" type="button" @click="openHistoryModal">Lire l'histoire complète</button>
+          <router-link class="history-link" to="/histoire-vision-2043">Lire l'histoire complète</router-link>
         </div>
         <div class="history-visual reveal">
           <img src="/images/about-1.png" alt="Moment marquant de l'histoire de l'EMEC" loading="lazy" />
@@ -265,11 +265,11 @@ export default defineComponent({
         { city: 'Au-delà', description: "Une vision appelée à rayonner dans d'autres villes, avec le même zèle pour Christ et les âmes." },
       ] as ChurchItem[],
       leaders: [
-        { initials: 'PR', name: 'NOUMESSI Anatole', role: 'Président du Conseil Exécutif', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'VPR', name: 'BANGUENA OLEMBA Sylvain', role: 'Vice-président', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'Secrétaire Général', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'PR', name: 'NOUMESSI Anatole', role: 'Président du Conseil Exécutif', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'VPR', name: 'BANGUENA OLEMBA Sylvain', role: 'Vice-président', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'Secrétaire Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'SG', name: 'UM MAKON Simon R.', role: 'Secrétaire Général Adjoint', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'T', name: 'NTAP Ruben', role: 'Trésorier Général', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'T', name: 'NTAP Ruben', role: 'Trésorier Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CG', name: 'BIABAK Dieudonné', role: 'Contrôleur de Gestion', title: 'Ancien', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CS', name: 'ABDOU MBILAMBOUZOUM', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CS', name: 'LAWA Jean', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },

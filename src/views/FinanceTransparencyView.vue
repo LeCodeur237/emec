@@ -449,4 +449,22 @@ export default defineComponent({
     width: 100%;
   }
 }
+
+/* Harmonisation visuelle des cartes */
+.principle-card,
+.resource-list article,
+.budget-grid article,
+.control-grid article {
+  min-width: 0;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.principle-card:hover,
+.budget-grid article:hover,
+.control-grid article:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px);
+}
 </style>

@@ -39,6 +39,12 @@
             <p>{{ group.action }}</p>
           </article>
         </div>
+        <div class="group-official-notes" v-if="group.highlights?.length">
+          <article v-for="item in group.highlights" :key="item.title">
+            <span>{{ item.title }}</span>
+            <p>{{ item.description }}</p>
+          </article>
+        </div>
         <div class="group-actions">
           <a
             v-if="group.externalUrl"
@@ -49,7 +55,7 @@
           >
             En savoir plus
           </a>
-          <router-link v-else class="btn-primary" to="/contact">Contacter l'EMEC</router-link>
+          <router-link v-else class="btn-primary" to="/documents">En savoir plus</router-link>
           <router-link class="btn-outline dark" to="/#groups">Voir les autres groupes</router-link>
           <router-link
             class="btn-outline dark"
@@ -70,6 +76,14 @@
           <div>
             <span>Pour qui ?</span>
             <strong>{{ group.audience }}</strong>
+          </div>
+          <div v-if="group.motto">
+            <span>Devise / repère</span>
+            <strong>{{ group.motto }}</strong>
+          </div>
+          <div v-if="group.officialReference">
+            <span>Base officielle</span>
+            <strong>{{ group.officialReference }}</strong>
           </div>
         </div>
       </aside>
@@ -144,7 +158,7 @@
       <div class="related-grid">
         <template v-for="item in relatedGroups" :key="item.slug">
           <a
-            v-if="item.externalUrl"
+            v-if="item.slug === 'oeuvres-sociales' && item.externalUrl"
             class="related-card"
             :href="item.externalUrl"
             target="_blank"
@@ -309,6 +323,36 @@ export default defineComponent({
   line-height: 1.9;
   color: var(--text-mid);
   margin-bottom: 22px;
+}
+
+.group-official-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.group-official-notes article {
+  border: 1px solid rgba(7, 26, 51, 0.08);
+  background: #fff;
+  padding: 20px;
+}
+
+.group-official-notes span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.group-official-notes p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-mid);
 }
 
 .group-actions {
@@ -800,6 +844,7 @@ export default defineComponent({
   }
 
   .group-pillars,
+  .group-official-notes,
   .leaders-grid,
   .related-grid {
     grid-template-columns: 1fr;

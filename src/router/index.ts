@@ -13,6 +13,9 @@ import OfficialDocumentsView from '../views/OfficialDocumentsView.vue';
 import GovernanceView from '../views/GovernanceView.vue';
 import FinanceTransparencyView from '../views/FinanceTransparencyView.vue';
 import DoctrineView from '../views/DoctrineView.vue';
+import HistoryVisionView from '../views/HistoryVisionView.vue';
+import StrategyVisionView from '../views/StrategyVisionView.vue';
+import SocialWorksView from '../views/SocialWorksView.vue';
 import { findGroupBySlug } from '../data/groups';
 import { findChurchBySlug } from '../data/churches';
 
@@ -41,6 +44,26 @@ const routes: Array<RouteRecordRaw> = [
       title: "Qui sommes-nous ? | EMEC",
       description: "Découvrez l'histoire, l'identité, les valeurs, l'héritage spirituel et le Conseil Exécutif de l'EMEC.",
       image: `${SITE_URL}/images/home-10.jpg`,
+    },
+  },
+  {
+    path: '/histoire-vision-2043',
+    name: 'HistoryVision',
+    component: HistoryVisionView,
+    meta: {
+      title: 'Histoire et Vision 2043 | EMEC',
+      description: "Découvrez l'histoire de l'EMEC, son héritage apostolique, le séminaire de Belabo et la Vision 2043.",
+      image: `${SITE_URL}/images/home-10.jpg`,
+    },
+  },
+  {
+    path: '/vision-2043',
+    name: 'StrategyVision',
+    component: StrategyVisionView,
+    meta: {
+      title: 'Vision stratégique 2043 | EMEC',
+      description: "Comprendre les axes stratégiques 2023-2043 de l'EMEC : mission, développement, ressources humaines et gouvernance.",
+      image: `${SITE_URL}/images/home-3.jpg`,
     },
   },
   {
@@ -114,12 +137,22 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/oeuvres-sociales',
+    name: 'SocialWorks',
+    component: SocialWorksView,
+    meta: {
+      title: 'Œuvres sociales et compassion | EMEC',
+      description: "Découvrez la vision sociale de l'EMEC, la DOSC et les orientations de compassion prévues par les textes officiels.",
+      image: `${SITE_URL}/images/dons-003.png`,
+    },
+  },
+  {
     path: '/documents',
     name: 'OfficialDocuments',
     component: OfficialDocumentsView,
     meta: {
       title: 'Documents officiels | EMEC',
-      description: "Consultez les Statuts, le Règlement Intérieur et le Régime Financier officiels de l'EMEC.",
+      description: "Consultez les Statuts, le Règlement Intérieur, le Régime Financier et les références complémentaires analysées de l'EMEC.",
       image: `${SITE_URL}/images/home-10.jpg`,
     },
   },

@@ -245,11 +245,11 @@
           <div class="giving-details">
             <div>
               <span>Numéro</span>
-              <strong>(+237) 699 76 54 35</strong>
+              <strong>+237 6 99 81 68 95</strong>
             </div>
             <div>
               <span>Nom du compte</span>
-              <strong>EMEC</strong>
+              <strong>NTAP RUBEN</strong>
             </div>
           </div>
         </article>
@@ -264,11 +264,11 @@
           <div class="giving-details">
             <div>
               <span>Numéro</span>
-              <strong>(+237) 699 76 54 35</strong>
+              <strong>+237 678 660 638</strong>
             </div>
             <div>
               <span>Nom du compte</span>
-              <strong>EMEC</strong>
+              <strong>NTAP RUBEN</strong>
             </div>
           </div>
         </article>

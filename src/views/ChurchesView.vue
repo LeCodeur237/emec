@@ -25,7 +25,7 @@
             id="church-search"
             v-model="searchQuery"
             type="search"
-            placeholder="Ville, église, adresse..."
+            placeholder="Ville, assemblée, quartier..."
           />
         </div>
 
@@ -148,7 +148,7 @@
         >
           <div>
             <strong>{{ churches.length }}</strong>
-            <span>églises et implantations</span>
+            <span>assemblées locales</span>
           </div>
           <div>
             <strong>{{ cityCount }}</strong>
@@ -165,10 +165,13 @@
             <p class="section-eyebrow">Organisation ecclésiale</p>
             <h2>Chaque assemblée s'inscrit dans une structure officielle.</h2>
             <p>
-              Les textes de l'EMEC situent l'assemblée locale dans une organisation qui comprend
-              l'Assemblée Locale, le District Ecclésiastique, le Secteur Ecclésiastique,
-              la Circonscription Ecclésiastique et le Champ Missionnaire.
+              Les textes de l'EMEC situent l'Assemblée Locale dans une organisation progressive :
+              District Ecclésiastique, Secteur Ecclésiastique, Circonscription Ecclésiastique,
+              puis Champ Missionnaire.
             </p>
+            <div class="official-levels" aria-label="Niveaux officiels de l'organisation ecclésiale">
+              <span v-for="level in officialLevels" :key="level">{{ level }}</span>
+            </div>
           </div>
           <router-link :to="{ path: '/documents', query: { doc: 'statuts', search: 'Article 14' } }">Consulter les textes</router-link>
         </section>
@@ -183,7 +186,7 @@
             <div>
               <p class="church-status">{{ church.status }}</p>
               <h3>{{ church.name }}</h3>
-              <p>{{ church.region }}</p>
+              <p>{{ church.address }}</p>
               <div class="church-meta">
                 <span>{{ church.locality }}</span>
                 <span>{{ church.sector }}</span>
@@ -254,6 +257,13 @@ export default defineComponent({
       currentPage: 1,
       pageSize: 8,
       churches,
+      officialLevels: [
+        "Assemblée Locale",
+        "District Ecclésiastique",
+        "Secteur Ecclésiastique",
+        "Circonscription Ecclésiastique",
+        "Champ Missionnaire",
+      ],
     };
   },
   computed: {
@@ -652,6 +662,24 @@ export default defineComponent({
   max-width: 780px;
   color: var(--text-mid);
   line-height: 1.8;
+}
+
+.official-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.official-levels span {
+  border: 1px solid rgba(201, 168, 76, 0.26);
+  color: var(--gold-dark);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  padding: 7px 8px;
+  text-transform: uppercase;
 }
 
 .churches-official a {

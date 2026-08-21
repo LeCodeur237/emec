@@ -94,13 +94,13 @@
             <div class="event-card-date">
               <strong>{{ event.day }}</strong>
               <span>{{ event.month }}</span>
+              <small>{{ event.time }}</small>
             </div>
             <div>
               <p class="event-category">{{ event.category }}</p>
               <h3>{{ event.title }}</h3>
               <p>{{ event.location }}</p>
               <p class="event-description">{{ event.description }}</p>
-              <small>{{ event.time }}</small>
             </div>
           </article>
         </div>
@@ -600,6 +600,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 12px 8px;
 }
 
 .event-card-date strong {
@@ -615,42 +616,62 @@ export default defineComponent({
   text-transform: uppercase;
 }
 
+.event-card-date small {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .event-card {
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 14px;
-  padding: 16px;
+  grid-template-columns: 82px 1fr;
+  gap: 18px;
+  padding: 22px;
   min-height: 100%;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.event-card:hover {
+  border-color: rgba(201, 168, 76, 0.56);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px);
 }
 
 .event-card-date {
-  min-height: 72px;
+  min-height: 82px;
 }
 
 .event-card h3 {
   font-family: "Playfair Display", serif;
-  font-size: 19px;
-  line-height: 1.15;
+  font-size: 22px;
+  line-height: 1.16;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .event-card small {
   display: inline-flex;
-  margin-top: 12px;
+  margin-top: 14px;
   color: var(--gold-dark);
   font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .event-description {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 .events-pagination {

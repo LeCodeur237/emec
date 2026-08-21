@@ -1,58 +1,58 @@
 <template>
   <main class="contact-page">
-    <section class="page-hero contact-hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
+    <section class="contact-hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
         <nav class="breadcrumb" aria-label="Fil d'ariane">
           <router-link to="/">Accueil</router-link>
-          <span>›</span>
+          <span>/</span>
           <span class="current">Contact</span>
         </nav>
-        <h1>Nous contacter<br /><em>et rejoindre la famille EMEC.</em></h1>
-        <p>Une question, un besoin de prière ou le désir de visiter une assemblée ? Nous serons heureux de vous orienter.</p>
+        <p class="section-eyebrow">Contact</p>
+        <h1>Nous sommes disponibles pour vous orienter.</h1>
+        <p>
+          Pour une visite, une demande de prière, une information ou un accompagnement spirituel,
+          contactez l'EMEC ou retrouvez le siège à Yaoundé.
+        </p>
       </div>
     </section>
 
-    <section class="contact-layout">
-      <aside class="contact-sidebar reveal">
-        <div class="sidebar-card">
-          <p class="sidebar-kicker">Adresse</p>
+    <section class="contact-main">
+      <div class="contact-heading reveal">
+        <p class="section-eyebrow">Nous joindre</p>
+        <h2>Un point d'accueil clair pour vos demandes.</h2>
+        <p>
+          Les informations essentielles sont regroupées ici afin de faciliter votre orientation vers le siège,
+          une assemblée locale ou une équipe d'accompagnement.
+        </p>
+      </div>
+
+      <div class="contact-info-grid reveal" aria-label="Informations de contact EMEC">
+        <article class="contact-info-card">
+          <span>Adresse</span>
           <h3>EMEC Siège</h3>
           <p>Entrée OPEP, Minboman<br />Yaoundé, Cameroun</p>
           <a href="https://maps.google.com/?q=Minboman%20Yaounde%20Cameroun" target="_blank" rel="noopener">Voir l'itinéraire</a>
-        </div>
-
-        <div class="sidebar-card">
-          <p class="sidebar-kicker">Téléphone</p>
+        </article>
+        <article class="contact-info-card">
+          <span>Téléphone</span>
           <h3>(+237) 699 76 54 35</h3>
-          <p>Pour les renseignements, l'orientation ou l'accompagnement spirituel.</p>
-        </div>
+          <p>Pour les renseignements, l'orientation et les demandes d'accompagnement spirituel.</p>
+        </article>
+        <article class="contact-info-card">
+          <span>Horaires bureau</span>
+          <h3>Lundi - Samedi</h3>
+          <p>8h00 - 18h00<br />Accueil, orientation et informations pratiques.</p>
+        </article>
+      </div>
 
-        <div class="sidebar-card">
-          <p class="sidebar-kicker">Horaires bureau</p>
-          <h3>Lun — Sam</h3>
-          <p>8h00 — 18h00</p>
-        </div>
-      </aside>
-
-      <div class="contact-content">
-        <section class="contact-overview reveal">
-          <div>
-            <p class="section-eyebrow">Nous joindre</p>
-            <h2 class="section-title">Une équipe disponible pour vous orienter.</h2>
-            <p>
-              Que ce soit pour visiter une assemblée, demander une prière, obtenir une
-              information ou être accompagné spirituellement, l'EMEC reste à votre écoute.
-            </p>
-          </div>
-          <img src="/images/home-10.jpg" alt="EMEC Siège à Yaoundé" loading="lazy" />
-        </section>
-
+      <div class="contact-workspace">
         <section class="contact-form-section reveal">
           <div class="form-heading">
             <p class="section-eyebrow">Écrire à l'EMEC</p>
-            <h2 class="section-title">Envoyer un message</h2>
+            <h2>Envoyer un message</h2>
+            <p>Votre message sera orienté vers l'équipe concernée.</p>
           </div>
           <form class="contact-form" @submit.prevent>
             <div class="form-grid">
@@ -86,10 +86,14 @@
           </form>
         </section>
 
-        <section class="contact-map reveal">
+        <aside class="contact-map-card reveal">
+          <div class="map-visual">
+            <img src="/images/home-10.jpg" alt="Communauté EMEC réunie" loading="lazy" />
+          </div>
           <div class="map-heading">
             <p class="section-eyebrow">Localisation</p>
             <h2>Retrouver le siège</h2>
+            <p>Utilisez la carte pour vous orienter vers Minboman, Yaoundé.</p>
           </div>
           <iframe
             src="https://www.google.com/maps?q=Minboman%20Yaounde%20Cameroun&output=embed"
@@ -97,10 +101,9 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
-        </section>
+        </aside>
       </div>
     </section>
-
   </main>
 </template>
 
@@ -130,175 +133,190 @@ export default defineComponent({
 <style scoped>
 .contact-page {
   background: var(--cream);
+  color: var(--text-dark);
 }
 
-.page-hero {
+.contact-hero {
   position: relative;
-  min-height: 64vh;
+  min-height: 560px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  padding: 150px 8vw 86px;
   overflow: hidden;
-  padding: 0;
+  background: var(--black);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url('/images/home-10.jpg') center/cover no-repeat;
-  filter: brightness(0.34);
-}
-
+.hero-bg,
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7, 26, 51, 0.96) 0%, rgba(7, 26, 51, 0.34) 58%, rgba(7, 26, 51, 0.16) 100%);
+}
+
+.hero-bg {
+  background: url('/images/home-10.jpg') center/cover no-repeat;
+  filter: brightness(0.42);
+  transform: scale(1.03);
+}
+
+.hero-overlay {
+  background: linear-gradient(90deg, rgba(7, 26, 51, 0.94), rgba(7, 26, 51, 0.48));
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
-  padding: 96px 5vw 56px;
-  max-width: 820px;
-  text-align: center;
+  z-index: 1;
+  max-width: 850px;
+  color: #fff;
 }
 
 .breadcrumb {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.54);
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .breadcrumb a {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.68);
 }
 
-.breadcrumb .current {
+.breadcrumb .current,
+.section-eyebrow {
   color: var(--gold);
 }
 
-.page-hero h1 {
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.contact-hero h1,
+.contact-heading h2,
+.contact-info-card h3,
+.form-heading h2,
+.map-heading h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(34px, 4.5vw, 58px);
-  font-weight: 900;
+}
+
+.contact-hero h1 {
+  max-width: 820px;
+  font-size: clamp(40px, 5.8vw, 76px);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.contact-hero p:not(.section-eyebrow) {
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.contact-main {
+  padding: 96px 8vw 112px;
+}
+
+.contact-heading {
+  max-width: 840px;
+  margin-bottom: 38px;
+}
+
+.contact-heading h2,
+.form-heading h2,
+.map-heading h2 {
+  color: var(--text-dark);
+  font-size: clamp(30px, 3.4vw, 50px);
   line-height: 1.1;
-  color: #fff;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.page-hero h1 em {
-  color: var(--gold-light);
-  font-style: italic;
+.contact-heading p:not(.section-eyebrow),
+.contact-info-card p,
+.form-heading p,
+.map-heading p {
+  color: var(--text-mid);
+  line-height: 1.82;
 }
 
-.page-hero p {
-  color: rgba(255, 255, 255, 0.68);
-  line-height: 1.75;
-}
-
-.contact-layout {
+.contact-info-grid {
   display: grid;
-  padding: 96px 8vw;
-  grid-template-columns: 300px 1fr;
-  gap: 48px;
-  align-items: start;
-  background:
-    linear-gradient(135deg, rgba(201, 168, 76, 0.12), transparent 38%),
-    linear-gradient(180deg, #fff 0%, #faf7f0 100%);
-}
-
-.contact-sidebar {
-  position: sticky;
-  top: 96px;
-  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  margin-bottom: 34px;
 }
 
-.sidebar-card,
+.contact-info-card,
 .contact-form-section,
-.contact-map {
-  background: rgba(255, 255, 255, 0.76);
+.contact-map-card {
+  min-width: 0;
   border: 1px solid rgba(201, 168, 76, 0.22);
-  border-radius: 6px;
-  padding: 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  box-sizing: border-box;
 }
 
-.sidebar-kicker,
+.contact-info-card {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  padding: 28px;
+}
+
+.contact-info-card span,
 .contact-form label {
   display: block;
   color: var(--gold-dark);
   font-size: 10px;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 12px;
 }
 
-.sidebar-card h3 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 10px;
+.contact-info-card h3 {
+  color: var(--text-dark);
+  font-size: 25px;
+  line-height: 1.16;
+  margin: 14px 0 12px;
 }
 
-.sidebar-card p {
-  line-height: 1.75;
-}
-
-.sidebar-card a {
+.contact-info-card a {
   display: inline-flex;
-  margin-top: 18px;
-  min-height: 40px;
+  width: fit-content;
+  min-height: 42px;
   align-items: center;
   justify-content: center;
-  padding: 0 14px;
-  border: 1px solid rgba(201, 168, 76, 0.4);
+  margin-top: auto;
+  padding: 0 15px;
+  border: 1px solid rgba(201, 168, 76, 0.42);
+  border-radius: 4px;
   color: var(--black);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
 }
 
-.contact-content {
+.contact-workspace {
   display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
   gap: 28px;
+  align-items: start;
 }
 
-.contact-overview {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
-  gap: 28px;
-  align-items: stretch;
-  background: rgba(255, 255, 255, 0.76);
-  border: 1px solid rgba(201, 168, 76, 0.22);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.contact-overview > div {
-  padding: 34px;
-}
-
-.contact-overview p:not(.section-eyebrow) {
-  color: var(--text-mid);
-  line-height: 1.85;
-  max-width: 720px;
-}
-
-.contact-overview img {
-  width: 100%;
-  height: 100%;
-  min-height: 300px;
-  object-fit: cover;
-  display: block;
+.contact-form-section {
+  padding: clamp(28px, 4vw, 42px);
 }
 
 .form-heading {
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .contact-form {
@@ -308,7 +326,7 @@ export default defineComponent({
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -316,76 +334,106 @@ export default defineComponent({
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  margin-top: 9px;
-  border: 1px solid rgba(201, 168, 76, 0.28);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 13px;
-  outline: none;
-  resize: vertical;
+  margin-top: 10px;
+  border: 1px solid rgba(7, 26, 51, 0.12);
+  border-radius: 5px;
+  background: #fff;
+  box-sizing: border-box;
   color: var(--text-dark);
+  font: inherit;
+  outline: none;
+  padding: 14px;
+  resize: vertical;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: var(--gold);
+  border-color: rgba(201, 168, 76, 0.7);
 }
 
-.contact-map {
-  padding: 0;
+.contact-form .btn-primary {
+  width: fit-content;
+  border: 0;
+  cursor: pointer;
+}
+
+.contact-map-card {
   overflow: hidden;
 }
 
-.map-heading {
-  padding: 28px 28px 22px;
-}
-
-.map-heading h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3vw, 42px);
-  color: var(--text-dark);
-}
-
-.contact-map iframe {
-  width: 100%;
-  height: 380px;
-  border: 0;
+.map-visual img {
   display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
 }
 
-@media (max-width: 980px) {
-  .contact-layout,
-  .contact-overview,
+.map-heading {
+  padding: 30px 30px 24px;
+}
+
+.contact-map-card iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+
+.contact-info-card,
+.contact-form-section,
+.contact-map-card {
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.contact-info-card:hover,
+.contact-form-section:hover,
+.contact-map-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1100px) {
+  .contact-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .contact-hero {
+    min-height: 500px;
+    padding: 130px 6vw 64px;
+  }
+
+  .contact-main {
+    padding: 72px 6vw 90px;
+  }
+
+  .contact-info-grid,
   .form-grid {
     grid-template-columns: 1fr;
   }
 
-  .contact-sidebar {
-    position: static;
+  .contact-info-card,
+  .contact-form-section {
+    padding: 24px;
   }
 
-}
-
-@media (max-width: 620px) {
-  .hero-content {
-    padding: 88px 6vw 46px;
+  .contact-form .btn-primary,
+  .contact-info-card a {
+    width: 100%;
   }
 
-  .page-hero h1 {
-    font-size: clamp(28px, 7vw, 42px);
+  .map-heading {
+    padding: 24px;
   }
 
-  .contact-layout {
-    padding-left: 6vw;
-    padding-right: 6vw;
-  }
-
-  .contact-overview > div {
-    padding: 26px;
-  }
-
-  .contact-map iframe {
+  .contact-map-card iframe {
     height: 320px;
   }
 }

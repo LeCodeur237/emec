@@ -348,4 +348,18 @@ export default defineComponent({
     width: 100%;
   }
 }
+
+/* Harmonisation visuelle des cartes */
+.belief-card {
+  min-width: 0;
+  min-height: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.belief-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px);
+}
 </style>
