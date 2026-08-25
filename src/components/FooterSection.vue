@@ -8,12 +8,16 @@
           par email, afin de nourrir votre foi tout au long de la semaine.
         </p>
       </div>
-      <form class="sermon-form" aria-label="Recevoir les prédications par email" @submit.prevent>
+      <form class="sermon-form" aria-label="Recevoir les prédications par email" @submit.prevent="submitNewsletter">
         <label for="footer-sermon-email">Adresse email</label>
         <div class="sermon-form-row">
-          <input id="footer-sermon-email" type="email" name="email" placeholder="votre.email@example.com" required />
-          <button class="btn-primary" type="submit">S'inscrire</button>
+          <input id="footer-sermon-email" v-model="newsletterEmail" type="email" name="email" placeholder="votre.email@example.com" required />
+          <button class="btn-primary" type="submit" :disabled="newsletterSubmitting">
+            {{ newsletterSubmitting ? "Inscription..." : "S'inscrire" }}
+          </button>
         </div>
+        <p v-if="newsletterStatus" class="newsletter-status success">{{ newsletterStatus }}</p>
+        <p v-if="newsletterError" class="newsletter-status error">{{ newsletterError }}</p>
         <p>Nous envoyons uniquement des contenus spirituels liés aux prédications et enseignements de notre Communauté.</p>
       </form>
   </section>
@@ -70,9 +74,35 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { subscribeNewsletter } from '../services/emecApi';
 
 export default defineComponent({
   name: 'FooterSection',
+  data() {
+    return {
+      newsletterEmail: '',
+      newsletterSubmitting: false,
+      newsletterStatus: '',
+      newsletterError: '',
+    };
+  },
+  methods: {
+    async submitNewsletter() {
+      this.newsletterSubmitting = true;
+      this.newsletterStatus = '';
+      this.newsletterError = '';
+
+      try {
+        await subscribeNewsletter(this.newsletterEmail);
+        this.newsletterEmail = '';
+        this.newsletterStatus = 'Inscription enregistree.';
+      } catch {
+        this.newsletterError = "L'inscription n'a pas pu etre enregistree.";
+      } finally {
+        this.newsletterSubmitting = false;
+      }
+    },
+  },
 });
 </script>
 
@@ -152,6 +182,26 @@ export default defineComponent({
   font-size: 12px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.42);
+}
+
+.sermon-form .btn-primary:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.newsletter-status {
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.newsletter-status.success {
+  background: rgba(36, 112, 82, 0.18);
+  color: #bfe7d4;
+}
+
+.newsletter-status.error {
+  background: rgba(180, 62, 62, 0.16);
+  color: #ffd1d1;
 }
 
 footer {

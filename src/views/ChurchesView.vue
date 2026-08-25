@@ -242,6 +242,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { churches, type ChurchItem } from "../data/churches";
+import { fetchChurches } from "../services/emecApi";
 
 export default defineComponent({
   name: "ChurchesView",
@@ -359,6 +360,31 @@ export default defineComponent({
     },
   },
   methods: {
+    async loadChurches() {
+      try {
+        const apiChurches = await fetchChurches();
+        if (apiChurches.length) {
+          this.churches = apiChurches;
+        }
+      } catch {
+        this.churches = churches;
+      }
+    },
+    initReveal() {
+      const reveals = document.querySelectorAll<HTMLElement>(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      reveals.forEach((el) => observer.observe(el));
+    },
     resetPagination() {
       this.currentPage = 1;
     },
@@ -377,19 +403,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    const reveals = document.querySelectorAll<HTMLElement>(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-    reveals.forEach((el) => observer.observe(el));
+    this.loadChurches();
+    this.initReveal();
   },
 });
 </script>

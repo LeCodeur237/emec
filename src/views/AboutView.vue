@@ -267,7 +267,7 @@ export default defineComponent({
       leaders: [
         { initials: 'PR', name: 'NOUMESSI Anatole', role: 'Président du Conseil Exécutif', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'VPR', name: 'BANGUENA OLEMBA Sylvain', role: 'Vice-président', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'Secrétaire Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'Secrétaire Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/pce/sg.png' },
         { initials: 'SG', name: 'UM MAKON Simon R.', role: 'Secrétaire Général Adjoint', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'T', name: 'NTAP Ruben', role: 'Trésorier Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CG', name: 'BIABAK Dieudonné', role: 'Contrôleur de Gestion', title: 'Ancien', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },

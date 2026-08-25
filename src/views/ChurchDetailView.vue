@@ -207,21 +207,34 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { findChurchBySlug } from "../data/churches";
+import { findChurchBySlug, type ChurchItem } from "../data/churches";
+import { fetchChurchDetail } from "../services/emecApi";
 
 export default defineComponent({
   name: "ChurchDetailView",
   setup() {
     const route = useRoute();
     const isFormerLeadersOpen = ref(false);
-    const church = computed(() => findChurchBySlug(String(route.params.slug || "")));
+    const slug = String(route.params.slug || "");
+    const church = ref<ChurchItem | undefined>(findChurchBySlug(slug));
     const mapEmbedUrl = computed(() => {
       const query = church.value
         ? `${church.value.name} ${church.value.address} Cameroun`
         : "EMEC Cameroun";
       return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+    });
+
+    onMounted(async () => {
+      try {
+        const apiChurch = await fetchChurchDetail(slug);
+        if (apiChurch) {
+          church.value = apiChurch;
+        }
+      } catch {
+        church.value = findChurchBySlug(slug);
+      }
     });
 
     return {

@@ -309,6 +309,11 @@
 import { defineComponent } from 'vue';
 import { groups } from '../data/groups';
 import { galleryImages } from '../data/gallery';
+import {
+  fetchEvents,
+  fetchGroups,
+  fetchWeeklyPrograms,
+} from '../services/emecApi';
 
 interface Program {
   id: number;
@@ -406,6 +411,8 @@ export default defineComponent({
     };
   },
   mounted() {
+    this.loadHomeData();
+
     this.heroTimer = window.setInterval(() => {
       this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroSlides.length;
     }, 5200);
@@ -428,6 +435,39 @@ export default defineComponent({
     if (this.heroTimer) {
       window.clearInterval(this.heroTimer);
     }
+  },
+  methods: {
+    async loadHomeData() {
+      try {
+        const [apiGroups, apiPrograms, apiEvents] = await Promise.all([
+          fetchGroups(),
+          fetchWeeklyPrograms(),
+          fetchEvents(),
+        ]);
+
+        if (apiGroups.length) {
+          this.groups = apiGroups;
+        }
+
+        if (apiPrograms.length) {
+          this.programs = apiPrograms.slice(0, 4).map((program, index) => ({
+            ...program,
+            number: String(index + 1).padStart(2, '0'),
+          }));
+        }
+
+        if (apiEvents.length) {
+          this.events = apiEvents.slice(0, 3).map((event) => ({
+            title: event.title,
+            date: event.day,
+            month: event.month,
+            location: `${event.location} · ${event.time}`,
+          }));
+        }
+      } catch {
+        // Les donnees locales restent disponibles si l'API est indisponible.
+      }
+    },
   },
 });
 </script>

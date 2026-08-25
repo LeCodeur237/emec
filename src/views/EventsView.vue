@@ -165,23 +165,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-
-interface EventItem {
-  title: string;
-  category: string;
-  day: string;
-  month: string;
-  location: string;
-  time: string;
-  description: string;
-}
-
-interface ProgramItem {
-  id: number;
-  day: string;
-  title: string;
-  time: string;
-}
+import {
+  fetchEvents,
+  fetchWeeklyPrograms,
+  type EventItem,
+  type WeeklyProgramItem,
+} from "../services/emecApi";
 
 export default defineComponent({
   name: "EventsView",
@@ -261,7 +250,7 @@ export default defineComponent({
           title: "Jour de Prières",
           time: "17h30 — 20h00",
         },
-      ] as ProgramItem[],
+      ] as WeeklyProgramItem[],
     };
   },
   computed: {
@@ -303,6 +292,40 @@ export default defineComponent({
     },
   },
   methods: {
+    async loadEventsData() {
+      try {
+        const [apiEvents, apiPrograms] = await Promise.all([
+          fetchEvents(),
+          fetchWeeklyPrograms(),
+        ]);
+
+        if (apiEvents.length) {
+          this.events = apiEvents;
+          this.categories = ["Tous", ...Array.from(new Set(apiEvents.map((event) => event.category))).sort()];
+        }
+
+        if (apiPrograms.length) {
+          this.programs = apiPrograms;
+        }
+      } catch {
+        // Les données locales restent affichées.
+      }
+    },
+    initReveal() {
+      const reveals = document.querySelectorAll<HTMLElement>(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      reveals.forEach((el) => observer.observe(el));
+    },
     resetPagination() {
       this.currentPage = 1;
     },
@@ -316,19 +339,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    const reveals = document.querySelectorAll<HTMLElement>(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-    reveals.forEach((el) => observer.observe(el));
+    this.loadEventsData();
+    this.initReveal();
   },
 });
 </script>

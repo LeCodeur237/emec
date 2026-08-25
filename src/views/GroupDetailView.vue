@@ -198,20 +198,43 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { findGroupBySlug, groups } from '../data/groups';
+import { findGroupBySlug, groups, type GroupItem } from '../data/groups';
+import { fetchGroupDetail, fetchGroups } from '../services/emecApi';
 
 export default defineComponent({
   name: 'GroupDetailView',
   setup() {
     const route = useRoute();
     const isFormerLeadersOpen = ref(false);
-    const group = computed(() => findGroupBySlug(String(route.params.slug || '')));
-    const relatedGroups = computed(() => groups.filter((item) => item.slug !== group.value?.slug));
+    const slug = String(route.params.slug || '');
+    const group = ref<GroupItem | undefined>(findGroupBySlug(slug));
+    const groupList = ref<GroupItem[]>(groups);
+    const relatedGroups = computed(() => groupList.value.filter((item) => item.slug !== group.value?.slug));
     const imageLoop = computed(() => {
       const images = group.value?.galleryImages?.length ? group.value.galleryImages : group.value ? [group.value.image] : [];
       return [...images, ...images];
+    });
+
+    onMounted(async () => {
+      try {
+        const [apiGroup, apiGroups] = await Promise.all([
+          fetchGroupDetail(slug),
+          fetchGroups(),
+        ]);
+
+        if (apiGroup) {
+          group.value = apiGroup;
+        }
+
+        if (apiGroups.length) {
+          groupList.value = apiGroups;
+        }
+      } catch {
+        group.value = findGroupBySlug(slug);
+        groupList.value = groups;
+      }
     });
 
     return {

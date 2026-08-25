@@ -54,24 +54,24 @@
             <h2>Envoyer un message</h2>
             <p>Votre message sera orienté vers l'équipe concernée.</p>
           </div>
-          <form class="contact-form" @submit.prevent>
+          <form class="contact-form" @submit.prevent="submitForm">
             <div class="form-grid">
               <label>
                 Nom complet
-                <input type="text" name="name" placeholder="Votre nom" required />
+                <input v-model="form.name" type="text" name="name" placeholder="Votre nom" required />
               </label>
               <label>
                 Téléphone
-                <input type="tel" name="phone" placeholder="+237 ..." />
+                <input v-model="form.phone" type="tel" name="phone" placeholder="+237 ..." />
               </label>
             </div>
             <label>
               Adresse email
-              <input type="email" name="email" placeholder="votre.email@example.com" required />
+              <input v-model="form.email" type="email" name="email" placeholder="votre.email@example.com" required />
             </label>
             <label>
               Sujet
-              <select name="subject">
+              <select v-model="form.subject" name="subject">
                 <option>Demande d'information</option>
                 <option>Besoin de prière</option>
                 <option>Visiter une assemblée</option>
@@ -80,9 +80,13 @@
             </label>
             <label>
               Message
-              <textarea name="message" rows="6" placeholder="Votre message..." required></textarea>
+              <textarea v-model="form.message" name="message" rows="6" placeholder="Votre message..." required></textarea>
             </label>
-            <button class="btn-primary" type="submit">Envoyer le message</button>
+            <p v-if="formStatus" class="form-status success">{{ formStatus }}</p>
+            <p v-if="formError" class="form-status error">{{ formError }}</p>
+            <button class="btn-primary" type="submit" :disabled="submitting">
+              {{ submitting ? "Envoi en cours..." : "Envoyer le message" }}
+            </button>
           </form>
         </section>
 
@@ -109,9 +113,54 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { submitContact } from '../services/emecApi';
 
 export default defineComponent({
   name: 'ContactView',
+  data() {
+    return {
+      submitting: false,
+      formStatus: '',
+      formError: '',
+      form: {
+        name: '',
+        phone: '',
+        email: '',
+        subject: "Demande d'information",
+        message: '',
+      },
+    };
+  },
+  methods: {
+    async submitForm() {
+      this.submitting = true;
+      this.formStatus = '';
+      this.formError = '';
+
+      try {
+        await submitContact({
+          name: this.form.name,
+          phone: this.form.phone || undefined,
+          email: this.form.email,
+          subject: this.form.subject,
+          message: this.form.message,
+        });
+
+        this.formStatus = 'Votre message a bien ete envoye.';
+        this.form = {
+          name: '',
+          phone: '',
+          email: '',
+          subject: "Demande d'information",
+          message: '',
+        };
+      } catch {
+        this.formError = "Le message n'a pas pu etre envoye. Veuillez reessayer.";
+      } finally {
+        this.submitting = false;
+      }
+    },
+  },
   mounted() {
     const reveals = document.querySelectorAll<HTMLElement>('.reveal');
     const observer = new IntersectionObserver(
@@ -356,6 +405,29 @@ export default defineComponent({
   width: fit-content;
   border: 0;
   cursor: pointer;
+}
+
+.contact-form .btn-primary:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.form-status {
+  border-radius: 5px;
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 0;
+  padding: 12px 14px;
+}
+
+.form-status.success {
+  background: rgba(36, 112, 82, 0.1);
+  color: #247052;
+}
+
+.form-status.error {
+  background: rgba(154, 48, 48, 0.1);
+  color: #9a3030;
 }
 
 .contact-map-card {
