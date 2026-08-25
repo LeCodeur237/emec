@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <main>
     <section class="hero">
       <div class="hero-bg" aria-hidden="true">
@@ -13,11 +13,11 @@
       </div>
       <div class="hero-gradient"></div>
       <div class="hero-content">
-        <h1>Un lieu de <em>transformation,</em><br />de restauration<br />et d'espérance.</h1>
-        <p class="hero-sub">Une maison spirituelle où les vies sont bâties, les familles restaurées et les disciples équipés pour servir Christ avec fidélité.</p>
-        <p class="hero-verse">« Mais vous, vous êtes une race choisie, un sacerdoce royal, une nation sainte. » — 1 Pierre 2:9</p>
+        <h1>Un lieu de <em>transformation,</em><br />de restauration<br />et d'espÃ©rance.</h1>
+        <p class="hero-sub">Une maison spirituelle oÃ¹ les vies sont bÃ¢ties, les familles restaurÃ©es et les disciples Ã©quipÃ©s pour servir Christ avec fidÃ©litÃ©.</p>
+        <p class="hero-verse">Â« Mais vous, vous Ãªtes une race choisie, un sacerdoce royal, une nation sainte. Â» â€” 1 Pierre 2:9</p>
         <div class="hero-buttons">
-          <router-link class="btn-primary" to="/#about">Découvrir l'EMEC</router-link>
+          <router-link class="btn-primary" to="/#about">DÃ©couvrir l'EMEC</router-link>
           <router-link class="btn-outline" to="/contact">Rejoindre la famille</router-link>
         </div>
       </div>
@@ -29,11 +29,11 @@
         <div class="ticker-move">
           <template v-for="(announcement, index) in announcements" :key="`ann-${index}`">
             <span class="ticker-text">{{ announcement }}</span>
-            <span class="ticker-divider" v-if="index < announcements.length - 1">•</span>
+            <span class="ticker-divider" v-if="index < announcements.length - 1">â€¢</span>
           </template>
           <template v-for="(announcement, index) in announcements" :key="`ann-copy-${index}`">
             <span class="ticker-text">{{ announcement }}</span>
-            <span class="ticker-divider" v-if="index < announcements.length - 1">•</span>
+            <span class="ticker-divider" v-if="index < announcements.length - 1">â€¢</span>
           </template>
         </div>
       </div>
@@ -41,34 +41,34 @@
 
     <section class="about" id="about">
       <div class="about-image reveal">
-        <img src="/images/home-10.jpg" alt="Communauté EMEC en adoration" loading="lazy" />
+        <img src="/images/home-10.jpg" alt="CommunautÃ© EMEC en adoration" loading="lazy" />
         <div class="about-image-accent"></div>
-        <div class="about-badge">Fondée sur la Parole de Dieu</div>
+        <div class="about-badge">FondÃ©e sur la Parole de Dieu</div>
       </div>
       <div class="about-text reveal">
         <p class="section-eyebrow">Qui sommes-nous</p>
-        <h2 class="section-title">Une communauté de <em>foi vivante</em> au cœur du Cameroun</h2>
-        <p>L'Église Messianique Évangélique du Cameroun (EMEC) est une communauté chrétienne fondée sur la Parole de Dieu, la prière, la communion fraternelle et le service. Elle rassemble des hommes, des femmes, des jeunes et des familles appelés à connaître Christ, grandir dans la foi et témoigner avec intégrité.</p>
-        <p>Sa mission est d'annoncer l'Évangile, former des disciples, implanter des assemblées et accompagner les vies dans leur marche avec Dieu. À travers l'enseignement, la prière et les œuvres de compassion, l'EMEC porte l'espérance de Christ dans les familles, les villes et les générations.</p>
+        <h2 class="section-title">Une communautÃ© de <em>foi vivante</em> au cÅ“ur du Cameroun</h2>
+        <p>L'Ã‰glise Messianique Ã‰vangÃ©lique du Cameroun (EMEC) est une communautÃ© chrÃ©tienne fondÃ©e sur la Parole de Dieu, la priÃ¨re, la communion fraternelle et le service. Elle rassemble des hommes, des femmes, des jeunes et des familles appelÃ©s Ã  connaÃ®tre Christ, grandir dans la foi et tÃ©moigner avec intÃ©gritÃ©.</p>
+        <p>Sa mission est d'annoncer l'Ã‰vangile, former des disciples, implanter des assemblÃ©es et accompagner les vies dans leur marche avec Dieu. Ã€ travers l'enseignement, la priÃ¨re et les Å“uvres de compassion, l'EMEC porte l'espÃ©rance de Christ dans les familles, les villes et les gÃ©nÃ©rations.</p>
         <div class="about-verse">
-          <blockquote>« Mais vous, vous êtes une race choisie, un sacerdoce royal, une nation sainte, un peuple acquis, afin que vous annonciez les vertus de celui qui vous a appelés des ténèbres à son admirable lumière. »</blockquote>
+          <blockquote>Â« Mais vous, vous Ãªtes une race choisie, un sacerdoce royal, une nation sainte, un peuple acquis, afin que vous annonciez les vertus de celui qui vous a appelÃ©s des tÃ©nÃ¨bres Ã  son admirable lumiÃ¨re. Â»</blockquote>
           <cite>1 Pierre 2:9</cite>
         </div>
         <div class="about-actions">
-          <router-link class="btn-primary" to="/about">Découvrir qui nous sommes</router-link>
+          <router-link class="btn-primary" to="/about">DÃ©couvrir qui nous sommes</router-link>
         </div>
         <div class="about-stats">
           <div class="stat-item">
             <div class="stat-number">30+</div>
-            <div class="stat-label">Années de ministère</div>
+            <div class="stat-label">AnnÃ©es de ministÃ¨re</div>
           </div>
           <div class="stat-item">
             <div class="stat-number">100+</div>
             <div class="stat-label">Villes atteintes</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Vies transformées</div>
+            <div class="stat-number">âˆž</div>
+            <div class="stat-label">Vies transformÃ©es</div>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
         <p class="section-eyebrow">Nos Programmes</p>
         <h2 class="section-title">Venez vivre votre foi<br />avec nous chaque semaine</h2>
       </div>
-      <div class="programs-grid">
+      <div class="programs-grid" v-if="programs.length">
         <article class="program-card reveal" v-for="program in programs" :key="program.id">
           <p class="program-day">{{ program.day }}</p>
           <h3 class="program-title">{{ program.title }}</h3>
@@ -87,14 +87,18 @@
           <div class="program-number">{{ program.number }}</div>
         </article>
       </div>
+      <div class="home-empty reveal" v-else>
+        <h3>Aucun programme publie</h3>
+        <p>Les programmes seront affiches ici depuis l'API.</p>
+      </div>
     </section>
 
     <section class="mandate" id="mandate">
       <div class="mandate-intro reveal">
         <p class="section-eyebrow">Notre Mandat</p>
-        <h2 class="section-title">Appelés à <em>annoncer,</em> former et servir</h2>
+        <h2 class="section-title">AppelÃ©s Ã  <em>annoncer,</em> former et servir</h2>
         <div class="mandate-text">
-          <p>Notre mandat est d'annoncer l'Évangile, de faire des disciples, de les baptiser, de les enseigner et de manifester l'amour de Dieu par la compassion, la justice et la paix, afin de glorifier Christ en toutes choses.</p>
+          <p>Notre mandat est d'annoncer l'Ã‰vangile, de faire des disciples, de les baptiser, de les enseigner et de manifester l'amour de Dieu par la compassion, la justice et la paix, afin de glorifier Christ en toutes choses.</p>
         </div>
         <router-link class="btn-primary mandate-link" to="/mandate">En savoir plus</router-link>
       </div>
@@ -118,40 +122,40 @@
     <section class="pastor" id="pastor">
       <div class="pastor-visual reveal">
         <div class="pastor-image">
-          <img src="/images/fondateur.png" alt="Feu Apôtre Samuel Dalle Nyame" loading="lazy" />
+          <img src="/images/fondateur.png" alt="Feu ApÃ´tre Samuel Dalle Nyame" loading="lazy" />
           <div class="pastor-tag">
-            <strong>Feu Apôtre Samuel Dalle Nyame</strong>
-            <span>Apôtre fondateur</span>
+            <strong>Feu ApÃ´tre Samuel Dalle Nyame</strong>
+            <span>ApÃ´tre fondateur</span>
           </div>
         </div>
         <div class="pastor-note">
-          <span>Héritage</span>
-          <p>Une vision transmise à une génération appelée à servir Christ avec fidélité.</p>
+          <span>HÃ©ritage</span>
+          <p>Une vision transmise Ã  une gÃ©nÃ©ration appelÃ©e Ã  servir Christ avec fidÃ©litÃ©.</p>
         </div>
       </div>
       <div class="pastor-text reveal">
-        <p class="section-eyebrow">Héritage du Visionnaire</p>
+        <p class="section-eyebrow">HÃ©ritage du Visionnaire</p>
         <h2 class="section-title">Un homme de foi,<br />une vision <em>apostolique</em></h2>
         <div class="pastor-quote">
-          <p>« Ma vision est de voir chaque membre de l'EMEC devenir un disciple mature de Christ, équipé pour impacter positivement son environnement et glorifier Dieu. »</p>
+          <p>Â« Ma vision est de voir chaque membre de l'EMEC devenir un disciple mature de Christ, Ã©quipÃ© pour impacter positivement son environnement et glorifier Dieu. Â»</p>
         </div>
-        <p>Feu l'Apôtre Samuel Dalle Nyame fut le visionnaire et l'apôtre fondateur associé aux fondements de l'EMEC. Animé par une passion inébranlable pour l'Évangile, il a porté une conviction claire : établir un lieu où la Parole de Dieu est prêchée avec puissance et où les vies sont transformées.</p>
-        <p>Par la grâce de Dieu, son ministère a laissé un héritage spirituel profond, touchant d'innombrables vies à travers le Cameroun et au-delà. L'engagement qu'il a incarné envers la mission, la formation des disciples et la compassion demeure au cœur des valeurs que l'EMEC continue de porter.</p>
+        <p>Feu l'ApÃ´tre Samuel Dalle Nyame fut le visionnaire et l'apÃ´tre fondateur associÃ© aux fondements de l'EMEC. AnimÃ© par une passion inÃ©branlable pour l'Ã‰vangile, il a portÃ© une conviction claire : Ã©tablir un lieu oÃ¹ la Parole de Dieu est prÃªchÃ©e avec puissance et oÃ¹ les vies sont transformÃ©es.</p>
+        <p>Par la grÃ¢ce de Dieu, son ministÃ¨re a laissÃ© un hÃ©ritage spirituel profond, touchant d'innombrables vies Ã  travers le Cameroun et au-delÃ . L'engagement qu'il a incarnÃ© envers la mission, la formation des disciples et la compassion demeure au cÅ“ur des valeurs que l'EMEC continue de porter.</p>
         <ul class="pastor-legacy">
           <li>Une passion constante pour la Parole de Dieu.</li>
-          <li>Une vision centrée sur la formation des disciples.</li>
-          <li>Un héritage de foi, de service et de compassion.</li>
+          <li>Une vision centrÃ©e sur la formation des disciples.</li>
+          <li>Un hÃ©ritage de foi, de service et de compassion.</li>
         </ul>
-        <router-link class="btn-primary" to="/about">Découvrir son héritage</router-link>
+        <router-link class="btn-primary" to="/about">DÃ©couvrir son hÃ©ritage</router-link>
       </div>
     </section>
 
     <section class="groups" id="groups">
       <div class="groups-header reveal">
         <p class="section-eyebrow">Nos Groupes</p>
-        <h2 class="section-title">Rejoignez une communauté<br /><em>qui vous accueille</em></h2>
+        <h2 class="section-title">Rejoignez une communautÃ©<br /><em>qui vous accueille</em></h2>
       </div>
-      <div class="groups-scroll reveal">
+      <div class="groups-scroll reveal" v-if="groups.length">
         <div class="groups-track">
           <div class="groups-set">
             <template v-for="group in groups" :key="group.name">
@@ -183,7 +187,7 @@
                 </div>
                 <h3 class="group-name">{{ group.name }}</h3>
                 <p class="group-description">{{ group.description }}</p>
-                <span class="group-more">Voir les détails</span>
+                <span class="group-more">Voir les dÃ©tails</span>
               </router-link>
             </template>
           </div>
@@ -194,10 +198,14 @@
               </div>
               <h3 class="group-name">{{ group.name }}</h3>
               <p class="group-description">{{ group.description }}</p>
-              <span class="group-more">Voir les détails</span>
+              <span class="group-more">Voir les dÃ©tails</span>
             </article>
           </div>
         </div>
+      </div>
+      <div class="home-empty reveal" v-else>
+        <h3>Aucun groupe publie</h3>
+        <p>Les groupes actifs seront affiches ici depuis l'API.</p>
       </div>
     </section>
 
@@ -207,9 +215,9 @@
           <p class="section-eyebrow">Agenda</p>
           <h2 class="section-title events-title">Agenda et <em>temps forts</em></h2>
         </div>
-        <router-link class="events-link" to="/events">Voir tout le calendrier →</router-link>
+        <router-link class="events-link" to="/events">Voir tout le calendrier â†’</router-link>
       </div>
-      <div class="events-grid">
+      <div class="events-grid" v-if="events.length">
         <article class="event-card reveal" v-for="event in events" :key="event.title">
           <div class="event-date">{{ event.date }}</div>
           <div class="event-month">{{ event.month }}</div>
@@ -217,20 +225,24 @@
           <p class="event-location">{{ event.location }}</p>
         </article>
       </div>
+      <div class="home-empty reveal" v-else>
+        <h3>Aucun evenement publie</h3>
+        <p>Les prochains rendez-vous seront affiches ici depuis l'API.</p>
+      </div>
     </section>
 
     <section class="giving" id="don">
       <div class="giving-intro reveal">
         <p class="section-eyebrow">Faire un don</p>
-        <h2 class="section-title">Soutenir l'œuvre<br /><em>avec foi et générosité</em></h2>
+        <h2 class="section-title">Soutenir l'Å“uvre<br /><em>avec foi et gÃ©nÃ©rositÃ©</em></h2>
         <p>
-          Vos dons accompagnent l'évangélisation, les actions sociales, les programmes de formation
-          et le service auprès des familles. Merci de contribuer à l'avancement de la mission.
+          Vos dons accompagnent l'Ã©vangÃ©lisation, les actions sociales, les programmes de formation
+          et le service auprÃ¨s des familles. Merci de contribuer Ã  l'avancement de la mission.
         </p>
         <ul class="giving-impact">
-          <li>Évangélisation et implantation</li>
+          <li>Ã‰vangÃ©lisation et implantation</li>
           <li>Formation biblique et accompagnement</li>
-          <li>Actions sociales auprès des familles</li>
+          <li>Actions sociales auprÃ¨s des familles</li>
         </ul>
       </div>
       <div class="giving-options">
@@ -244,7 +256,7 @@
           </div>
           <div class="giving-details">
             <div>
-              <span>Numéro</span>
+              <span>NumÃ©ro</span>
               <strong>+237 6 99 81 68 95</strong>
             </div>
             <div>
@@ -263,7 +275,7 @@
           </div>
           <div class="giving-details">
             <div>
-              <span>Numéro</span>
+              <span>NumÃ©ro</span>
               <strong>+237 678 660 638</strong>
             </div>
             <div>
@@ -273,24 +285,24 @@
           </div>
         </article>
       </div>
-      <div class="giving-thumbs reveal" aria-label="Aperçu des actions soutenues par les dons">
-        <img src="/images/dons-001.png" alt="Culte et évangélisation à l'EMEC" loading="lazy" />
+      <div class="giving-thumbs reveal" aria-label="AperÃ§u des actions soutenues par les dons">
+        <img src="/images/dons-001.png" alt="Culte et Ã©vangÃ©lisation Ã  l'EMEC" loading="lazy" />
         <img src="/images/dons-002.png" alt="Service et compassion" loading="lazy" />
-        <img src="/images/dons-003.png" alt="Formation et prière" loading="lazy" />
+        <img src="/images/dons-003.png" alt="Formation et priÃ¨re" loading="lazy" />
         <img src="/images/dons-004.png" alt="Communion fraternelle" loading="lazy" />
-        <img src="/images/dons-005.png" alt="Œuvres sociales" loading="lazy" />
-        <img src="/images/dons-006.png" alt="Communauté rassemblée" loading="lazy" />
+        <img src="/images/dons-005.png" alt="Å’uvres sociales" loading="lazy" />
+        <img src="/images/dons-006.png" alt="CommunautÃ© rassemblÃ©e" loading="lazy" />
       </div>
     </section>
 
     <section class="gallery-preview" id="gallery">
       <div class="gallery-copy reveal">
         <p class="section-eyebrow">En images</p>
-        <h2 class="section-title gallery-title">La grâce de Dieu en images</h2>
-        <p>Un parcours à travers nos cultes, nos temps de prière, nos rencontres et les témoignages de la grâce de Dieu au milieu de son peuple.</p>
+        <h2 class="section-title gallery-title">La grÃ¢ce de Dieu en images</h2>
+        <p>Un parcours Ã  travers nos cultes, nos temps de priÃ¨re, nos rencontres et les tÃ©moignages de la grÃ¢ce de Dieu au milieu de son peuple.</p>
         <router-link class="btn-primary gallery-link" to="/gallery">Voir la galerie</router-link>
       </div>
-      <div class="gallery-stack reveal" aria-label="Aperçu de la galerie photos EMEC">
+      <div class="gallery-stack reveal" aria-label="AperÃ§u de la galerie photos EMEC">
         <figure
           class="gallery-photo"
           v-for="(photo, index) in galleryPhotos"
@@ -307,13 +319,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { groups } from '../data/groups';
 import { galleryImages } from '../data/gallery';
 import {
   fetchEvents,
   fetchGroups,
   fetchWeeklyPrograms,
 } from '../services/emecApi';
+import type { GroupItem } from '../data/groups';
 
 interface Program {
   id: number;
@@ -356,56 +368,47 @@ export default defineComponent({
     return {
       currentHeroIndex: 0,
       heroTimer: null as number | null,
-      groups,
+      groups: [] as GroupItem[],
       heroSlides: [
-        { src: '/images/home-1.jpg', alt: 'Culte de célébration à l\'EMEC', position: 'center center' },
-        { src: '/images/hero-2.jpg', alt: 'Communauté EMEC en adoration', position: '35% center' },
-        { src: '/images/hero-3.jpg', alt: 'Temps de prière et de communion à l\'EMEC', position: '70% center' },
+        { src: '/images/home-1.jpg', alt: 'Culte de cÃ©lÃ©bration Ã  l\'EMEC', position: 'center center' },
+        { src: '/images/hero-2.jpg', alt: 'CommunautÃ© EMEC en adoration', position: '35% center' },
+        { src: '/images/hero-3.jpg', alt: 'Temps de priÃ¨re et de communion Ã  l\'EMEC', position: '70% center' },
       ] as HeroSlide[],
-      programs: [
-        { id: 1, day: 'Dimanche', title: 'Culte de Célébration', time: '9h00 — 12h30', number: '01' },
-        { id: 2, day: 'Lundi', title: 'École de Sion', time: '17h30 — 20h00', number: '02' },
-        { id: 3, day: 'Mercredi', title: 'Jour d\'Enseignements', time: '17h30 — 20h00', number: '03' },
-        { id: 4, day: 'Vendredi', title: 'Jour de Prières', time: '17h30 — 20h00', number: '04' },
-      ] as Program[],
-      events: [
-        { title: 'Culte de célébration', date: 'Dim', month: 'Chaque semaine', location: 'EMEC Siège, Yaoundé · 9h00 - 12h30' },
-        { title: 'Temps de prière et d\'intercession', date: 'Ven', month: 'Chaque semaine', location: 'EMEC Siège, Yaoundé · 17h30 - 20h00' },
-        { title: 'Formations et campagnes missionnaires', date: 'Prog.', month: 'Selon le calendrier', location: 'Assemblées et villes missionnaires de l\'EMEC' },
-      ] as EventItem[],
+      programs: [] as Program[],
+      events: [] as EventItem[],
       mandateItems: [
         {
           kicker: 'Annonce',
-          title: 'Annoncer l\'Évangile',
-          description: 'Porter la bonne nouvelle de Jésus-Christ avec clarté, foi et compassion, afin que chaque personne entende l\'appel du salut.',
+          title: 'Annoncer l\'Ã‰vangile',
+          description: 'Porter la bonne nouvelle de JÃ©sus-Christ avec clartÃ©, foi et compassion, afin que chaque personne entende l\'appel du salut.',
           image: '/images/mandate-evangile.png',
-          alt: 'Annonce de l\'Évangile à l\'EMEC',
+          alt: 'Annonce de l\'Ã‰vangile Ã  l\'EMEC',
         },
         {
-          kicker: 'Baptême',
-          title: 'Conduire au baptême',
-          description: 'Accompagner ceux qui confessent Christ dans cet acte d\'obéissance, signe public d\'une vie nouvelle en Jésus-Christ.',
+          kicker: 'BaptÃªme',
+          title: 'Conduire au baptÃªme',
+          description: 'Accompagner ceux qui confessent Christ dans cet acte d\'obÃ©issance, signe public d\'une vie nouvelle en JÃ©sus-Christ.',
           image: '/images/mandate-bapteme.png',
-          alt: 'Baptême et engagement chrétien à l\'EMEC',
+          alt: 'BaptÃªme et engagement chrÃ©tien Ã  l\'EMEC',
         },
         {
           kicker: 'Enseignement',
           title: 'Former par la Parole',
-          description: 'Équiper les croyants par un enseignement biblique solide, pour faire grandir des disciples matures et enracinés.',
+          description: 'Ã‰quiper les croyants par un enseignement biblique solide, pour faire grandir des disciples matures et enracinÃ©s.',
           image: '/images/mandate-parole.png',
           alt: 'Enseignement biblique et formation des disciples',
         },
         {
           kicker: 'Service',
           title: 'Servir avec compassion',
-          description: 'Manifester l\'amour de Dieu par le service, l\'entraide et des actions concrètes au bénéfice des familles et des communautés.',
+          description: 'Manifester l\'amour de Dieu par le service, l\'entraide et des actions concrÃ¨tes au bÃ©nÃ©fice des familles et des communautÃ©s.',
           image: '/images/mandate-service.png',
-          alt: 'Service et compassion au sein de la communauté EMEC',
+          alt: 'Service et compassion au sein de la communautÃ© EMEC',
         },
       ] as MandateItem[],
       announcements: [
-        'Bienvenue à l\'EMEC : une famille spirituelle fondée sur la Parole, la prière et la mission.',
-        'Retrouvez les cultes, enseignements et temps de prière dans la page Événements.',
+        'Bienvenue Ã  l\'EMEC : une famille spirituelle fondÃ©e sur la Parole, la priÃ¨re et la mission.',
+        'Retrouvez les cultes, enseignements et temps de priÃ¨re dans la page Ã‰vÃ©nements.',
       ] as string[],
       galleryPhotos: galleryImages.slice(0, 6) as GalleryPhoto[],
     };
@@ -461,11 +464,13 @@ export default defineComponent({
             title: event.title,
             date: event.day,
             month: event.month,
-            location: `${event.location} · ${event.time}`,
+            location: `${event.location} Â· ${event.time}`,
           }));
         }
       } catch {
-        // Les donnees locales restent disponibles si l'API est indisponible.
+        this.groups = [];
+        this.programs = [];
+        this.events = [];
       }
     },
   },
@@ -1302,6 +1307,33 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
+}
+
+.home-empty {
+  max-width: 720px;
+  margin: 28px auto 0;
+  padding: 34px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.programs .home-empty {
+  color: rgba(7, 26, 51, 0.72);
+  background: rgba(7, 26, 51, 0.04);
+}
+
+.home-empty h3 {
+  margin-bottom: 8px;
+  color: inherit;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+}
+
+.home-empty p {
+  margin: 0;
+  font-size: 14px;
 }
 
 .event-card {

@@ -209,7 +209,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { findChurchBySlug, type ChurchItem } from "../data/churches";
+import type { ChurchItem } from "../data/churches";
 import { fetchChurchDetail } from "../services/emecApi";
 
 export default defineComponent({
@@ -218,7 +218,7 @@ export default defineComponent({
     const route = useRoute();
     const isFormerLeadersOpen = ref(false);
     const slug = String(route.params.slug || "");
-    const church = ref<ChurchItem | undefined>(findChurchBySlug(slug));
+    const church = ref<ChurchItem | null>(null);
     const mapEmbedUrl = computed(() => {
       const query = church.value
         ? `${church.value.name} ${church.value.address} Cameroun`
@@ -231,9 +231,11 @@ export default defineComponent({
         const apiChurch = await fetchChurchDetail(slug);
         if (apiChurch) {
           church.value = apiChurch;
+        } else {
+          church.value = null;
         }
       } catch {
-        church.value = findChurchBySlug(slug);
+        church.value = null;
       }
     });
 

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <main class="events-page">
     <section class="page-hero events-hero">
       <div class="hero-bg"></div>
@@ -6,31 +6,31 @@
       <div class="hero-content">
         <nav class="breadcrumb" aria-label="Fil d'ariane">
           <router-link to="/">Accueil</router-link>
-          <span>›</span>
-          <span class="current">Événements</span>
+          <span>â€º</span>
+          <span class="current">Ã‰vÃ©nements</span>
         </nav>
-        <h1>Événements EMEC<br /><em>vivre la foi ensemble.</em></h1>
+        <h1>Ã‰vÃ©nements EMEC<br /><em>vivre la foi ensemble.</em></h1>
         <p>
-          Retrouvez les cultes spéciaux, campagnes, formations et temps forts de
-          la vie de l'Église.
+          Retrouvez les cultes spÃ©ciaux, campagnes, formations et temps forts de
+          la vie de l'Ã‰glise.
         </p>
       </div>
     </section>
 
     <section class="events-layout">
-      <aside class="events-sidebar reveal" aria-label="Filtres des événements">
+      <aside class="events-sidebar reveal" aria-label="Filtres des Ã©vÃ©nements">
         <div class="search-box">
           <label for="event-search">Recherche</label>
           <input
             id="event-search"
             v-model="searchTerm"
             type="search"
-            placeholder="Rechercher un événement..."
+            placeholder="Rechercher un Ã©vÃ©nement..."
           />
         </div>
 
         <div class="category-box">
-          <p>Catégories</p>
+          <p>CatÃ©gories</p>
           <button
             v-for="category in categories"
             :key="category"
@@ -48,14 +48,14 @@
           :disabled="!hasActiveFilters"
           @click="resetFilters"
         >
-          Réinitialiser les filtres
+          RÃ©initialiser les filtres
         </button>
 
         <div class="sidebar-card">
-          <p class="sidebar-kicker">Programme régulier</p>
+          <p class="sidebar-kicker">Programme rÃ©gulier</p>
           <h3>Chaque semaine</h3>
           <p>
-            Dimanche 9h00, mercredi 17h30, vendredi 17h30 au siège de l'EMEC.
+            Dimanche 9h00, mercredi 17h30, vendredi 17h30 au siÃ¨ge de l'EMEC.
           </p>
           <router-link to="/events#programmes">Voir les programmes</router-link>
         </div>
@@ -70,18 +70,18 @@
           <router-link class="programs-link" to="/events#programmes">Voir les programmes</router-link>
         </div>
 
-        <div class="events-overview reveal" aria-label="Résumé des événements">
+        <div class="events-overview reveal" aria-label="RÃ©sumÃ© des Ã©vÃ©nements">
           <article>
             <strong>{{ events.length }}</strong>
             <span>rendez-vous</span>
           </article>
           <article>
             <strong>{{ categories.length - 1 }}</strong>
-            <span>catégories</span>
+            <span>catÃ©gories</span>
           </article>
           <article>
             <strong>{{ programs.length }}</strong>
-            <span>programmes réguliers</span>
+            <span>programmes rÃ©guliers</span>
           </article>
         </div>
 
@@ -108,14 +108,14 @@
         <nav
           class="events-pagination"
           v-if="totalPages > 1"
-          aria-label="Pagination des événements"
+          aria-label="Pagination des Ã©vÃ©nements"
         >
           <button
             type="button"
             :disabled="currentPage === 1"
             @click="goToPage(currentPage - 1)"
           >
-            Précédent
+            PrÃ©cÃ©dent
           </button>
           <button
             v-for="page in paginationPages"
@@ -137,8 +137,8 @@
         </nav>
 
         <div class="empty-state" v-if="!filteredEvents.length">
-          <h3>Aucun événement trouvé</h3>
-          <p>Essayez une autre recherche ou une autre catégorie.</p>
+          <h3>Aucun Ã©vÃ©nement trouvÃ©</h3>
+          <p>Essayez une autre recherche ou une autre catÃ©gorie.</p>
         </div>
       </div>
     </section>
@@ -158,6 +158,10 @@
           <h3>{{ program.title }}</h3>
           <span>{{ program.time }}</span>
         </article>
+      </div>
+      <div class="empty-state" v-if="!programs.length">
+        <h3>Aucun programme publie</h3>
+        <p>Les programmes hebdomadaires seront affiches ici depuis l'API.</p>
       </div>
     </section>
   </main>
@@ -180,77 +184,9 @@ export default defineComponent({
       selectedCategory: "Tous",
       currentPage: 1,
       pageSize: 8,
-      categories: [
-        "Tous",
-        "Culte",
-        "Formation",
-        "Évangélisation",
-        "Prière",
-        "Conférence",
-      ],
-      events: [
-        {
-          title: "Temps de prière et d'intercession",
-          category: "Prière",
-          day: "Ven.",
-          month: "Chaque semaine",
-          location: "EMEC Siège, Yaoundé",
-          time: "17h30 - 20h00",
-          description:
-            "Un temps d'intercession, de restauration et de communion dans la présence de Dieu.",
-        },
-        {
-          title: "Formation des disciples",
-          category: "Formation",
-          day: "Prog.",
-          month: "Régulier",
-          location: "EMEC Yaoundé",
-          time: "Selon le calendrier",
-          description:
-            "Des temps d'enseignement pour être affermi dans la Parole et équipé pour servir avec maturité.",
-        },
-        {
-          title: "Campagnes d'évangélisation",
-          category: "Évangélisation",
-          day: "Mission",
-          month: "À annoncer",
-          location: "Villes missionnaires de l'EMEC",
-          time: "Selon programmation",
-          description:
-            "Des mobilisations missionnaires pour annoncer l'Évangile, prier avec les familles et servir les communautés.",
-        },
-        {
-          title: "Culte de célébration",
-          category: "Culte",
-          day: "Dim.",
-          month: "Chaque semaine",
-          location: "EMEC Siège",
-          time: "9h00 - 12h30",
-          description:
-            "Un rendez-vous hebdomadaire de louange, de Parole et de communion fraternelle.",
-        },
-      ] as EventItem[],
-      programs: [
-        {
-          id: 1,
-          day: "Dimanche",
-          title: "Culte de Célébration",
-          time: "9h00 — 12h30",
-        },
-        { id: 2, day: "Lundi", title: "École de Sion", time: "17h30 — 20h00" },
-        {
-          id: 3,
-          day: "Mercredi",
-          title: "Jour d'Enseignements",
-          time: "17h30 — 20h00",
-        },
-        {
-          id: 4,
-          day: "Vendredi",
-          title: "Jour de Prières",
-          time: "17h30 — 20h00",
-        },
-      ] as WeeklyProgramItem[],
+      categories: ["Tous"],
+      events: [] as EventItem[],
+      programs: [] as WeeklyProgramItem[],
     };
   },
   computed: {
@@ -299,16 +235,14 @@ export default defineComponent({
           fetchWeeklyPrograms(),
         ]);
 
-        if (apiEvents.length) {
-          this.events = apiEvents;
-          this.categories = ["Tous", ...Array.from(new Set(apiEvents.map((event) => event.category))).sort()];
-        }
+        this.events = apiEvents;
+        this.categories = ["Tous", ...Array.from(new Set(apiEvents.map((event) => event.category))).sort()];
 
-        if (apiPrograms.length) {
-          this.programs = apiPrograms;
-        }
+        this.programs = apiPrograms;
       } catch {
-        // Les données locales restent affichées.
+        this.events = [];
+        this.programs = [];
+        this.categories = ["Tous"];
       }
     },
     initReveal() {

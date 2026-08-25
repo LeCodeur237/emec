@@ -241,7 +241,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { churches, type ChurchItem } from "../data/churches";
+import type { ChurchItem } from "../data/churches";
 import { fetchChurches } from "../services/emecApi";
 
 export default defineComponent({
@@ -257,7 +257,7 @@ export default defineComponent({
       selectedMissionField: "Tous",
       currentPage: 1,
       pageSize: 8,
-      churches,
+      churches: [] as ChurchItem[],
       officialLevels: [
         "Assemblée Locale",
         "District Ecclésiastique",
@@ -363,11 +363,9 @@ export default defineComponent({
     async loadChurches() {
       try {
         const apiChurches = await fetchChurches();
-        if (apiChurches.length) {
-          this.churches = apiChurches;
-        }
+        this.churches = apiChurches;
       } catch {
-        this.churches = churches;
+        this.churches = [];
       }
     },
     initReveal() {

@@ -1,16 +1,14 @@
 import { API_BASE_URL, fetchApi, listData } from "./api";
-import {
-  churches as fallbackChurches,
-  type AdministrativeLeader,
-  type ChurchItem,
-  type ChurchLeader,
-  type MeetingTime,
+import type {
+  AdministrativeLeader,
+  ChurchItem,
+  ChurchLeader,
+  MeetingTime,
 } from "../data/churches";
-import {
-  groups as fallbackGroups,
-  type GroupHighlight,
-  type GroupItem,
-  type GroupLeader,
+import type {
+  GroupHighlight,
+  GroupItem,
+  GroupLeader,
 } from "../data/groups";
 
 type ApiRecord = Record<string, unknown>;
@@ -98,6 +96,27 @@ function collection(value: unknown): ApiRecord[] {
   return [];
 }
 
+function mediaUrl(record: ApiRecord, fallback: string): string {
+  const media = collection(record.media);
+  const firstMedia = media[0];
+
+  return absoluteMediaUrl(
+    record.image || firstMedia?.url || firstMedia?.file_path || firstMedia?.path,
+    fallback,
+  );
+}
+
+function meetingTimesFrom(record: ApiRecord): MeetingTime[] {
+  const meetingTimes = collection(record.meeting_times || record.meetingTimes)
+    .map((meeting) => ({
+      day: text(meeting, ["day"], ""),
+      hours: text(meeting, ["hours", "time"], ""),
+    }))
+    .filter((meeting) => meeting.day && meeting.hours);
+
+  return meetingTimes;
+}
+
 function apiList(value: unknown): ApiRecord[] {
   return listData<ApiRecord>(value).filter(isRecord);
 }
@@ -153,38 +172,39 @@ function normalizeAdministrativeLeader(record: ApiRecord): AdministrativeLeader 
   };
 }
 
-function normalizeChurch(record: ApiRecord, fallback?: ChurchItem): ChurchItem {
-  const name = text(record, ["name"], fallback?.name || "Assemblee EMEC");
-  const address = text(record, ["address"], fallback?.address || "Yaounde, Cameroun");
+function normalizeChurch(record: ApiRecord): ChurchItem {
+  const name = text(record, ["name"], "Assemblee EMEC");
+  const address = text(record, ["address"], "Yaounde, Cameroun");
   const leaders = collection(record.leaders).map(normalizeChurchLeader);
+  const meetingTimes = meetingTimesFrom(record);
 
   return {
-    slug: text(record, ["slug"], fallback?.slug || ""),
+    slug: text(record, ["slug"], ""),
     name,
-    baptismName: text(record, ["baptism_name", "baptismName"], fallback?.baptismName || "A renseigner"),
-    city: text(record, ["city"], fallback?.city || "Yaounde"),
+    baptismName: text(record, ["baptism_name", "baptismName"], "A renseigner"),
+    city: text(record, ["city"], "Yaounde"),
     address,
-    neighborhood: text(record, ["neighborhood"], fallback?.neighborhood || address),
-    locality: text(record, ["locality"], fallback?.locality || address),
-    sector: text(record, ["sector"], fallback?.sector || "Secteur ecclesiastique"),
-    district: text(record, ["district"], fallback?.district || "District ecclesiastique"),
-    circumscription: text(record, ["circumscription"], fallback?.circumscription || "Circonscription ecclesiastique"),
-    missionField: text(record, ["mission_field", "missionField"], fallback?.missionField || "Champ Missionnaire du Cameroun"),
-    region: text(record, ["region"], fallback?.region || address),
-    status: text(record, ["status"], fallback?.status || "Assemblee Locale"),
-    description: text(record, ["description"], fallback?.description || ""),
-    pastorVision: text(record, ["pastor_vision", "pastorVision"], fallback?.pastorVision || ""),
-    meetingTimes: fallback?.meetingTimes || [
+    neighborhood: text(record, ["neighborhood"], address),
+    locality: text(record, ["locality"], address),
+    sector: text(record, ["sector"], "Secteur ecclesiastique"),
+    district: text(record, ["district"], "District ecclesiastique"),
+    circumscription: text(record, ["circumscription"], "Circonscription ecclesiastique"),
+    missionField: text(record, ["mission_field", "missionField"], "Champ Missionnaire du Cameroun"),
+    region: text(record, ["region"], address),
+    status: text(record, ["status"], "Assemblee Locale"),
+    description: text(record, ["description"], ""),
+    pastorVision: text(record, ["pastor_vision", "pastorVision"], ""),
+    meetingTimes: meetingTimes.length ? meetingTimes : [
       { day: "Dimanche", hours: "09h00 - 12h30" },
       { day: "Mercredi", hours: "17h30 - 19h00" },
     ],
-    schedule: fallback?.schedule || "Dimanche 09h00 - 12h30",
-    contact: text(record, ["contact"], fallback?.contact || "(+237) 699 76 54 35"),
-    image: absoluteMediaUrl(record.image, fallback?.image || "/images/home-2.jpg"),
+    schedule: text(record, ["schedule"], "Dimanche 09h00 - 12h30"),
+    contact: text(record, ["contact"], "(+237) 699 76 54 35"),
+    image: mediaUrl(record, "/images/home-2.jpg"),
     alt: name,
-    mapUrl: text(record, ["map_url", "mapUrl"], fallback?.mapUrl || `https://maps.google.com/?q=${encodeURIComponent(`${name} ${address} Cameroun`)}`),
-    leaders: leaders.length ? leaders : fallback?.leaders || [],
-    administrativeLeaders: fallback?.administrativeLeaders || [],
+    mapUrl: text(record, ["map_url", "mapUrl"], `https://maps.google.com/?q=${encodeURIComponent(`${name} ${address} Cameroun`)}`),
+    leaders,
+    administrativeLeaders: [],
   };
 }
 
@@ -197,36 +217,36 @@ function normalizeGroupLeader(record: ApiRecord): GroupLeader {
   };
 }
 
-function normalizeGroup(record: ApiRecord, fallback?: GroupItem): GroupItem {
-  const name = text(record, ["name"], fallback?.name || "Groupe EMEC");
-  const description = text(record, ["short_description", "description"], fallback?.description || "");
-  const details = text(record, ["description", "details"], fallback?.details || description);
+function normalizeGroup(record: ApiRecord): GroupItem {
+  const name = text(record, ["name"], "Groupe EMEC");
+  const description = text(record, ["short_description", "description"], "");
+  const details = text(record, ["description", "details"], description);
   const leaders = collection(record.leaders).map(normalizeGroupLeader);
   const mediaImages = collection(record.media).map((media) => absoluteMediaUrl(media.url || media.path || media.file_path, ""));
-  const highlights: GroupHighlight[] = fallback?.highlights || [
+  const highlights: GroupHighlight[] = [
     { title: "Mission", description },
     { title: "Action", description: details },
-  ];
+  ].filter((item) => item.description);
 
   return {
-    slug: text(record, ["slug"], fallback?.slug || ""),
+    slug: text(record, ["slug"], ""),
     name,
     description,
     details,
-    focus: fallback?.focus || description,
-    vision: fallback?.vision || description,
-    action: fallback?.action || details,
-    audience: fallback?.audience || "Membres et sympathisants",
-    image: absoluteMediaUrl(record.image, fallback?.image || "/images/home-1.jpg"),
+    focus: text(record, ["focus"], description),
+    vision: text(record, ["vision"], description),
+    action: text(record, ["action"], details),
+    audience: text(record, ["audience"], "Membres et sympathisants"),
+    image: mediaUrl(record, "/images/home-1.jpg"),
     alt: name,
-    motto: fallback?.motto,
-    officialReference: fallback?.officialReference,
+    motto: text(record, ["motto"], ""),
+    officialReference: text(record, ["official_reference", "officialReference"], ""),
     highlights,
-    galleryImages: mediaImages.filter(Boolean).length ? mediaImages.filter(Boolean) : fallback?.galleryImages,
-    leaders: leaders.length ? leaders : fallback?.leaders,
-    externalUrl: fallback?.externalUrl,
-    photosUrl: fallback?.photosUrl,
-    isPrivate: fallback?.isPrivate || bool(record, ["is_private"], false),
+    galleryImages: mediaImages.filter(Boolean),
+    leaders,
+    externalUrl: text(record, ["external_url", "externalUrl"], ""),
+    photosUrl: text(record, ["photos_url", "photosUrl"], ""),
+    isPrivate: bool(record, ["is_private"], false),
   };
 }
 
@@ -259,38 +279,26 @@ function normalizeWeeklyProgram(record: ApiRecord): WeeklyProgramItem {
 
 export async function fetchChurches(): Promise<ChurchItem[]> {
   const payload = await fetchApi<unknown>("/churches", { query: { per_page: 100 } });
-  const items = apiList(payload).map((record) => {
-    const fallback = fallbackChurches.find((church) => church.slug === text(record, ["slug"]));
-    return normalizeChurch(record, fallback);
-  });
-
-  return items.length ? items : fallbackChurches;
+  return apiList(payload).map(normalizeChurch);
 }
 
 export async function fetchChurchDetail(slug: string): Promise<ChurchItem | null> {
-  const fallback = fallbackChurches.find((church) => church.slug === slug);
   const payload = await fetchApi<unknown>(`/churches/${slug}`);
   const data = unwrapData(payload);
 
-  return isRecord(data) ? normalizeChurch(data, fallback) : fallback || null;
+  return isRecord(data) ? normalizeChurch(data) : null;
 }
 
 export async function fetchGroups(): Promise<GroupItem[]> {
   const payload = await fetchApi<unknown>("/groups", { query: { per_page: 100 } });
-  const items = apiList(payload).map((record) => {
-    const fallback = fallbackGroups.find((group) => group.slug === text(record, ["slug"]));
-    return normalizeGroup(record, fallback);
-  });
-
-  return items.length ? items : fallbackGroups;
+  return apiList(payload).map(normalizeGroup);
 }
 
 export async function fetchGroupDetail(slug: string): Promise<GroupItem | null> {
-  const fallback = fallbackGroups.find((group) => group.slug === slug);
   const payload = await fetchApi<unknown>(`/groups/${slug}`);
   const data = unwrapData(payload);
 
-  return isRecord(data) ? normalizeGroup(data, fallback) : fallback || null;
+  return isRecord(data) ? normalizeGroup(data) : null;
 }
 
 export async function fetchEvents(): Promise<EventItem[]> {

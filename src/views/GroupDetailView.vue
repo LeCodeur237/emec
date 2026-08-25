@@ -200,7 +200,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { findGroupBySlug, groups, type GroupItem } from '../data/groups';
+import type { GroupItem } from '../data/groups';
 import { fetchGroupDetail, fetchGroups } from '../services/emecApi';
 
 export default defineComponent({
@@ -209,8 +209,8 @@ export default defineComponent({
     const route = useRoute();
     const isFormerLeadersOpen = ref(false);
     const slug = String(route.params.slug || '');
-    const group = ref<GroupItem | undefined>(findGroupBySlug(slug));
-    const groupList = ref<GroupItem[]>(groups);
+    const group = ref<GroupItem | null>(null);
+    const groupList = ref<GroupItem[]>([]);
     const relatedGroups = computed(() => groupList.value.filter((item) => item.slug !== group.value?.slug));
     const imageLoop = computed(() => {
       const images = group.value?.galleryImages?.length ? group.value.galleryImages : group.value ? [group.value.image] : [];
@@ -226,14 +226,14 @@ export default defineComponent({
 
         if (apiGroup) {
           group.value = apiGroup;
+        } else {
+          group.value = null;
         }
 
-        if (apiGroups.length) {
-          groupList.value = apiGroups;
-        }
+        groupList.value = apiGroups;
       } catch {
-        group.value = findGroupBySlug(slug);
-        groupList.value = groups;
+        group.value = null;
+        groupList.value = [];
       }
     });
 

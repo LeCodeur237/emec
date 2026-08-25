@@ -166,13 +166,18 @@
           </router-link>
         </template>
       </div>
+      <div class="empty-state" v-if="!actionGroups.length">
+        <h3>Aucun groupe publie</h3>
+        <p>Les groupes d'action actifs seront affiches ici depuis l'API.</p>
+      </div>
     </section>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { groups } from '../data/groups';
+import type { GroupItem } from '../data/groups';
+import { fetchGroups } from '../services/emecApi';
 
 export default defineComponent({
   name: 'GovernanceView',
@@ -281,8 +286,16 @@ export default defineComponent({
           description: "Un cadre d'activité évangélique dans certaines zones ou pays où l'œuvre missionnaire se déploie.",
         },
       ],
-      actionGroups: groups.filter((group) => group.slug !== 'oeuvres-sociales'),
+      actionGroups: [] as GroupItem[],
     };
+  },
+  async mounted() {
+    try {
+      const apiGroups = await fetchGroups();
+      this.actionGroups = apiGroups.filter((group) => group.slug !== 'oeuvres-sociales');
+    } catch {
+      this.actionGroups = [];
+    }
   },
 });
 </script>
@@ -608,6 +621,24 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
+}
+
+.empty-state {
+  margin-top: 28px;
+  padding: 34px;
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.empty-state h3 {
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.empty-state p {
+  margin: 0;
 }
 
 .groups-section .section-heading h2 {

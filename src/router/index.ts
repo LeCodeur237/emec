@@ -16,8 +16,6 @@ import DoctrineView from '../views/DoctrineView.vue';
 import HistoryVisionView from '../views/HistoryVisionView.vue';
 import StrategyVisionView from '../views/StrategyVisionView.vue';
 import SocialWorksView from '../views/SocialWorksView.vue';
-import { findGroupBySlug } from '../data/groups';
-import { findChurchBySlug } from '../data/churches';
 
 const SITE_URL = 'https://egliseemec.org';
 const DEFAULT_TITLE = 'EMEC | Église Messianique Évangélique du Cameroun';
@@ -232,23 +230,9 @@ function setCanonical(url: string) {
 router.afterEach((to) => {
   if (typeof document === 'undefined') return;
 
-  const group = to.name === 'GroupDetail' ? findGroupBySlug(String(to.params.slug || '')) : null;
-  const church = to.name === 'ChurchDetail' ? findChurchBySlug(String(to.params.slug || '')) : null;
-  const title = group
-    ? `${group.name} | EMEC`
-    : church
-      ? `${church.name} | EMEC`
-      : String(to.meta.title || DEFAULT_TITLE);
-  const description = group
-    ? group.description
-    : church
-      ? church.description
-      : String(to.meta.description || DEFAULT_DESCRIPTION);
-  const image = group
-    ? `${SITE_URL}${group.image}`
-    : church
-      ? `${SITE_URL}${church.image}`
-      : String(to.meta.image || DEFAULT_IMAGE);
+  const title = String(to.meta.title || DEFAULT_TITLE);
+  const description = String(to.meta.description || DEFAULT_DESCRIPTION);
+  const image = String(to.meta.image || DEFAULT_IMAGE);
   const url = `${SITE_URL}${to.path === '/' ? '/' : to.path}`;
 
   document.title = title;

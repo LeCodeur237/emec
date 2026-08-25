@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <main>
     <section class="page-hero about-hero">
       <div class="hero-bg"></div>
@@ -6,11 +6,11 @@
       <div class="hero-content">
         <nav class="breadcrumb" aria-label="Fil d'ariane">
           <router-link to="/">Accueil</router-link>
-          <span>›</span>
-          <span class="current">À propos</span>
+          <span>â€º</span>
+          <span class="current">Ã€ propos</span>
         </nav>
-        <h1>Qui sommes-nous ?<br /><em>Une Église, une famille, une mission.</em></h1>
-        <p class="hero-sub">L'Église Messianique Évangélique du Cameroun est une communauté de foi appelée à annoncer l'Évangile, former des disciples et servir les familles avec fidélité.</p>
+        <h1>Qui sommes-nous ?<br /><em>Une Ã‰glise, une famille, une mission.</em></h1>
+        <p class="hero-sub">L'Ã‰glise Messianique Ã‰vangÃ©lique du Cameroun est une communautÃ© de foi appelÃ©e Ã  annoncer l'Ã‰vangile, former des disciples et servir les familles avec fidÃ©litÃ©.</p>
       </div>
     </section>
 
@@ -18,27 +18,27 @@
       <div class="history-feature">
         <div class="history-copy reveal">
           <p class="section-eyebrow">Notre Histoire</p>
-          <h2 class="section-title">Une histoire portée par la Parole, la mission et le service.</h2>
-          <p>Depuis sa création, l'EMEC avance avec une conviction claire : l'Église existe pour annoncer Christ, édifier les croyants et servir les communautés. Son histoire s'est construite dans la prière, l'enseignement biblique, l'évangélisation et l'engagement des serviteurs de Dieu.</p>
-          <p>Cette vision a donné naissance à une famille spirituelle organisée, attentive à la formation des disciples, à l'implantation des assemblées et à l'accompagnement des personnes. Chaque génération y reçoit un appel à grandir, servir et porter l'espérance de l'Évangile.</p>
-          <router-link class="history-link" to="/histoire-vision-2043">Lire l'histoire complète</router-link>
+          <h2 class="section-title">Une histoire portÃ©e par la Parole, la mission et le service.</h2>
+          <p>Depuis sa crÃ©ation, l'EMEC avance avec une conviction claire : l'Ã‰glise existe pour annoncer Christ, Ã©difier les croyants et servir les communautÃ©s. Son histoire s'est construite dans la priÃ¨re, l'enseignement biblique, l'Ã©vangÃ©lisation et l'engagement des serviteurs de Dieu.</p>
+          <p>Cette vision a donnÃ© naissance Ã  une famille spirituelle organisÃ©e, attentive Ã  la formation des disciples, Ã  l'implantation des assemblÃ©es et Ã  l'accompagnement des personnes. Chaque gÃ©nÃ©ration y reÃ§oit un appel Ã  grandir, servir et porter l'espÃ©rance de l'Ã‰vangile.</p>
+          <router-link class="history-link" to="/histoire-vision-2043">Lire l'histoire complÃ¨te</router-link>
         </div>
         <div class="history-visual reveal">
           <img src="/images/about-1.png" alt="Moment marquant de l'histoire de l'EMEC" loading="lazy" />
           <div class="history-visual-card">
-            <span>Héritage vivant</span>
-            <p>Une vision apostolique transmise pour bâtir, restaurer et envoyer.</p>
+            <span>HÃ©ritage vivant</span>
+            <p>Une vision apostolique transmise pour bÃ¢tir, restaurer et envoyer.</p>
           </div>
         </div>
       </div>
       <div class="histoire-grid">
         <div class="histoire-card reveal">
           <h3>Notre fondation</h3>
-          <p>L'EMEC est née d'une vision apostolique : répandre l'Évangile, former des disciples, implanter des églises et porter le témoignage de Christ dans les villes du Cameroun.</p>
+          <p>L'EMEC est nÃ©e d'une vision apostolique : rÃ©pandre l'Ã‰vangile, former des disciples, implanter des Ã©glises et porter le tÃ©moignage de Christ dans les villes du Cameroun.</p>
         </div>
         <div class="histoire-card reveal">
           <h3>Nos valeurs</h3>
-          <p>Foi, obéissance, excellence, compassion et justice sont les piliers qui guident nos cultes, nos programmes, nos projets de service et notre vie communautaire.</p>
+          <p>Foi, obÃ©issance, excellence, compassion et justice sont les piliers qui guident nos cultes, nos programmes, nos projets de service et notre vie communautaire.</p>
         </div>
       </div>
     </section>
@@ -46,34 +46,34 @@
     <section class="identity" id="identite">
       <div class="identity-visual reveal">
         <div class="identity-image">
-          <img src="/images/home-10.jpg" alt="Communauté EMEC réunie" loading="lazy" />
+          <img src="/images/home-10.jpg" alt="CommunautÃ© EMEC rÃ©unie" loading="lazy" />
         </div>
         <div class="identity-note">
           <span>Maison spirituelle</span>
-          <p>Un lieu où la Parole bâtit, la prière fortifie et la communion restaure.</p>
+          <p>Un lieu oÃ¹ la Parole bÃ¢tit, la priÃ¨re fortifie et la communion restaure.</p>
         </div>
       </div>
       <div class="identity-text reveal">
-        <p class="section-eyebrow">Notre Identité</p>
-        <h2 class="section-title">Une maison spirituelle pour bâtir, restaurer et envoyer.</h2>
-        <p>Nous croyons que l'Église est plus qu'un lieu de rassemblement : elle est une famille spirituelle où les vies sont enseignées, restaurées et équipées pour servir Dieu avec maturité.</p>
-        <p>À l'EMEC, les cultes, les temps de prière, les formations, les groupes d'action et les œuvres de compassion portent une même conviction : Christ transforme les vies et envoie des disciples comme témoins dans leur génération.</p>
+        <p class="section-eyebrow">Notre IdentitÃ©</p>
+        <h2 class="section-title">Une maison spirituelle pour bÃ¢tir, restaurer et envoyer.</h2>
+        <p>Nous croyons que l'Ã‰glise est plus qu'un lieu de rassemblement : elle est une famille spirituelle oÃ¹ les vies sont enseignÃ©es, restaurÃ©es et Ã©quipÃ©es pour servir Dieu avec maturitÃ©.</p>
+        <p>Ã€ l'EMEC, les cultes, les temps de priÃ¨re, les formations, les groupes d'action et les Å“uvres de compassion portent une mÃªme conviction : Christ transforme les vies et envoie des disciples comme tÃ©moins dans leur gÃ©nÃ©ration.</p>
         <div class="identity-list">
           <article>
             <span>Parole</span>
             <p>Recevoir, vivre et transmettre l'enseignement biblique.</p>
           </article>
           <article>
-            <span>Prière</span>
-            <p>Cultiver la dépendance à Dieu dans chaque saison.</p>
+            <span>PriÃ¨re</span>
+            <p>Cultiver la dÃ©pendance Ã  Dieu dans chaque saison.</p>
           </article>
           <article>
             <span>Communion</span>
-            <p>Marcher dans l'amour, l'unité et l'accompagnement mutuel.</p>
+            <p>Marcher dans l'amour, l'unitÃ© et l'accompagnement mutuel.</p>
           </article>
           <article>
             <span>Mission</span>
-            <p>Annoncer Christ, former des disciples et servir les communautés.</p>
+            <p>Annoncer Christ, former des disciples et servir les communautÃ©s.</p>
           </article>
         </div>
       </div>
@@ -82,24 +82,24 @@
     <section class="official-anchors" id="textes-officiels">
       <div class="section-intro reveal">
         <p class="section-eyebrow">Textes officiels</p>
-        <h2 class="section-title">Une identité encadrée par les Statuts et le Règlement Intérieur.</h2>
-        <p>Les textes officiels précisent la reconnaissance, l'objet, les organes, la discipline spirituelle et l'organisation ecclésiale de l'EMEC.</p>
+        <h2 class="section-title">Une identitÃ© encadrÃ©e par les Statuts et le RÃ¨glement IntÃ©rieur.</h2>
+        <p>Les textes officiels prÃ©cisent la reconnaissance, l'objet, les organes, la discipline spirituelle et l'organisation ecclÃ©siale de l'EMEC.</p>
       </div>
       <div class="official-grid">
         <article class="official-card reveal">
-          <span>Statuts · Articles 2-4</span>
-          <h3>Création et objet</h3>
-          <p>Association religieuse reconnue, l'EMEC existe pour répandre l'Évangile, implanter des églises, former les serviteurs de Dieu et porter des œuvres sociales.</p>
+          <span>Statuts Â· Articles 2-4</span>
+          <h3>CrÃ©ation et objet</h3>
+          <p>Association religieuse reconnue, l'EMEC existe pour rÃ©pandre l'Ã‰vangile, implanter des Ã©glises, former les serviteurs de Dieu et porter des Å“uvres sociales.</p>
         </article>
         <article class="official-card reveal">
-          <span>Statuts · Articles 11-14</span>
+          <span>Statuts Â· Articles 11-14</span>
           <h3>Organisation</h3>
-          <p>L'EMEC est structurée autour de l'Assemblée Générale, du Conseil Exécutif, du CPRAD, des départements, cellules et subdivisions ecclésiales.</p>
+          <p>L'EMEC est structurÃ©e autour de l'AssemblÃ©e GÃ©nÃ©rale, du Conseil ExÃ©cutif, du CPRAD, des dÃ©partements, cellules et subdivisions ecclÃ©siales.</p>
         </article>
         <article class="official-card reveal">
-          <span>Règlement Intérieur · Article 5</span>
+          <span>RÃ¨glement IntÃ©rieur Â· Article 5</span>
           <h3>Profession de foi</h3>
-          <p>La foi de l'EMEC est fondée sur les Saintes Écritures, la confession de Jésus-Christ et la vie du croyant dans la sainteté, la communion et la mission.</p>
+          <p>La foi de l'EMEC est fondÃ©e sur les Saintes Ã‰critures, la confession de JÃ©sus-Christ et la vie du croyant dans la saintetÃ©, la communion et la mission.</p>
         </article>
       </div>
       <router-link
@@ -113,7 +113,7 @@
     <section class="values" id="valeurs">
       <div class="section-intro reveal">
         <p class="section-eyebrow">Ce qui nous anime</p>
-        <h2 class="section-title">Des valeurs qui donnent forme à notre marche.</h2>
+        <h2 class="section-title">Des valeurs qui donnent forme Ã  notre marche.</h2>
       </div>
       <div class="values-grid">
         <article class="value-card reveal" v-for="value in values" :key="value.title">
@@ -128,35 +128,35 @@
       <div class="founder-feature reveal">
         <div class="founder-visual">
           <div class="founder-photo">
-            <img src="/images/fondateur.png" alt="Apôtre Samuel Dalle" loading="lazy" />
+            <img src="/images/fondateur.png" alt="ApÃ´tre Samuel Dalle" loading="lazy" />
           </div>
           <div class="founder-badge">
             <span>Vision transmise</span>
-            <strong>Foi · Parole · Mission</strong>
+            <strong>Foi Â· Parole Â· Mission</strong>
           </div>
         </div>
         <article class="founder-card">
           <div class="founder-info">
-            <p class="section-eyebrow">Héritage</p>
-            <h2 class="section-title">Un héritage apostolique qui continue d'inspirer l'EMEC.</h2>
+            <p class="section-eyebrow">HÃ©ritage</p>
+            <h2 class="section-title">Un hÃ©ritage apostolique qui continue d'inspirer l'EMEC.</h2>
             <p class="founder-tag">Fondateur</p>
             <h3 class="founder-name">Samuel Dalle Nyame</h3>
-            <p class="founder-role">Apôtre fondateur</p>
-            <p class="founder-quote">Son héritage rappelle l'importance d'une Église enracinée dans la Parole, engagée dans la mission et attentive au relèvement des vies.</p>
-            <p>Feu l'Apôtre Samuel Dalle Nyame reste associé aux fondements apostoliques de l'Église Messianique Évangélique du Cameroun. Sous son leadership, la vision portée par l'EMEC s'est affirmée autour d'un appel central : conduire les hommes au salut en Jésus-Christ, former des serviteurs de Dieu et implanter des communautés de foi.</p>
-            <p>Son ministère a marqué l'histoire de l'Église par une prédication attachée à la Parole, une exigence de maturité spirituelle et une compréhension large de la mission : annoncer Christ, bâtir des disciples, servir les familles et participer au relèvement des communautés. L'héritage qu'il a laissé continue d'orienter la marche de l'EMEC depuis sa reconnaissance officielle en 1993.</p>
+            <p class="founder-role">ApÃ´tre fondateur</p>
+            <p class="founder-quote">Son hÃ©ritage rappelle l'importance d'une Ã‰glise enracinÃ©e dans la Parole, engagÃ©e dans la mission et attentive au relÃ¨vement des vies.</p>
+            <p>Feu l'ApÃ´tre Samuel Dalle Nyame reste associÃ© aux fondements apostoliques de l'Ã‰glise Messianique Ã‰vangÃ©lique du Cameroun. Sous son leadership, la vision portÃ©e par l'EMEC s'est affirmÃ©e autour d'un appel central : conduire les hommes au salut en JÃ©sus-Christ, former des serviteurs de Dieu et implanter des communautÃ©s de foi.</p>
+            <p>Son ministÃ¨re a marquÃ© l'histoire de l'Ã‰glise par une prÃ©dication attachÃ©e Ã  la Parole, une exigence de maturitÃ© spirituelle et une comprÃ©hension large de la mission : annoncer Christ, bÃ¢tir des disciples, servir les familles et participer au relÃ¨vement des communautÃ©s. L'hÃ©ritage qu'il a laissÃ© continue d'orienter la marche de l'EMEC depuis sa reconnaissance officielle en 1993.</p>
             <div class="founder-legacy-list">
               <article>
                 <span>01</span>
-                <p>Annoncer l'Évangile et conduire les hommes au salut par la foi en Jésus-Christ.</p>
+                <p>Annoncer l'Ã‰vangile et conduire les hommes au salut par la foi en JÃ©sus-Christ.</p>
               </article>
               <article>
                 <span>02</span>
-                <p>Former des serviteurs et des disciples enracinés dans la Parole de Dieu.</p>
+                <p>Former des serviteurs et des disciples enracinÃ©s dans la Parole de Dieu.</p>
               </article>
               <article>
                 <span>03</span>
-                <p>Implanter des églises et servir les communautés par des œuvres concrètes.</p>
+                <p>Implanter des Ã©glises et servir les communautÃ©s par des Å“uvres concrÃ¨tes.</p>
               </article>
             </div>
           </div>
@@ -167,26 +167,30 @@
     <section class="churches" id="eglises">
       <div class="churches-header reveal">
         <div>
-          <p class="section-eyebrow">Nos églises</p>
-          <h2 class="section-title">Une même famille, plusieurs lieux de communion.</h2>
-          <p>Retrouvez les assemblées EMEC, leurs villes et les lieux où la famille se rassemble pour adorer, prier et grandir dans la Parole.</p>
+          <p class="section-eyebrow">Nos Ã©glises</p>
+          <h2 class="section-title">Une mÃªme famille, plusieurs lieux de communion.</h2>
+          <p>Retrouvez les assemblÃ©es EMEC, leurs villes et les lieux oÃ¹ la famille se rassemble pour adorer, prier et grandir dans la Parole.</p>
         </div>
-        <router-link class="churches-more" to="/churches">Voir toutes nos églises</router-link>
+        <router-link class="churches-more" to="/churches">Voir toutes nos Ã©glises</router-link>
       </div>
-      <div class="churches-grid">
+      <div class="churches-grid" v-if="churches.length">
         <article class="church-card reveal" v-for="(church, index) in churches" :key="church.city">
           <span>{{ String(index + 1).padStart(2, '0') }}</span>
           <h3>{{ church.city }}</h3>
           <p>{{ church.description }}</p>
         </article>
       </div>
+      <div class="churches-empty reveal" v-else>
+        <h3>Aucune eglise publiee</h3>
+        <p>Les assemblees actives seront affichees ici depuis l'API.</p>
+      </div>
     </section>
 
     <section class="leaders" id="conseil-executif">
       <div class="section-intro reveal">
-        <p class="section-eyebrow">Conseil Exécutif</p>
-        <h2 class="section-title">Des dirigeants engagés au service de la vision.</h2>
-        <p>Le Conseil Exécutif veille à la conduite spirituelle, administrative et missionnaire de l'EMEC, en cohérence avec les Statuts et le Règlement Intérieur.</p>
+        <p class="section-eyebrow">Conseil ExÃ©cutif</p>
+        <h2 class="section-title">Des dirigeants engagÃ©s au service de la vision.</h2>
+        <p>Le Conseil ExÃ©cutif veille Ã  la conduite spirituelle, administrative et missionnaire de l'EMEC, en cohÃ©rence avec les Statuts et le RÃ¨glement IntÃ©rieur.</p>
         <router-link class="leaders-more" to="/gouvernance">Comprendre la gouvernance</router-link>
       </div>
       <div class="leaders-grid">
@@ -210,14 +214,14 @@
     <teleport to="body">
       <div v-if="isHistoryOpen" class="history-modal" role="dialog" aria-modal="true" aria-labelledby="history-title" @click.self="closeHistoryModal">
         <div class="history-modal-panel">
-          <button class="history-modal-close" type="button" aria-label="Fermer l'histoire complète" @click="closeHistoryModal">×</button>
-          <p class="section-eyebrow">Histoire complète</p>
+          <button class="history-modal-close" type="button" aria-label="Fermer l'histoire complÃ¨te" @click="closeHistoryModal">Ã—</button>
+          <p class="section-eyebrow">Histoire complÃ¨te</p>
           <h2 id="history-title">L'histoire de l'EMEC</h2>
           <div class="history-modal-content">
-            <p>L'Église Messianique Évangélique du Cameroun est née d'une vision apostolique portée par la conviction que Dieu bâtit des vies, restaure les familles et envoie des disciples pour annoncer l'Évangile.</p>
-            <p>Depuis ses débuts, l'EMEC s'est attachée à placer la Parole de Dieu au centre de sa marche. Les cultes, les enseignements, les temps de prière, les groupes d'action et les œuvres sociales ont progressivement façonné une famille spirituelle engagée dans la foi, la communion et le service.</p>
-            <p>L'héritage laissé par l'Apôtre Samuel Dalle demeure un repère fort : former des disciples matures, équiper les croyants pour leur appel et manifester l'amour de Christ auprès des communautés. Cette vision continue d'inspirer l'EMEC dans son rayonnement au Cameroun et au-delà.</p>
-            <p>Aujourd'hui, l'EMEC poursuit cette mission avec le même zèle : annoncer Christ, implanter des assemblées, accompagner les vies, soutenir les familles et servir la société par la compassion, la justice et l'espérance.</p>
+            <p>L'Ã‰glise Messianique Ã‰vangÃ©lique du Cameroun est nÃ©e d'une vision apostolique portÃ©e par la conviction que Dieu bÃ¢tit des vies, restaure les familles et envoie des disciples pour annoncer l'Ã‰vangile.</p>
+            <p>Depuis ses dÃ©buts, l'EMEC s'est attachÃ©e Ã  placer la Parole de Dieu au centre de sa marche. Les cultes, les enseignements, les temps de priÃ¨re, les groupes d'action et les Å“uvres sociales ont progressivement faÃ§onnÃ© une famille spirituelle engagÃ©e dans la foi, la communion et le service.</p>
+            <p>L'hÃ©ritage laissÃ© par l'ApÃ´tre Samuel Dalle demeure un repÃ¨re fort : former des disciples matures, Ã©quiper les croyants pour leur appel et manifester l'amour de Christ auprÃ¨s des communautÃ©s. Cette vision continue d'inspirer l'EMEC dans son rayonnement au Cameroun et au-delÃ .</p>
+            <p>Aujourd'hui, l'EMEC poursuit cette mission avec le mÃªme zÃ¨le : annoncer Christ, implanter des assemblÃ©es, accompagner les vies, soutenir les familles et servir la sociÃ©tÃ© par la compassion, la justice et l'espÃ©rance.</p>
           </div>
         </div>
       </div>
@@ -227,6 +231,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { fetchChurches } from '../services/emecApi';
 
 interface ValueItem {
   number: string;
@@ -254,27 +259,23 @@ export default defineComponent({
     return {
       isHistoryOpen: false,
       values: [
-        { number: '01', title: 'La Parole', description: "Nous plaçons l'enseignement biblique au centre de notre foi, de nos décisions et de notre croissance spirituelle." },
-        { number: '02', title: 'La prière', description: "Nous croyons à la puissance de la prière, de l'intercession et de la dépendance quotidienne au Saint-Esprit." },
-        { number: '03', title: 'La communion', description: 'Nous bâtissons une famille spirituelle où chacun peut être accueilli, accompagné et encouragé.' },
-        { number: '04', title: 'La mission', description: "Nous sommes envoyés pour annoncer l'Évangile, former des disciples et servir les communautés avec amour." },
+        { number: '01', title: 'La Parole', description: "Nous plaÃ§ons l'enseignement biblique au centre de notre foi, de nos dÃ©cisions et de notre croissance spirituelle." },
+        { number: '02', title: 'La priÃ¨re', description: "Nous croyons Ã  la puissance de la priÃ¨re, de l'intercession et de la dÃ©pendance quotidienne au Saint-Esprit." },
+        { number: '03', title: 'La communion', description: 'Nous bÃ¢tissons une famille spirituelle oÃ¹ chacun peut Ãªtre accueilli, accompagnÃ© et encouragÃ©.' },
+        { number: '04', title: 'La mission', description: "Nous sommes envoyÃ©s pour annoncer l'Ã‰vangile, former des disciples et servir les communautÃ©s avec amour." },
       ] as ValueItem[],
-      churches: [
-        { city: 'Yaoundé', description: "Le siège de l'EMEC, un lieu de célébration, d'enseignement et de service pour les familles." },
-        { city: 'Bertoua', description: "Une implantation missionnaire portée par l'évangélisation, la prière et l'accompagnement spirituel." },
-        { city: 'Au-delà', description: "Une vision appelée à rayonner dans d'autres villes, avec le même zèle pour Christ et les âmes." },
-      ] as ChurchItem[],
+      churches: [] as ChurchItem[],
       leaders: [
-        { initials: 'PR', name: 'NOUMESSI Anatole', role: 'Président du Conseil Exécutif', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'VPR', name: 'BANGUENA OLEMBA Sylvain', role: 'Vice-président', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'Secrétaire Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/pce/sg.png' },
-        { initials: 'SG', name: 'UM MAKON Simon R.', role: 'Secrétaire Général Adjoint', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'T', name: 'NTAP Ruben', role: 'Trésorier Général', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'CG', name: 'BIABAK Dieudonné', role: 'Contrôleur de Gestion', title: 'Ancien', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'PR', name: 'NOUMESSI Anatole', role: 'PrÃ©sident du Conseil ExÃ©cutif', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'VPR', name: 'BANGUENA OLEMBA Sylvain', role: 'Vice-prÃ©sident', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'SG', name: 'LEBONGO NDOMAN Pierre D.', role: 'SecrÃ©taire GÃ©nÃ©ral', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/pce/sg.png' },
+        { initials: 'SG', name: 'UM MAKON Simon R.', role: 'SecrÃ©taire GÃ©nÃ©ral Adjoint', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'T', name: 'NTAP Ruben', role: 'TrÃ©sorier GÃ©nÃ©ral', title: 'Pasteur', mandate: '2020 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'CG', name: 'BIABAK DieudonnÃ©', role: 'ContrÃ´leur de Gestion', title: 'Ancien', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CS', name: 'ABDOU MBILAMBOUZOUM', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CS', name: 'LAWA Jean', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
         { initials: 'CS', name: 'NKOUSSA BEKADA', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
-        { initials: 'CS', name: 'WANGYANG André', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
+        { initials: 'CS', name: 'WANGYANG AndrÃ©', role: 'Conseiller spirituel', title: 'Pasteur', mandate: '2021 - Aujourd\'hui', image: '/images/profil.jpg' },
       ] as LeaderItem[],
     };
   },
@@ -285,8 +286,21 @@ export default defineComponent({
     closeHistoryModal() {
       this.isHistoryOpen = false;
     },
+    async loadChurchesPreview(): Promise<ChurchItem[]> {
+      try {
+        const apiChurches = await fetchChurches();
+        return apiChurches.slice(0, 3).map((church) => ({
+          city: church.city || church.name,
+          description: church.description || church.address,
+        }));
+      } catch {
+        return [];
+      }
+    },
   },
-  mounted() {
+  async mounted() {
+      this.churches = await this.loadChurchesPreview();
+
       const reveals = document.querySelectorAll<HTMLElement>('.reveal');
       const observer = new IntersectionObserver(
         (entries) => {
@@ -902,6 +916,24 @@ export default defineComponent({
 
 .churches-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.churches-empty {
+  margin-top: 28px;
+  padding: 34px;
+  border: 1px solid rgba(7, 26, 51, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.churches-empty h3 {
+  margin-bottom: 8px;
+  color: var(--blue);
+}
+
+.churches-empty p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .church-card {
